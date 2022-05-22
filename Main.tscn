@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
@@ -8,26 +8,46 @@
 [ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
 [ext_resource path="res://art/chars/something0.png" type="Texture" id=7]
 [ext_resource path="res://art/griddvsd1280-720.png" type="Texture" id=8]
+[ext_resource path="res://Something.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Zombie.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 738, 349, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 313, 358, 0, 0, 0, 0, 0, 0 )
 }
 
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1367, 257, 0, 0, 0, 0, -61, 257 )
+}
+
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 mob_scene = ExtResource( 2 )
+zombie_scene = ExtResource( 10 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 800.0
 color = Color( 0.219608, 0.372549, 0.380392, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
+[node name="Something_0" type="Area2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimatedSprite" parent="Something_0" instance=ExtResource( 9 )]
+position = Vector2( 249, 252 )
+
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 5.0
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
@@ -39,7 +59,11 @@ one_shot = true
 position = Vector2( 240, 450 )
 
 [node name="MobPath" type="Path2D" parent="."]
+position = Vector2( 16, -4 )
 curve = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
@@ -53,6 +77,9 @@ stream = ExtResource( 6 )
 
 [node name="DefenseGroup" type="Node2D" parent="."]
 z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Something1" type="TextureRect" parent="DefenseGroup"]
 margin_top = 100.0
@@ -96,13 +123,31 @@ margin_right = 100.0
 margin_bottom = 702.0
 texture = ExtResource( 7 )
 
+[node name="Zombie" type="Area2D" parent="."]
+z_index = 1
+
+[node name="Zombie" parent="Zombie" instance=ExtResource( 10 )]
+position = Vector2( 1245, 355 )
+scale = Vector2( 0.9, 0.8 )
+
+[node name="ZombiePath_0" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ZombiePath_0"]
+position = Vector2( 1367, 257 )
+rotation = 3.14159
+
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 1280.0
 margin_bottom = 720.0
 texture = ExtResource( 8 )
 expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="something_hit" from="Something_0/AnimatedSprite" to="." method="_on_AnimatedSprite_something_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
