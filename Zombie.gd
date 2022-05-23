@@ -14,6 +14,8 @@ var target = null
 var attack_cadence_seconds = 1
 var last_attack = 0
 var old_lineal_velocity = 0
+var was_hit = false
+var total_during_hit = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,9 +35,19 @@ func _process(delta):
 			target.get_hit(self.strength)
 		else:
 			is_attacking = false
-			$AnimatedSprite.play("walk")
-	else:
+			if is_dying == false:
+				$AnimatedSprite.play("walk")
+	elif is_dying == false:
 		self.linear_velocity = old_lineal_velocity
+		
+	if was_hit:
+		self.modulate.a = 0.5 if Engine.get_frames_drawn() % 2 == 0 else 1.0
+		total_during_hit += delta
+		if total_during_hit > 0.5:
+			was_hit = 0
+			total_during_hit = 0
+	else:
+		self.modulate.a = 1.0
 
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -43,6 +55,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func get_hit(strengh):
 	print("Zombie gets hit")
+	was_hit = true
 	life = life - (strengh)
 	print("CUrrent life " + str(life))
 	var size = Vector2( (life * 50) / 100.0 ,5)
