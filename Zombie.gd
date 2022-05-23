@@ -4,6 +4,7 @@ export var life = 100
 
 export var armour = 5
 export var strength = 10
+export var line_number = 0
 
 var target = null
 
@@ -39,6 +40,7 @@ func set_target(something_):
 func _on_AnimatedSprite_animation_finished():
 	if (life <= 0 ):
 		hide()
+		queue_free()
 	pass # Replace with function body.
 
 func stop_moving():
@@ -54,3 +56,9 @@ func _on_Zombie_body_entered(body):
 func _on_Zombie_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	print("Waiting to keep walking2")
 	body_rid.stop_moving()
+
+func set_line_number(line):
+	line_number = line
+	
+func get_line_number():
+	return line_number

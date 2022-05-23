@@ -33,7 +33,7 @@ func new_game():
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
-	# $Music.play()
+	#$Music.play()
 	
 func _nothing():
 	# Create a new instance of the Mob scene.
@@ -72,7 +72,7 @@ func _on_MobTimer_timeout():
 	
 	# Set the mob's direction perpendicular to the path direction.
 	
-	# Spawn the mob by adding it to the Main scene.
+	# Spawn the smob by adding it to the Main scene.
 	# add_child(zombie)
 	for i in range(1,7):
 		var zombie = zombie_scene.instance()
@@ -83,7 +83,7 @@ func _on_MobTimer_timeout():
 		zombie.linear_velocity = velocity.rotated(direction)
 		
 		# Set the mob's direction perpendicular to the path direction.
-		
+		zombie.set_line_number(i)
 		# Spawn the mob by adding it to the Main scene.
 		add_child(zombie)
 	
