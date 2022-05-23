@@ -17,9 +17,12 @@ export var attack_cadence_seconds = 3
 
 export var is_dopped = false
 export var is_attacking = false
+var is_dying = false
 
 var enemy = null
 var last_attack = 0
+
+export var line_position = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +36,7 @@ func _process(delta):
 	if ( now - last_attack ) < attack_cadence_seconds:
 		return
 	
-	if is_attacking and enemy != null:
+	if is_attacking and is_instance_valid(enemy) and enemy.is_queued_for_deletion() == false and enemy.is_dying == false:
 		attack(null)
 		last_attack = now
 
@@ -48,6 +51,8 @@ func attack(_zombie):
 		return
 	print("Attacking!")
 	enemy.get_hit(strength)
+	if enemy.is_dying:
+		enemy = null
 	
 	
 func dope():
@@ -69,3 +74,16 @@ func _on_AnimatedSprite_body_entered(body):
 
 func get_hit(strength_):
 	print("Got hit: " + str(strength_))
+	self.life -= strength
+	if self.life <= 0:
+		is_dying = true
+		$AnimatedSprite.stop()
+		$AnimatedSprite.play("die") 
+		
+
+
+func _on_AnimatedSprite_animation_finished():
+	if is_dying:
+		hide()
+		call_deferred("queue_free")
+	pass # Replace with function body.

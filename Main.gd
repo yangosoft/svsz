@@ -77,7 +77,7 @@ func _on_MobTimer_timeout():
 	for i in range(1,7):
 		var zombie = zombie_scene.instance()
 		var mob_spawn_location = get_node("ZombiePath_0/PathFollow2D")
-		var velocity = Vector2(130, 0.0)
+		var velocity = Vector2(30, 0.0)
 		zombie.rotation = 0
 		zombie.position = Vector2(1000 , (i*100)+50)
 		zombie.linear_velocity = velocity.rotated(direction)
@@ -86,6 +86,7 @@ func _on_MobTimer_timeout():
 		zombie.set_line_number(i)
 		# Spawn the mob by adding it to the Main scene.
 		add_child(zombie)
+		
 	
 
 func _on_ScoreTimer_timeout():
@@ -148,6 +149,7 @@ func _onMouseMove(event):
 		s.set_script(load(somethingType))
 		
 		s.position = pos
+		s.line_position = int(pos[1]/100.0) 
 		add_child(s)
 
 func _on_Something0_gui_input(event):

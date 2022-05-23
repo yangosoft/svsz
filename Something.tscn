@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Something.gd" type="Script" id=1]
 [ext_resource path="res://art/zombies/Player_Free/Run/0003.png" type="Texture" id=2]
@@ -33,6 +33,27 @@
 [ext_resource path="res://art/zombies/Player_Free/Run/0004.png" type="Texture" id=31]
 [ext_resource path="res://art/zombies/Player_Free/Run/0012.png" type="Texture" id=32]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=33]
+[ext_resource path="res://art/zombies/Player_Free/Death/0134.png" type="Texture" id=34]
+[ext_resource path="res://art/zombies/Player_Free/Death/0146.png" type="Texture" id=35]
+[ext_resource path="res://art/zombies/Player_Free/Death/0131.png" type="Texture" id=36]
+[ext_resource path="res://art/zombies/Player_Free/Death/0135.png" type="Texture" id=37]
+[ext_resource path="res://art/zombies/Player_Free/Death/0143.png" type="Texture" id=38]
+[ext_resource path="res://art/zombies/Player_Free/Death/0132.png" type="Texture" id=39]
+[ext_resource path="res://art/zombies/Player_Free/Death/0150.png" type="Texture" id=40]
+[ext_resource path="res://art/zombies/Player_Free/Death/0136.png" type="Texture" id=41]
+[ext_resource path="res://art/zombies/Player_Free/Death/0149.png" type="Texture" id=42]
+[ext_resource path="res://art/zombies/Player_Free/Death/0142.png" type="Texture" id=43]
+[ext_resource path="res://art/zombies/Player_Free/Death/0148.png" type="Texture" id=44]
+[ext_resource path="res://art/zombies/Player_Free/Death/0137.png" type="Texture" id=45]
+[ext_resource path="res://art/zombies/Player_Free/Death/0141.png" type="Texture" id=46]
+[ext_resource path="res://art/zombies/Player_Free/Death/0139.png" type="Texture" id=47]
+[ext_resource path="res://art/zombies/Player_Free/Death/0147.png" type="Texture" id=48]
+[ext_resource path="res://art/zombies/Player_Free/Death/0144.png" type="Texture" id=49]
+[ext_resource path="res://art/zombies/Player_Free/Death/0145.png" type="Texture" id=50]
+[ext_resource path="res://art/zombies/Player_Free/Death/0130.png" type="Texture" id=51]
+[ext_resource path="res://art/zombies/Player_Free/Death/0133.png" type="Texture" id=52]
+[ext_resource path="res://art/zombies/Player_Free/Death/0138.png" type="Texture" id=53]
+[ext_resource path="res://art/zombies/Player_Free/Death/0140.png" type="Texture" id=54]
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
@@ -46,6 +67,11 @@ animations = [ {
 "frames": [ ExtResource( 30 ), ExtResource( 28 ), ExtResource( 2 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 3 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 4 ), ExtResource( 32 ), ExtResource( 26 ), ExtResource( 5 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "attack",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 52 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 53 ), ExtResource( 47 ), ExtResource( 54 ), ExtResource( 46 ), ExtResource( 43 ), ExtResource( 38 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 35 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 42 ), ExtResource( 40 ) ],
+"loop": false,
+"name": "die",
 "speed": 16.0
 } ]
 
@@ -64,9 +90,10 @@ texture = ExtResource( 21 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "attack"
+animation = "die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_AnimatedSprite_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

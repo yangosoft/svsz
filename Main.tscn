@@ -36,7 +36,7 @@ something_0 = ExtResource( 9 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 800.0
-color = Color( 0.219608, 0.372549, 0.380392, 1 )
+color = Color( 0.92549, 0.858824, 0.858824, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -52,9 +52,6 @@ one_shot = true
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 240, 450 )
 
 [node name="MobPath" type="Path2D" parent="."]
 position = Vector2( 16, -4 )

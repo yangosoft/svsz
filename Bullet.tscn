@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Bullet.gd" type="Script" id=1]
 [ext_resource path="res://art/particles/laserRed01.png" type="Texture" id=2]
-[ext_resource path="res://art/particles/part1.png" type="Texture" id=3]
+[ext_resource path="res://addons/kenney_particle_pack/spark_02.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 10 )
-
-[sub_resource type="CanvasItemMaterial" id=2]
-resource_local_to_scene = true
 
 [node name="Node2D" type="Area2D"]
 script = ExtResource( 1 )
@@ -21,11 +18,14 @@ texture = ExtResource( 2 )
 position = Vector2( -4, 0 )
 shape = SubResource( 1 )
 
-[node name="CPUParticles" type="Particles2D" parent="."]
-material = SubResource( 2 )
-amount = 30
-lifetime = 10.0
-explosiveness = 1.0
+[node name="Particles2D" type="Particles2D" parent="."]
+scale = Vector2( 0.3, 0.3 )
+amount = 4
+lifetime = 91.07
+preprocess = 88.07
+speed_scale = 13.92
+explosiveness = 0.53
+randomness = 0.58
 texture = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
