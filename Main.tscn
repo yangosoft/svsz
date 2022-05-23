@@ -41,15 +41,6 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
-[node name="Something_0" type="Area2D" parent="."]
-z_index = 1
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="AnimatedSprite" parent="Something_0" instance=ExtResource( 9 )]
-position = Vector2( 249, 252 )
-
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
@@ -161,7 +152,6 @@ texture = ExtResource( 13 )
 
 [connection signal="mouse_entered" from="ColorRect" to="." method="_onMouseMove"]
 [connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="something_hit" from="Something_0/AnimatedSprite" to="." method="_on_AnimatedSprite_something_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

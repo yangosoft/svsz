@@ -5,6 +5,7 @@ export(PackedScene) var zombie_scene
 export(PackedScene) var something_0
 
 
+
 var score
 
 
@@ -26,7 +27,7 @@ func game_over():
 func new_game():
 	get_tree().call_group("mobs", "queue_free")
 	score = 0
-	$Player.start($StartPosition.position)
+	# $Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
@@ -104,6 +105,8 @@ func _on_Something0_gui_input(event):
 	print(str(event))
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		var s = something_0.instance()
+		
+		s.set_script(load("res://SomethingShooter.gd"))
 		s.position = Vector2(252,352)
 		add_child(s)
 	
@@ -128,7 +131,7 @@ func _onMouseMove(event):
 		
 		pos[0] = pos[0] - int(int(pos[0]) % 100) + 0
 		pos[1] = pos[1] - int(int(pos[1]) % 100) + 0
-		print("Mouse moving " + str(pos))
+		#print("Mouse moving " + str(pos))
 		$SomethingMouseFollower.set_position( pos )
 		
 	if is_dragging and event is InputEventMouseButton  and event.button_index == BUTTON_LEFT  and event.pressed:

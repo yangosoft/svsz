@@ -1,5 +1,6 @@
 extends Area2D
 export(PackedScene) var something
+export (PackedScene) var bullet
 
 signal something_hit
 # Declare member variables here. Examples:
