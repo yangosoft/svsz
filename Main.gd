@@ -11,6 +11,8 @@ var score
 
 var is_dragging = false
 
+var somethingType = "res://Something.gd"
+
 
 func _ready():
 	randomize()
@@ -101,7 +103,7 @@ func _on_AnimatedSprite_something_hit():
 	pass # Replace with function body.
 
 
-func _on_Something0_gui_input(event):
+func _on_Something0_gui_input2(event):
 	print(str(event))
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		var s = something_0.instance()
@@ -140,5 +142,35 @@ func _onMouseMove(event):
 		pos[0] = pos[0] - int(int(pos[0]) % 100) + 50
 		pos[1] = pos[1] - int(int(pos[1]) % 100) + 50
 		var s = something_0.instance()
+		
+		
+		
+		s.set_script(load(somethingType))
+		
 		s.position = pos
 		add_child(s)
+
+func _on_Something0_gui_input(event):
+	somethingType = "res://Something.gd"
+	_onSomethingClick(event)
+
+func _on_Something1_gui_input(event):
+	somethingType = "res://SomethingShooter.gd"
+	_onSomethingClick(event)
+
+func _on_Something2_gui_input(event):
+	somethingType = "res://SomethingShooter.gd"
+	_onSomethingClick(event)
+
+func _on_Something3_gui_input(event):
+	somethingType = "res://SomethingShooter.gd"
+	_onSomethingClick(event)
+
+func _on_Something4_gui_input(event):
+	somethingType = "res://SomethingShooter.gd"
+	_onSomethingClick(event)
+
+func _on_Something5_gui_input(event):
+	somethingType = "res://SomethingShooter.gd"
+	_onSomethingClick(event)
+	pass # Replace with function body.

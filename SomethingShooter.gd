@@ -21,5 +21,10 @@ func shoot():
    
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	var now = OS.get_unix_time()
+	if ( now - last_attack ) < attack_cadence_seconds:
+		return
+	shoot()
+	last_attack = now
+
