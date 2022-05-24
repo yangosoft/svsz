@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://art/zombies/Zombie_Free/Walk/0002.png" type="Texture" id=1]
 [ext_resource path="res://art/zombies/Zombie_Free/Walk/0001.png" type="Texture" id=2]
@@ -48,14 +48,10 @@
 [ext_resource path="res://art/zombies/Zombie_Free/Attack/0460.png" type="Texture" id=46]
 [ext_resource path="res://art/zombies/Zombie_Free/Death/0140.png" type="Texture" id=47]
 [ext_resource path="res://art/zombies/Zombie_Free/Death/0135.png" type="Texture" id=48]
+[ext_resource path="res://addons/kenney_particle_pack/magic_04.png" type="Texture" id=49]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "walk",
-"speed": 14.0
-}, {
 "frames": [ ExtResource( 46 ), ExtResource( 45 ), ExtResource( 17 ), ExtResource( 26 ), ExtResource( 32 ), ExtResource( 24 ), ExtResource( 22 ), ExtResource( 37 ), ExtResource( 23 ), ExtResource( 30 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "attack",
@@ -65,10 +61,30 @@ animations = [ {
 "loop": false,
 "name": "die",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk",
+"speed": 14.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26, 45 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.23
+trail_divisor = 2
+emission_shape = 1
+emission_sphere_radius = 32.36
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 29.41
+orbit_velocity = -78.44
+orbit_velocity_random = 0.3
+angle_random = 0.17
+color = Color( 0, 0.203922, 1, 1 )
+hue_variation_random = 0.31
+anim_speed = 47.69
 
 [node name="ZombieSprite" type="Area2D"]
 script = ExtResource( 16 )
@@ -97,6 +113,18 @@ margin_top = -53.0
 margin_right = 25.0
 margin_bottom = -48.0
 color = Color( 0, 0.0627451, 1, 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+scale = Vector2( 0.3, 0.3 )
+z_index = 5
+emitting = false
+amount = 1
+lifetime = 4.0
+explosiveness = 0.63
+randomness = 0.58
+visibility_rect = Rect2( 0, 0, 0, 787.761 )
+process_material = SubResource( 3 )
+texture = ExtResource( 49 )
 
 [connection signal="area_entered" from="." to="." method="_on_ZombieSprite_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_ZombieSprite_area_exited"]

@@ -21,6 +21,11 @@ var total_during_hit = 0
 func _ready():
 	old_lineal_velocity = self.linear_velocity
 	$AnimatedSprite.play("walk")
+	var r = rand_range(0,1)
+	if r > 0:
+		print("Emitting")
+		$Particles2D.emitting = true
+		life = 200
 
 
 

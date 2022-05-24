@@ -23,6 +23,7 @@ func update_score(score):
 
 func _on_StartButton_pressed():
 	$StartButton.hide()
+	$Version.hide()
 	emit_signal("start_game")
 
 

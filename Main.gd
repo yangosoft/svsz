@@ -93,7 +93,7 @@ func _on_MobTimer_timeout():
 		
 	for i in range(1,7):
 		var r = rand_range(0,1)
-		if ( r < 0.7 ):
+		if ( r < 0.6 ):
 			continue
 		var z1 = zombie_sprite.instance()
 		z1.rotation = 0

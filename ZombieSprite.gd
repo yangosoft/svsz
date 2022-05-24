@@ -1,5 +1,6 @@
 extends Area2D
 
+
 export var life = 100
 
 export var armour = 5
@@ -23,6 +24,11 @@ func _ready():
 	$AnimatedSprite.play("walk")
 	is_moving = true
 	add_to_group("enemy")
+	var r = rand_range(0,1)
+	if r < 0.1:
+		print("Emitting")
+		$Particles2D.emitting = true
+		life = 150
 
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Bullet.gd" type="Script" id=1]
 [ext_resource path="res://art/particles/laserRed01.png" type="Texture" id=2]
@@ -6,6 +6,13 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 10 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+gravity = Vector3( 0, 2, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0, 0.835294, 1, 1 )
 
 [node name="Node2D" type="Area2D"]
 script = ExtResource( 1 )
@@ -21,11 +28,12 @@ shape = SubResource( 1 )
 [node name="Particles2D" type="Particles2D" parent="."]
 scale = Vector2( 0.3, 0.3 )
 amount = 4
-lifetime = 91.07
+lifetime = 0.01
 preprocess = 88.07
 speed_scale = 13.92
 explosiveness = 0.53
 randomness = 0.58
+process_material = SubResource( 2 )
 texture = ExtResource( 3 )
 
 [connection signal="area_entered" from="." to="." method="_on_Node2D_area_entered"]
