@@ -27,6 +27,7 @@ export var line_position = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.play("idle")
+	add_to_group("defender")
 	pass # Replace with function body.
 
 
@@ -75,6 +76,10 @@ func _on_AnimatedSprite_body_entered(body):
 func get_hit(strength_):
 	print("Got hit: " + str(strength_))
 	self.life -= strength
+	
+	var size = Vector2( (life * 50) / 100.0 ,5)
+	$ColorRect.set_size(size)
+	
 	if self.life <= 0:
 		is_dying = true
 		$AnimatedSprite.stop()

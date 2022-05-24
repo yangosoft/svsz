@@ -13,10 +13,12 @@ func _ready():
 	armour = 3
 	strength = 21
 	bullet = load("res://Bullet.tscn")
+	add_to_group("defender")
 	
 	
 func shoot():
 	var b = bullet.instance()
+	b.add_to_group("bullet")
 	add_child(b)
    
 

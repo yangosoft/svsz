@@ -15,7 +15,7 @@
 [ext_resource path="res://art/zombies/Zombie_Free/Walk/0012.png" type="Texture" id=13]
 [ext_resource path="res://art/zombies/Zombie_Free/Walk/0015.png" type="Texture" id=14]
 [ext_resource path="res://art/zombies/Zombie_Free/Walk/0008.png" type="Texture" id=15]
-[ext_resource path="res://Zombie.gd" type="Script" id=16]
+[ext_resource path="res://ZombieSprite.gd" type="Script" id=16]
 [ext_resource path="res://art/zombies/Zombie_Free/Attack/0462.png" type="Texture" id=17]
 [ext_resource path="res://art/zombies/Zombie_Free/Death/0136.png" type="Texture" id=18]
 [ext_resource path="res://art/zombies/Zombie_Free/Death/0141.png" type="Texture" id=19]
@@ -70,8 +70,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26, 45 )
 
-[node name="Zombie" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="ZombieSprite" type="Area2D"]
 script = ExtResource( 16 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -99,7 +98,6 @@ margin_right = 25.0
 margin_bottom = -48.0
 color = Color( 0, 0.0627451, 1, 1 )
 
-[connection signal="body_entered" from="." to="." method="_on_Zombie_body_entered"]
-[connection signal="body_shape_entered" from="." to="." method="_on_Zombie_body_shape_entered"]
+[connection signal="area_entered" from="." to="." method="_on_ZombieSprite_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_ZombieSprite_area_exited"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

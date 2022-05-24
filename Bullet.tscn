@@ -28,4 +28,5 @@ explosiveness = 0.53
 randomness = 0.58
 texture = ExtResource( 3 )
 
+[connection signal="area_entered" from="." to="." method="_on_Node2D_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

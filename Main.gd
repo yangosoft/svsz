@@ -4,13 +4,12 @@ export(PackedScene) var mob_scene
 export(PackedScene) var zombie_scene
 export(PackedScene) var something_0
 
+export(PackedScene) var zombie_sprite
+
 
 
 var score
-
-
 var is_dragging = false
-
 var somethingType = "res://Something.gd"
 
 
@@ -75,6 +74,7 @@ func _on_MobTimer_timeout():
 	# Spawn the smob by adding it to the Main scene.
 	# add_child(zombie)
 	for i in range(1,7):
+		break
 		var zombie = zombie_scene.instance()
 		var mob_spawn_location = get_node("ZombiePath_0/PathFollow2D")
 		var velocity = Vector2(30, 0.0)
@@ -82,11 +82,30 @@ func _on_MobTimer_timeout():
 		zombie.position = Vector2(1000 , (i*100)+50)
 		zombie.linear_velocity = velocity.rotated(direction)
 		
-		# Set the mob's direction perpendicular to the path direction.
+		
 		zombie.set_line_number(i)
-		# Spawn the mob by adding it to the Main scene.
+		
 		add_child(zombie)
 		
+	var z1 = zombie_sprite.instance()
+	
+	
+	z1.rotation = 0
+	z1.position = Vector2(1000 , (3*100)+50)
+	# z1.linear_velocity = velocity.rotated(direction)
+	z1.set_line_number(3)
+	add_child(z1)
+	
+	
+	var z2 = zombie_sprite.instance()
+	
+	
+	z2.rotation = 0
+	z2.position = Vector2(600 , (3*100)+50)
+	# z1.linear_velocity = velocity.rotated(direction)
+	z2.set_line_number(3)
+	add_child(z2)
+	z2.is_moving = false
 	
 
 func _on_ScoreTimer_timeout():
@@ -130,11 +149,16 @@ func _onMouseMove(event):
 	
 	if is_dragging and event is InputEventMouseMotion:
 		$SomethingMouseFollower.show()
-		
-		
 		pos[0] = pos[0] - int(int(pos[0]) % 100) + 0
 		pos[1] = pos[1] - int(int(pos[1]) % 100) + 0
 		#print("Mouse moving " + str(pos))
+		
+		if ( pos[0] < 200 ) or (pos[1] < 100) or (pos[0] > 1100) or (pos[1] > 600):
+			$SomethingMouseFollower.hide()
+			return
+		else:
+			$SomethingMouseFollower.show()
+			
 		$SomethingMouseFollower.set_position( pos )
 		
 	if is_dragging and event is InputEventMouseButton  and event.button_index == BUTTON_LEFT  and event.pressed:
@@ -144,10 +168,7 @@ func _onMouseMove(event):
 		pos[1] = pos[1] - int(int(pos[1]) % 100) + 50
 		var s = something_0.instance()
 		
-		
-		
 		s.set_script(load(somethingType))
-		
 		s.position = pos
 		s.line_position = int(pos[1]/100.0) 
 		add_child(s)
