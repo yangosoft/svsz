@@ -6,12 +6,17 @@ extends "res://Something.gd"
 # var b = "text"
 
 
+func _init():
+	star_cost = 15
+	armour = 3
+	strength = 21
+	star_cost = 15
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Shooter!!!!")
-	armour = 3
-	strength = 21
+	
 	bullet = load("res://Bullet.tscn")
 	add_to_group("defender")
 	

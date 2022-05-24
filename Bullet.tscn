@@ -33,6 +33,7 @@ preprocess = 88.07
 speed_scale = 13.92
 explosiveness = 0.53
 randomness = 0.58
+fixed_fps = 10
 process_material = SubResource( 2 )
 texture = ExtResource( 3 )
 

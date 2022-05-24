@@ -4,18 +4,26 @@ export(PackedScene) var mob_scene
 export(PackedScene) var zombie_scene
 export(PackedScene) var something_0
 export(PackedScene) var something_1
+export(PackedScene) var something_2
 
 export(PackedScene) var zombie_sprite
 
+
+var defense_map = []
 
 
 var score
 var is_dragging = false
 var somethingType = "res://Something.gd"
+var stars = 5
+
+signal gen_star
 
 
 func _ready():
 	randomize()
+	for i in range(60):
+		defense_map.append(false)
 
 
 func game_over():
@@ -32,11 +40,15 @@ func new_game():
 	get_tree().call_group("defender", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
 	score = 0
+	stars = 5
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
+	$HUD/lblStars.text = str(stars)
 	$HUD.show_message("Get Ready")
 	#$Music.play()
+	for i in range(60):
+		defense_map[i]=false
 	
 func _nothing():
 	# Create a new instance of the Mob scene.
@@ -152,11 +164,20 @@ func _onSomethingClick(event):
 
 func _onMouseMove(event):
 	var pos = get_viewport().get_mouse_position()
+	var map_index = 0
+	pos[0] = pos[0] - int(int(pos[0]) % 100) + 0
+	pos[1] = pos[1] - int(int(pos[1]) % 100) + 0
+	map_index = int(pos[1] / 100) * 10 + int(int(pos[0]) / 100) - 12
+	pos = get_viewport().get_mouse_position()
 	
 	if is_dragging and event is InputEventMouseMotion:
 		$SomethingMouseFollower.show()
 		pos[0] = pos[0] - int(int(pos[0]) % 100) + 0
 		pos[1] = pos[1] - int(int(pos[1]) % 100) + 0
+		map_index = int(pos[1] / 100) * 10 + int(int(pos[0]) / 100) - 12
+		print("map_index " + str(map_index))
+		
+		  
 		#print("Mouse moving " + str(pos))
 		
 		if ( pos[0] < 200 ) or (pos[1] < 100) or (pos[0] > 1100) or (pos[1] > 600):
@@ -167,8 +188,9 @@ func _onMouseMove(event):
 			
 		$SomethingMouseFollower.set_position( pos )
 		
-	if is_dragging and event is InputEventMouseButton  and event.button_index == BUTTON_LEFT  and event.pressed:
+	if is_dragging and event is InputEventMouseButton  and event.button_index == BUTTON_LEFT  and event.pressed and defense_map[map_index] == false:
 		is_dragging = false
+		
 		$SomethingMouseFollower.hide()
 		pos[0] = pos[0] - int(int(pos[0]) % 100) + 50
 		pos[1] = pos[1] - int(int(pos[1]) % 100) + 50
@@ -176,39 +198,52 @@ func _onMouseMove(event):
 		var s = something_0.instance()
 		if somethingType == "res://SomethingBarrier.gd":
 			s = something_1.instance()
+		elif somethingType == "res://SomethingGenerator.gd":
+			s = something_2.instance()
 		
 		
 		s.set_script(load(somethingType))
 		s.position = pos
 		s.line_position = int(pos[1]/100.0) 
+		defense_map[map_index] = true
+		print("COST " + str(s.star_cost))
+		stars -= s.star_cost
+		$HUD/lblStars.text = str(stars)
 		add_child(s)
 
 func _on_Something0_gui_input(event):
+	$SomethingMouseFollower.texture = $DefenseGroup/Something0.texture
 	somethingType = "res://Something.gd"
 	_onSomethingClick(event)
 
 func _on_Something1_gui_input(event):
+	$SomethingMouseFollower.texture = $DefenseGroup/Something1.texture
 	somethingType = "res://SomethingShooter.gd"
 	_onSomethingClick(event)
 
 func _on_Something2_gui_input(event):
-	somethingType = "res://SomethingShooter.gd"
+	$SomethingMouseFollower.texture = $DefenseGroup/Something2.texture
+	somethingType = "res://SomethingGenerator.gd"
 	_onSomethingClick(event)
 
 func _on_Something3_gui_input(event):
+	$SomethingMouseFollower.texture = $DefenseGroup/Something3.texture
 	somethingType = "res://SomethingShooter.gd"
 	_onSomethingClick(event)
 
 func _on_Something4_gui_input(event):
+	$SomethingMouseFollower.texture = $DefenseGroup/Something4.texture
 	somethingType = "res://SomethingShooter.gd"
 	_onSomethingClick(event)
 
 func _on_Something5_gui_input(event):
+	$SomethingMouseFollower.texture = $DefenseGroup/Something5.texture
 	somethingType = "res://SomethingBarrier.gd"
 	_onSomethingClick(event)
 	pass # Replace with function body.
 	
 func _on_Something6_gui_input(event):
+	$SomethingMouseFollower.texture = $DefenseGroup/Something6.texture
 	somethingType = "res://SomethingShooter.gd"
 	_onSomethingClick(event)
 	pass # Replace with function body.
@@ -219,3 +254,10 @@ func _on_EndGameArea_area_entered(area):
 		game_over()
 		pass
 	pass # Replace with function body.
+
+
+func _on_Main_gen_star():
+	print("NEW STAR")
+	stars += 10
+	$HUD/lblStars.text = str(stars)
+	

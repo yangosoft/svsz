@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://art/zombies/Player_Free/Run_Shoot/0042.png" type="Texture" id=15]
 [ext_resource path="res://art/chars/p1_0.png" type="Texture" id=16]
 [ext_resource path="res://SomethingBarrier.tscn" type="PackedScene" id=17]
+[ext_resource path="res://art/chars/p2_0.png" type="Texture" id=18]
+[ext_resource path="res://SomethingGenerator.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -32,6 +34,7 @@ mob_scene = ExtResource( 2 )
 zombie_scene = ExtResource( 10 )
 something_0 = ExtResource( 9 )
 something_1 = ExtResource( 17 )
+something_2 = ExtResource( 19 )
 zombie_sprite = ExtResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -100,7 +103,7 @@ stretch_mode = 6
 margin_top = 202.0
 margin_right = 128.0
 margin_bottom = 330.0
-texture = ExtResource( 12 )
+texture = ExtResource( 18 )
 
 [node name="Something3" type="TextureRect" parent="DefenseGroup"]
 margin_top = 302.0
@@ -140,6 +143,7 @@ position = Vector2( 100, 100 )
 position = Vector2( -39, 313 )
 shape = SubResource( 3 )
 
+[connection signal="gen_star" from="." to="." method="_on_Main_gen_star"]
 [connection signal="mouse_entered" from="ColorRect" to="." method="_onMouseMove"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]

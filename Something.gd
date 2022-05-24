@@ -14,7 +14,7 @@ export var armour = 5
 export var strength = 10
 
 export var attack_cadence_seconds = 3
-
+var star_cost = 10
 export var is_dopped = false
 export var is_attacking = false
 var is_dying = false

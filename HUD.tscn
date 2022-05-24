@@ -79,7 +79,7 @@ margin_top = 272.0
 margin_right = -14.0
 margin_bottom = 350.0
 custom_fonts/font = SubResource( 1 )
-text = "1.1"
+text = "1.5"
 align = 1
 
 [node name="BgColorRect" type="ColorRect" parent="."]

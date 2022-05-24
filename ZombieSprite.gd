@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export var life = 100
+export var life = 60
 
 export var armour = 5
 export var strength = 3
@@ -17,6 +17,9 @@ var last_attack = 0
 var old_lineal_velocity = 0
 var was_hit = false
 var total_during_hit = 0
+
+
+var last_movement_ms = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,9 +52,12 @@ func _process(delta):
 		pass
 		# self.linear_velocity = old_lineal_velocity
 	if is_moving == true:
-		var pos = self.position
-		pos[0] = pos[0] - 1
-		self.position = pos
+		var now = OS.get_ticks_msec()
+		if now - last_movement_ms > 100:
+			var pos = self.position
+			pos[0] = pos[0] - 1
+			self.position = pos
+			last_movement_ms = now
 	
 	if was_hit:
 		self.modulate.a = 0.5 if Engine.get_frames_drawn() % 2 == 0 else 1.0
