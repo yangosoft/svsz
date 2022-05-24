@@ -108,5 +108,7 @@ margin_right = 24.0
 margin_bottom = -50.0
 color = Color( 0.101961, 0, 1, 1 )
 
+[connection signal="area_entered" from="." to="." method="_on_AnimatedSprite_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_AnimatedSprite_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_AnimatedSprite_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

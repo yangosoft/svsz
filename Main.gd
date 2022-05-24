@@ -3,6 +3,7 @@ extends Node
 export(PackedScene) var mob_scene
 export(PackedScene) var zombie_scene
 export(PackedScene) var something_0
+export(PackedScene) var something_1
 
 export(PackedScene) var zombie_sprite
 
@@ -23,10 +24,13 @@ func game_over():
 	$HUD.show_game_over()
 	$Music.stop()
 	$DeathSound.play()
+	
 
 
 func new_game():
-	get_tree().call_group("mobs", "queue_free")
+	get_tree().call_group("enemy", "queue_free")
+	get_tree().call_group("defender", "queue_free")
+	get_tree().call_group("bullet", "queue_free")
 	score = 0
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -87,14 +91,16 @@ func _on_MobTimer_timeout():
 		
 		add_child(zombie)
 		
-	var z1 = zombie_sprite.instance()
-	
-	
-	z1.rotation = 0
-	z1.position = Vector2(1000 , (3*100)+50)
-	# z1.linear_velocity = velocity.rotated(direction)
-	z1.set_line_number(3)
-	add_child(z1)
+	for i in range(1,7):
+		var r = rand_range(0,1)
+		if ( r < 0.7 ):
+			continue
+		var z1 = zombie_sprite.instance()
+		z1.rotation = 0
+		z1.position = Vector2(1000 , (i*100)+50)
+		# z1.linear_velocity = velocity.rotated(direction)
+		z1.set_line_number(i)
+		add_child(z1)
 	
 	
 	var z2 = zombie_sprite.instance()
@@ -104,8 +110,8 @@ func _on_MobTimer_timeout():
 	z2.position = Vector2(600 , (3*100)+50)
 	# z1.linear_velocity = velocity.rotated(direction)
 	z2.set_line_number(3)
-	add_child(z2)
-	z2.is_moving = false
+	#add_child(z2)
+	#z2.is_moving = false
 	
 
 func _on_ScoreTimer_timeout():
@@ -166,7 +172,11 @@ func _onMouseMove(event):
 		$SomethingMouseFollower.hide()
 		pos[0] = pos[0] - int(int(pos[0]) % 100) + 50
 		pos[1] = pos[1] - int(int(pos[1]) % 100) + 50
+		
 		var s = something_0.instance()
+		if somethingType == "res://SomethingBarrier.gd":
+			s = something_1.instance()
+		
 		
 		s.set_script(load(somethingType))
 		s.position = pos
@@ -194,6 +204,18 @@ func _on_Something4_gui_input(event):
 	_onSomethingClick(event)
 
 func _on_Something5_gui_input(event):
+	somethingType = "res://SomethingBarrier.gd"
+	_onSomethingClick(event)
+	pass # Replace with function body.
+	
+func _on_Something6_gui_input(event):
 	somethingType = "res://SomethingShooter.gd"
 	_onSomethingClick(event)
+	pass # Replace with function body.
+
+
+func _on_EndGameArea_area_entered(area):
+	if area.is_in_group("enemy"):
+		game_over()
+		pass
 	pass # Replace with function body.

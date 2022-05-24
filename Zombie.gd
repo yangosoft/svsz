@@ -3,7 +3,7 @@ extends RigidBody2D
 export var life = 100
 
 export var armour = 5
-export var strength = 19
+export var strength = 5
 export var line_number = 0
 
 var is_attacking = false

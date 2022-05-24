@@ -40,6 +40,10 @@ func _process(delta):
 	if is_attacking and is_instance_valid(enemy) and enemy.is_queued_for_deletion() == false and enemy.is_dying == false:
 		attack(null)
 		last_attack = now
+		
+	if is_attacking and is_instance_valid(enemy) == false:
+		is_attacking = false
+		$AnimatedSprite.play("idle")
 
 #	pass
 
@@ -71,11 +75,11 @@ func _on_AnimatedSprite_body_entered(body):
 	# z.play("attack")
 	enemy = body
 	is_attacking = true
-	emit_signal("something_hit") # Replace with function body.
+	emit_signal("something_hit") 
 
 func get_hit(strength_):
 	print("Got hit: " + str(strength_))
-	self.life -= strength
+	self.life -= strength_
 	
 	var size = Vector2( (life * 50) / 100.0 ,5)
 	$ColorRect.set_size(size)
@@ -91,4 +95,16 @@ func _on_AnimatedSprite_animation_finished():
 	if is_dying:
 		hide()
 		call_deferred("queue_free")
+	
+
+
+func _on_AnimatedSprite_area_entered(area):
+	if area.is_in_group("enemy"):
+		enemy = area
+		is_attacking = true
+		emit_signal("something_hit") 
+	pass # Replace with function body.
+
+
+func _on_AnimatedSprite_area_exited(area):
 	pass # Replace with function body.
