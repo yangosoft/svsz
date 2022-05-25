@@ -65,7 +65,7 @@ animations = [ {
 "frames": [ ExtResource( 42 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 34 ), ExtResource( 21 ), ExtResource( 48 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 35 ), ExtResource( 41 ), ExtResource( 47 ), ExtResource( 19 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 29 ), ExtResource( 36 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 44 ) ],
 "loop": false,
 "name": "die",
-"speed": 5.0
+"speed": 25.03
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]

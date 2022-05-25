@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://SomethingTNT.gd" type="Script" id=1]
+[ext_resource path="res://art/chars/p3_0.png" type="Texture" id=2]
+[ext_resource path="res://addons/kenney_particle_pack/fire_02.png" type="Texture" id=3]
+[ext_resource path="res://art/chars/p2_0.png" type="Texture" id=55]
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 49.93
+flag_disable_z = true
+direction = Vector3( 1, 1, 1 )
+spread = 47.08
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 68.63
+orbit_velocity = 78.43
+orbit_velocity_random = 0.0
+linear_accel = 47.06
+color = Color( 1, 0.435294, 0.435294, 1 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "attack",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "die",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 49, 48 )
+
+[node name="AnimatedSprite" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+z_index = 3
+emitting = false
+amount = 9
+lifetime = 5.0
+speed_scale = 50.32
+explosiveness = 0.74
+randomness = 0.25
+process_material = SubResource( 3 )
+texture = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "die"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 4, 4 )
+shape = SubResource( 2 )
+
+[node name="BgColorRect" type="ColorRect" parent="."]
+visible = false
+margin_left = -26.0
+margin_top = -55.0
+margin_right = 24.0
+margin_bottom = -50.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_left = -26.0
+margin_top = -55.0
+margin_right = 24.0
+margin_bottom = -50.0
+color = Color( 0.101961, 0, 1, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_left = -54.0
+margin_top = -51.0
+margin_right = 46.0
+margin_bottom = 49.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 55 )
+
+[connection signal="area_entered" from="." to="." method="_on_AnimatedSprite_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_AnimatedSprite_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_AnimatedSprite_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]

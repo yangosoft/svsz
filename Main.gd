@@ -5,6 +5,8 @@ export(PackedScene) var zombie_scene
 export(PackedScene) var something_0
 export(PackedScene) var something_1
 export(PackedScene) var something_2
+export(PackedScene) var something_3
+
 
 export(PackedScene) var zombie_sprite
 
@@ -22,7 +24,7 @@ var stars = 15
 signal gen_star
 signal defense_die
 
-const NUMBER_MAXIMUM_ENEMIES = 8
+const NUMBER_MAXIMUM_ENEMIES = 14
 
 
 func _ready():
@@ -227,6 +229,8 @@ func _onMouseMove(event):
 				s = something_1.instance()
 			elif somethingType == "res://SomethingGenerator.gd":
 				s = something_2.instance()
+			elif somethingType == "res://SomethingTNT.gd":
+				s = something_3.instance()
 			s.set_script(load(somethingType))
 			
 			if (s.star_cost > stars):
@@ -249,7 +253,7 @@ func _on_Something0_gui_input(event):
 
 func _on_Something1_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something1.texture
-	somethingType = "res://SomethingShooter.gd"
+	somethingType = "res://SomethingTNT.gd"
 	_onSomethingClick(event)
 
 func _on_Something2_gui_input(event):

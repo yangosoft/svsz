@@ -52,7 +52,8 @@ func _process(delta):
 
 	if OS.get_ticks_msec() - last_dope_ms > 5000:
 		current_attack_cadence_ms = attack_cadence_ms
-		$TextureRect.show()
+		if is_instance_valid($TextureRect):
+			$TextureRect.show()
 #	pass
 
 func die():
