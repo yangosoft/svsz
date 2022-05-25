@@ -15,8 +15,7 @@ func _init():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Shooter!!!!")
-	
+	print("Shooter")
 	bullet = load("res://Bullet.tscn")
 	add_to_group("defender")
 	
@@ -29,10 +28,14 @@ func shoot():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var now = OS.get_unix_time()
-	if ( now - last_attack ) < attack_cadence_seconds:
+	var now = OS.get_ticks_msec()
+	if ( now - last_attack ) < current_attack_cadence_ms:
 		return
-		
+	
+	if OS.get_ticks_msec() - last_dope_ms > 5000:
+		current_attack_cadence_ms = attack_cadence_ms
+		$TextureRect.show()
+	
 	var enemies = get_tree().get_nodes_in_group("line_"+str(line_position)) 
 	
 	if enemies.size() > 0:

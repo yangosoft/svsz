@@ -53,7 +53,7 @@ func _process(delta):
 		# self.linear_velocity = old_lineal_velocity
 	if is_moving == true:
 		var now = OS.get_ticks_msec()
-		if now - last_movement_ms > 100:
+		if now - last_movement_ms > 50:
 			var pos = self.position
 			pos[0] = pos[0] - 1
 			self.position = pos

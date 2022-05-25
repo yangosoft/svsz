@@ -12,12 +12,17 @@ export(PackedScene) var zombie_sprite
 var defense_map = []
 
 
+
+
 var score
 var is_dragging = false
 var somethingType = "res://Something.gd"
-var stars = 5
+var stars = 15
 
 signal gen_star
+signal defense_die
+
+const NUMBER_MAXIMUM_ENEMIES = 8
 
 
 func _ready():
@@ -25,6 +30,45 @@ func _ready():
 	for i in range(60):
 		defense_map.append(false)
 
+
+func _process(delta):
+	
+	if int($DefenseGroup/Something0/Label.text) > stars:
+		$DefenseGroup/Something0.modulate.a = 0.3
+	else:
+		$DefenseGroup/Something0.modulate.a = 1
+		
+	if int($DefenseGroup/Something1/Label.text) > stars:
+		$DefenseGroup/Something1.modulate.a = 0.3
+	else:
+		$DefenseGroup/Something1.modulate.a = 1
+		
+	if int($DefenseGroup/Something2/Label.text) > stars:
+		$DefenseGroup/Something2.modulate.a = 0.3
+	else:
+		$DefenseGroup/Something2.modulate.a = 1
+		
+	if int($DefenseGroup/Something3/Label.text) > stars:
+		$DefenseGroup/Something3.modulate.a = 0.3
+	else:
+		$DefenseGroup/Something3.modulate.a = 1
+		
+	if int($DefenseGroup/Something4/Label.text) > stars:
+		$DefenseGroup/Something4.modulate.a = 0.3
+	else:
+		$DefenseGroup/Something4.modulate.a = 1
+		
+	if int($DefenseGroup/Something5/Label.text) > stars:
+		$DefenseGroup/Something5.modulate.a = 0.3
+	else:
+		$DefenseGroup/Something5.modulate.a = 1
+		
+	if int($DefenseGroup/Something6/Label.text) > stars:
+		$DefenseGroup/Something6.modulate.a = 0.3
+	else:
+		$DefenseGroup/Something6.modulate.a = 1
+	
+	pass
 
 func game_over():
 	$ScoreTimer.stop()
@@ -40,7 +84,7 @@ func new_game():
 	get_tree().call_group("defender", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
 	score = 0
-	stars = 5
+	stars = 15
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
@@ -78,24 +122,14 @@ func _nothing():
 func _on_MobTimer_timeout():
 	# var zombie = zombie_scene.instance()
 	var direction = PI
-	# Choose a random location on Path2D.
-	# var mob_spawn_location = get_node("ZombiePath_0/PathFollow2D")
-	# var velocity = Vector2(130, 0.0)
-	# zombie.rotation = 0
-	# zombie.position = Vector2(1000 , 250)
-	# zombie.linear_velocity = velocity.rotated(direction)
 	
-	# Set the mob's direction perpendicular to the path direction.
-	
-	# Spawn the smob by adding it to the Main scene.
-	# add_child(zombie)
 	for i in range(1,7):
 		break
 		var zombie = zombie_scene.instance()
 		var mob_spawn_location = get_node("ZombiePath_0/PathFollow2D")
 		var velocity = Vector2(30, 0.0)
 		zombie.rotation = 0
-		zombie.position = Vector2(1000 , (i*100)+50)
+		zombie.position = Vector2(1200 , (i*100)+50)
 		zombie.linear_velocity = velocity.rotated(direction)
 		
 		
@@ -104,26 +138,20 @@ func _on_MobTimer_timeout():
 		add_child(zombie)
 		
 	for i in range(1,7):
+		if get_tree().get_nodes_in_group("enemy").size() > NUMBER_MAXIMUM_ENEMIES:
+			continue
 		var r = rand_range(0,1)
 		if ( r < 0.6 ):
 			continue
 		var z1 = zombie_sprite.instance()
 		z1.rotation = 0
-		z1.position = Vector2(1000 , (i*100)+50)
+		z1.position = Vector2(1200 , (i*100)+50)
 		# z1.linear_velocity = velocity.rotated(direction)
 		z1.set_line_number(i)
 		add_child(z1)
 	
 	
-	var z2 = zombie_sprite.instance()
 	
-	
-	z2.rotation = 0
-	z2.position = Vector2(600 , (3*100)+50)
-	# z1.linear_velocity = velocity.rotated(direction)
-	z2.set_line_number(3)
-	#add_child(z2)
-	#z2.is_moving = false
 	
 
 func _on_ScoreTimer_timeout():
@@ -177,39 +205,42 @@ func _onMouseMove(event):
 		map_index = int(pos[1] / 100) * 10 + int(int(pos[0]) / 100) - 12
 		print("map_index " + str(map_index))
 		
-		  
-		#print("Mouse moving " + str(pos))
 		
-		if ( pos[0] < 200 ) or (pos[1] < 100) or (pos[0] > 1100) or (pos[1] > 600):
+		if (pos[0] < 200) or (pos[1] < 100) or (pos[0] > 1100) or (pos[1] > 600):
 			$SomethingMouseFollower.hide()
 			return
 		else:
 			$SomethingMouseFollower.show()
 			
-		$SomethingMouseFollower.set_position( pos )
+		$SomethingMouseFollower.set_position(pos)
 		
-	if is_dragging and event is InputEventMouseButton  and event.button_index == BUTTON_LEFT  and event.pressed and defense_map[map_index] == false:
-		is_dragging = false
-		
-		$SomethingMouseFollower.hide()
-		pos[0] = pos[0] - int(int(pos[0]) % 100) + 50
-		pos[1] = pos[1] - int(int(pos[1]) % 100) + 50
-		
-		var s = something_0.instance()
-		if somethingType == "res://SomethingBarrier.gd":
-			s = something_1.instance()
-		elif somethingType == "res://SomethingGenerator.gd":
-			s = something_2.instance()
-		
-		
-		s.set_script(load(somethingType))
-		s.position = pos
-		s.line_position = int(pos[1]/100.0) 
-		defense_map[map_index] = true
-		print("COST " + str(s.star_cost))
-		stars -= s.star_cost
-		$HUD/lblStars.text = str(stars)
-		add_child(s)
+	if map_index < 60 and map_index >= 0:
+		if is_dragging and event is InputEventMouseButton  and event.button_index == BUTTON_LEFT  and event.pressed and defense_map[map_index] == false:
+			is_dragging = false
+			
+			$SomethingMouseFollower.hide()
+			pos[0] = pos[0] - int(int(pos[0]) % 100) + 50
+			pos[1] = pos[1] - int(int(pos[1]) % 100) + 50
+			
+			var s = something_0.instance()
+			if somethingType == "res://SomethingBarrier.gd":
+				s = something_1.instance()
+			elif somethingType == "res://SomethingGenerator.gd":
+				s = something_2.instance()
+			s.set_script(load(somethingType))
+			
+			if (s.star_cost > stars):
+				return
+			
+			
+			s.position = pos
+			s.line_position = int(pos[1]/100.0) 
+			defense_map[map_index] = true
+			s.index_in_map = map_index
+			print("COST " + str(s.star_cost))
+			stars -= s.star_cost
+			$HUD/lblStars.text = str(stars)
+			add_child(s)
 
 func _on_Something0_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something0.texture
@@ -252,12 +283,15 @@ func _on_Something6_gui_input(event):
 func _on_EndGameArea_area_entered(area):
 	if area.is_in_group("enemy"):
 		game_over()
-		pass
-	pass # Replace with function body.
 
 
 func _on_Main_gen_star():
 	print("NEW STAR")
 	stars += 10
 	$HUD/lblStars.text = str(stars)
-	
+
+
+func _on_Main_defense_die(index_in_map):
+	print("Defense die " + str(index_in_map))
+	defense_map[index_in_map] = false
+	pass # Replace with function body.

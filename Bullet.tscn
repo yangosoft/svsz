@@ -27,6 +27,7 @@ shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 scale = Vector2( 0.3, 0.3 )
+emitting = false
 amount = 4
 lifetime = 0.01
 preprocess = 88.07

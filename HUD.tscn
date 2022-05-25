@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://HUD.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://art/chars/p2_0.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -24,9 +25,18 @@ font_data = ExtResource( 2 )
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 98.0
+margin_top = 12.0
+margin_right = 198.0
+margin_bottom = 112.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
 [node name="ScoreLabel" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 1093.0
+margin_left = 1065.0
+margin_right = -24.0
 margin_bottom = 78.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
@@ -64,9 +74,9 @@ __meta__ = {
 one_shot = true
 
 [node name="lblStars" type="Label" parent="."]
-margin_left = 120.0
-margin_right = 305.0
-margin_bottom = 84.0
+margin_left = 147.0
+margin_right = 332.0
+margin_bottom = 91.0
 custom_fonts/font = SubResource( 5 )
 text = "0"
 
@@ -79,7 +89,7 @@ margin_top = 272.0
 margin_right = -14.0
 margin_bottom = 350.0
 custom_fonts/font = SubResource( 1 )
-text = "1.5"
+text = "1.6"
 align = 1
 
 [node name="BgColorRect" type="ColorRect" parent="."]
