@@ -8,6 +8,7 @@ export(PackedScene) var something_2
 export(PackedScene) var something_3
 
 
+
 export(PackedScene) var zombie_sprite
 
 
@@ -24,7 +25,8 @@ var stars = 15
 signal gen_star
 signal defense_die
 
-const NUMBER_MAXIMUM_ENEMIES = 14
+var NUMBER_MAXIMUM_ENEMIES = 14
+var difficulty = 0
 
 
 func _ready():
@@ -81,7 +83,10 @@ func game_over():
 	
 
 
-func new_game():
+func new_game(difficulty):
+	print(str(difficulty))
+	self.difficulty = difficulty
+	# new game
 	get_tree().call_group("enemy", "queue_free")
 	get_tree().call_group("defender", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
@@ -140,9 +145,11 @@ func _on_MobTimer_timeout():
 		add_child(zombie)
 		
 	for i in range(1,7):
-		if get_tree().get_nodes_in_group("enemy").size() > NUMBER_MAXIMUM_ENEMIES:
+		if get_tree().get_nodes_in_group("enemy").size() > NUMBER_MAXIMUM_ENEMIES + (self.difficulty * 4):
 			continue
 		var r = rand_range(0,1)
+		var base_prob = 0.6
+		base_prob = base_prob - (self.difficulty / 20)
 		if ( r < 0.6 ):
 			continue
 		var z1 = zombie_sprite.instance()
@@ -231,6 +238,7 @@ func _onMouseMove(event):
 				s = something_2.instance()
 			elif somethingType == "res://SomethingTNT.gd":
 				s = something_3.instance()
+			
 			s.set_script(load(somethingType))
 			
 			if (s.star_cost > stars):
@@ -268,7 +276,7 @@ func _on_Something3_gui_input(event):
 
 func _on_Something4_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something4.texture
-	somethingType = "res://SomethingShooter.gd"
+	somethingType = "res://SomethingShooterBig.gd"
 	_onSomethingClick(event)
 
 func _on_Something5_gui_input(event):

@@ -152,7 +152,8 @@ texture = ExtResource( 15 )
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
-text = "15"
+text = "30
+"
 
 [node name="Something5" type="TextureRect" parent="DefenseGroup"]
 margin_top = 502.0

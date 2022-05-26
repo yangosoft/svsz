@@ -1,4 +1,4 @@
-extends "res://Something.gd"
+extends "res://SomethingShooter.gd"
 
 
 # Declare member variables here. Examples:
@@ -7,17 +7,16 @@ extends "res://Something.gd"
 
 
 func _init():
-	star_cost = 15
+	star_cost = 30
 	armour = 3
-	strength = 21
-	star_cost = 15
-
+	strength = 100
+	
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Shooter")
-	bullet = load("res://Bullet.tscn")
+	print("ShooterBIG")
+	bullet = load("res://BulletBig.tscn")
 	add_to_group("defender")
 	
 	

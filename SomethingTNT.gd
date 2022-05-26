@@ -6,7 +6,7 @@ extends "res://Something.gd"
 # var b = "text"
 
 var timestamp = 0
-
+var has_played = false
 func _init():
 	armour = 3
 	strength = 400
@@ -32,7 +32,10 @@ func shoot():
 func _process(delta):
 	var now = OS.get_ticks_msec()
 	if now - timestamp > 200:
-		$Particles2D.emitting = true	
+		$Particles2D.emitting = true
+		if has_played == false:
+			$AudioStreamPlayer.play()	
+			has_played = true
 	if now - timestamp > 1200:
 		get_parent().emit_signal("defense_die",index_in_map)
 		call_deferred("queue_free")

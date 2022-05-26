@@ -6,6 +6,7 @@ var speed = 350
 
 func _ready():
 	add_to_group("bullet")
+	$AudioStreamPlayer.play()
 
 func _physics_process(delta):
 	position += transform.x * speed * delta

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boom9.wav-3d6a44080635e694158a0adc22b5dfa8.sample"
+
+[deps]
+
+source_file="res://sound/boom9.wav"
+dest_files=[ "res://.import/boom9.wav-3d6a44080635e694158a0adc22b5dfa8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
