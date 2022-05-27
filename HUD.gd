@@ -15,6 +15,14 @@ func show_game_over():
 	$MessageLabel.show()
 	yield(get_tree().create_timer(1), "timeout")
 	$VBoxContainer.show()
+	
+func show_game_win():
+	show_message("Game Over")
+	yield($MessageTimer, "timeout")
+	$MessageLabel.text = "You win!"
+	$MessageLabel.show()
+	yield(get_tree().create_timer(1), "timeout")
+	$VBoxContainer.show()
 
 
 func update_score(score):

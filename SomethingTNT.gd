@@ -33,6 +33,7 @@ func _process(delta):
 	var now = OS.get_ticks_msec()
 	if now - timestamp > 200:
 		$Particles2D.emitting = true
+		$AnimatedSprite.hide()
 		if has_played == false:
 			$AudioStreamPlayer.play()	
 			has_played = true
