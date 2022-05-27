@@ -26,6 +26,8 @@ var last_attack = 0
 export var line_position = -1
 export var index_in_map = -1
 
+export var dope_candence_ms = 5000
+
 var last_dope_ms = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -50,7 +52,7 @@ func _process(delta):
 		is_attacking = false
 		$AnimatedSprite.play("idle")
 
-	if OS.get_ticks_msec() - last_dope_ms > 5000:
+	if OS.get_ticks_msec() - last_dope_ms > dope_candence_ms:
 		current_attack_cadence_ms = attack_cadence_ms
 		if is_instance_valid($TextureRect):
 			$TextureRect.show()

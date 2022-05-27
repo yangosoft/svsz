@@ -307,3 +307,8 @@ func _on_Main_defense_die(index_in_map):
 	print("Defense die " + str(index_in_map))
 	defense_map[index_in_map] = false
 	pass # Replace with function body.
+
+
+func _on_BtnRestart_pressed():
+	game_over()
+	pass # Replace with function body.

@@ -10,7 +10,9 @@ func _init():
 	star_cost = 30
 	armour = 3
 	strength = 100
-	
+	attack_cadence_ms = 3000
+	current_attack_cadence_ms = attack_cadence_ms
+	dope_candence_ms = 10000
 
 
 # Called when the node enters the scene tree for the first time.
