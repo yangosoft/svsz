@@ -35,7 +35,7 @@ var difficulty = 0
 
 
 func _ready():
-	win_score = win_score * (difficulty+1)
+	
 	randomize()
 	for i in range(60):
 		defense_map.append(false)
@@ -97,6 +97,9 @@ func win_game():
 	$Music.stop()
 
 func new_game(difficulty):
+	if(difficulty > 0):
+		$MobTimer.wait_time = 10 - (difficulty*2)
+	win_score = 100 * (difficulty+1)
 	$WinScene.hide()
 	print(str(difficulty))
 	self.difficulty = difficulty
@@ -159,16 +162,19 @@ func _on_MobTimer_timeout():
 		add_child(zombie)
 		
 	for i in range(1,7):
-		if get_tree().get_nodes_in_group("enemy").size() > NUMBER_MAXIMUM_ENEMIES + (self.difficulty * 7):
+		if get_tree().get_nodes_in_group("enemy").size() > NUMBER_MAXIMUM_ENEMIES + (self.difficulty * 10):
 			continue
 		var r = rand_range(0,1)
 		var base_prob = 0.6
-		base_prob = base_prob - (self.difficulty / 20)
-		if ( r < 0.6 ):
+		base_prob = base_prob - (self.difficulty / 10)
+		if ( r < base_prob ):
 			continue
 		var z1 = zombie_sprite.instance()
-		if (r > 0.9 - (self.difficulty / 1000 )) and  get_tree().get_nodes_in_group("golem").size() < (NUMBER_MAXIMUM_GOLEM + self.difficulty):
+		z1.movement_ms = z1.movement_ms - (difficulty*7)
+		
+		if (r > 0.9 - (self.difficulty / 1000 )) and  get_tree().get_nodes_in_group("golem").size() < (NUMBER_MAXIMUM_GOLEM + self.difficulty*2):
 			z1 = golem_scene.instance()
+			z1.movement_ms = z1.movement_ms - (difficulty*15)
 		z1.rotation = 0
 		z1.position = Vector2(1200 , (i*100)+50)
 		# z1.linear_velocity = velocity.rotated(direction)
@@ -180,7 +186,7 @@ func _on_MobTimer_timeout():
 	
 
 func _on_ScoreTimer_timeout():
-	if (score > win_score):
+	if (score >= win_score):
 		win_game()
 		return
 	score += 1

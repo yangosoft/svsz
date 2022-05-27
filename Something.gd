@@ -95,10 +95,12 @@ func get_hit(strength_):
 	var size = Vector2( (life * 50) / 100.0 ,5)
 	$ColorRect.set_size(size)
 	
-	if self.life <= 0:
+	if self.life <= 0 and is_dying == false:
 		is_dying = true
+		is_attacking = false
 		$AnimatedSprite.stop()
 		$AnimatedSprite.play("die") 
+		print("Dying!!!")
 		
 
 
