@@ -97,6 +97,7 @@ func win_game():
 	$Music.stop()
 
 func new_game(difficulty):
+	$WinScene.hide()
 	print(str(difficulty))
 	self.difficulty = difficulty
 	# new game
