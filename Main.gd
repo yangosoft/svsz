@@ -7,6 +7,7 @@ export(PackedScene) var something_0
 export(PackedScene) var something_1
 export(PackedScene) var something_2
 export(PackedScene) var something_3
+export(PackedScene) var something_4
 
 
 
@@ -225,6 +226,7 @@ func _on_Something0_mouse_entered():
 func _onSomethingClick(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		print("ok")
+		$AudioSomething.play()
 		is_dragging = true
 
 
@@ -267,6 +269,9 @@ func _onMouseMove(event):
 				s = something_2.instance()
 			elif somethingType == "res://SomethingTNT.gd":
 				s = something_3.instance()
+			elif somethingType == "res://SomethingCatapult.gd":
+				print("will be a catapult!")
+				s = something_4.instance()
 			
 			s.set_script(load(somethingType))
 			
@@ -285,7 +290,7 @@ func _onMouseMove(event):
 
 func _on_Something0_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something0.texture
-	somethingType = "res://Something.gd"
+	somethingType = "res://SomethingCatapult.gd"
 	_onSomethingClick(event)
 
 func _on_Something1_gui_input(event):

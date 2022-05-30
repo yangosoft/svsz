@@ -1,0 +1,194 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://art/chars/p2_0.png" type="Texture" id=3]
+[ext_resource path="res://art/chars/p1_0.png" type="Texture" id=4]
+[ext_resource path="res://art/zombies/Player_Free/Idle_Shoot/0074.png" type="Texture" id=5]
+[ext_resource path="res://art/zombies/Player_Free/Idle/0091.png" type="Texture" id=6]
+[ext_resource path="res://art/zombies/Player_Free/Run_Shoot/0042.png" type="Texture" id=7]
+[ext_resource path="res://art/chars/p3_0.png" type="Texture" id=8]
+[ext_resource path="res://art/bg/bg-selection.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 128
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 195.0
+margin_right = 1047.0
+margin_bottom = 468.0
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "10"
+
+[node name="TextureRect2" type="TextureRect" parent="GridContainer"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 100.0
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect2"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "15"
+
+[node name="TextureRect3" type="TextureRect" parent="GridContainer"]
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 204.0
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect3"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "5"
+
+[node name="TextureRect4" type="TextureRect" parent="GridContainer"]
+margin_left = 104.0
+margin_top = 104.0
+margin_right = 204.0
+margin_bottom = 204.0
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect4"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "15"
+
+[node name="TextureRect5" type="TextureRect" parent="GridContainer"]
+margin_top = 208.0
+margin_right = 100.0
+margin_bottom = 308.0
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect5"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "30
+"
+
+[node name="TextureRect6" type="TextureRect" parent="GridContainer"]
+margin_left = 104.0
+margin_top = 208.0
+margin_right = 204.0
+margin_bottom = 308.0
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect6"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "15"
+
+[node name="DefenseGroup" type="Node2D" parent="."]
+z_index = 3
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Something1" type="TextureRect" parent="DefenseGroup"]
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 202.0
+
+[node name="Label" type="Label" parent="DefenseGroup/Something1"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Something0" type="TextureRect" parent="DefenseGroup"]
+margin_right = 100.0
+margin_bottom = 100.0
+mouse_default_cursor_shape = 6
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="DefenseGroup/Something0"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Something2" type="TextureRect" parent="DefenseGroup"]
+margin_top = 202.0
+margin_right = 100.0
+margin_bottom = 302.0
+
+[node name="Label" type="Label" parent="DefenseGroup/Something2"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Something3" type="TextureRect" parent="DefenseGroup"]
+margin_top = 302.0
+margin_right = 100.0
+margin_bottom = 402.0
+
+[node name="Label" type="Label" parent="DefenseGroup/Something3"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Something4" type="TextureRect" parent="DefenseGroup"]
+margin_top = 402.0
+margin_right = 100.0
+margin_bottom = 502.0
+
+[node name="Label" type="Label" parent="DefenseGroup/Something4"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "
+"
+
+[node name="Something5" type="TextureRect" parent="DefenseGroup"]
+margin_top = 502.0
+margin_right = 100.0
+margin_bottom = 602.0
+
+[node name="Label" type="Label" parent="DefenseGroup/Something5"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Something6" type="TextureRect" parent="DefenseGroup"]
+margin_top = 602.0
+margin_right = 100.0
+margin_bottom = 702.0
+
+[node name="Label" type="Label" parent="DefenseGroup/Something6"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 530.0
+margin_top = 482.0
+margin_right = 742.0
+margin_bottom = 643.0
+custom_fonts/font = SubResource( 2 )
+text = "OK"
