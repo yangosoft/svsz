@@ -8,6 +8,7 @@ export(PackedScene) var something_1
 export(PackedScene) var something_2
 export(PackedScene) var something_3
 export(PackedScene) var something_4
+export(PackedScene) var something_5
 
 
 
@@ -272,6 +273,8 @@ func _onMouseMove(event):
 			elif somethingType == "res://SomethingCatapult.gd":
 				print("will be a catapult!")
 				s = something_4.instance()
+			elif somethingType == "res://SomethingElectric.gd":
+				s = something_5.instance()
 			
 			s.set_script(load(somethingType))
 			
@@ -305,7 +308,7 @@ func _on_Something2_gui_input(event):
 
 func _on_Something3_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something3.texture
-	somethingType = "res://SomethingShooter.gd"
+	somethingType = "res://SomethingElectric.gd"
 	_onSomethingClick(event)
 
 func _on_Something4_gui_input(event):
