@@ -131,12 +131,12 @@ func get_line_number():
 
 
 func _on_ZombieSprite_area_entered(area):
-	print("ZombieSprite area entered" + str(area))
+	# print("ZombieSprite area entered" + str(area))
 	
 	if area.is_in_group("enemy") and area.is_in_group("bullet") == false:
 		var areaPos = area.position
 		var mePos = position
-		print("mePos " + str(mePos) + " vs " + str(areaPos))
+		# print("mePos " + str(mePos) + " vs " + str(areaPos))
 		if mePos[0] > areaPos[0]:
 			is_moving = false
 	if area.is_in_group("defender"):

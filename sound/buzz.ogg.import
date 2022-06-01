@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/buzz.ogg-bae73239cc26b1435381db8785090441.oggstr"
+
+[deps]
+
+source_file="res://sound/buzz.ogg"
+dest_files=[ "res://.import/buzz.ogg-bae73239cc26b1435381db8785090441.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

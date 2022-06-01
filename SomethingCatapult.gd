@@ -6,7 +6,7 @@ extends "res://SomethingShooter.gd"
 # var b = "text"
 func _init():
 	print("INIT!")
-	star_cost = 1
+	star_cost = 75
 	armour = 3
 	strength = 100
 	attack_cadence_ms = 3000
