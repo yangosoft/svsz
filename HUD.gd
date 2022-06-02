@@ -29,6 +29,7 @@ func update_score(score):
 	$ScoreLabel.text = str(score)
 
 func start_new_game(difficulty):
+	$LinkButton.hide()
 	$AudioStreamPlayer.play()
 	$VBoxContainer.hide()
 	$Version.hide()

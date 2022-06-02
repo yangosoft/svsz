@@ -127,6 +127,13 @@ custom_fonts/font = SubResource( 2 )
 shortcut = SubResource( 4 )
 text = "Hard"
 
+[node name="LinkButton" type="LinkButton" parent="."]
+margin_left = 970.0
+margin_top = 624.0
+margin_right = 1259.0
+margin_bottom = 638.0
+text = "https://dae-robotics.com/android/policy.html"
+
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
 [connection signal="pressed" from="VBoxContainer/StartButton3" to="." method="_on_StartButton3_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton2" to="." method="_on_StartButton2_pressed"]
