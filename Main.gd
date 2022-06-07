@@ -115,7 +115,7 @@ func new_game(difficulty):
 	get_tree().call_group("defender", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
 	score = 0
-	stars = 1500
+	stars = 30 - (self.difficulty*5)
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)

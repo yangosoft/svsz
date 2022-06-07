@@ -14,6 +14,11 @@ Art:
 * https://opengameart.org/content/electric-buzz
 * https://opengameart.org/content/lightning
 
+
+![image](screenshots/s5.png)
+![image](screenshots/s6.png)
+![image](screenshots/s7.png)
+![image](screenshots/s8.png)
 ![image](screenshots/s1.png)
 ![image](screenshots/s2.png)
 ![image](screenshots/s3.png)
