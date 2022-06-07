@@ -1,8 +1,7 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
-[ext_resource path="res://art/chars/catapult/catapult.png" type="Texture" id=3]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
@@ -10,14 +9,8 @@
 [ext_resource path="res://art/bg/bg-1.png" type="Texture" id=8]
 [ext_resource path="res://Something.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Zombie.tscn" type="PackedScene" id=10]
-[ext_resource path="res://art/chars/p3_0.png" type="Texture" id=11]
-[ext_resource path="res://art/chars/p4_0.png" type="Texture" id=12]
 [ext_resource path="res://art/chars/p0_0_idle_0.png" type="Texture" id=13]
-[ext_resource path="res://art/zombies/Player_Free/Idle_Shoot/0074.png" type="Texture" id=14]
-[ext_resource path="res://art/zombies/Player_Free/Run_Shoot/0042.png" type="Texture" id=15]
-[ext_resource path="res://art/chars/p1_0.png" type="Texture" id=16]
 [ext_resource path="res://SomethingBarrier.tscn" type="PackedScene" id=17]
-[ext_resource path="res://art/chars/p2_0.png" type="Texture" id=18]
 [ext_resource path="res://SomethingGenerator.tscn" type="PackedScene" id=19]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://SomethingTNT.tscn" type="PackedScene" id=21]
@@ -108,91 +101,78 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Something1" type="TextureRect" parent="DefenseGroup"]
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 202.0
-texture = ExtResource( 11 )
-
-[node name="Label" type="Label" parent="DefenseGroup/Something1"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
-text = "20"
-
 [node name="Something0" type="TextureRect" parent="DefenseGroup"]
 margin_right = 100.0
 margin_bottom = 100.0
 mouse_default_cursor_shape = 6
-texture = ExtResource( 3 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="DefenseGroup/Something0"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
-text = "75"
+
+[node name="Something1" type="TextureRect" parent="DefenseGroup"]
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 202.0
+
+[node name="Label" type="Label" parent="DefenseGroup/Something1"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
 
 [node name="Something2" type="TextureRect" parent="DefenseGroup"]
 margin_top = 202.0
 margin_right = 100.0
 margin_bottom = 302.0
-texture = ExtResource( 18 )
 
 [node name="Label" type="Label" parent="DefenseGroup/Something2"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
-text = "5"
 
 [node name="Something3" type="TextureRect" parent="DefenseGroup"]
 margin_top = 302.0
 margin_right = 100.0
 margin_bottom = 402.0
-texture = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="DefenseGroup/Something3"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
-text = "125"
 
 [node name="Something4" type="TextureRect" parent="DefenseGroup"]
 margin_top = 402.0
 margin_right = 100.0
 margin_bottom = 502.0
-texture = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="DefenseGroup/Something4"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
-text = "30
+text = "
 "
 
 [node name="Something5" type="TextureRect" parent="DefenseGroup"]
 margin_top = 502.0
 margin_right = 100.0
 margin_bottom = 602.0
-texture = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="DefenseGroup/Something5"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
-text = "10"
 
 [node name="Something6" type="TextureRect" parent="DefenseGroup"]
 margin_top = 602.0
 margin_right = 100.0
 margin_bottom = 702.0
-texture = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="DefenseGroup/Something6"]
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
-text = "15"
 
 [node name="SomethingMouseFollower" type="TextureRect" parent="."]
 visible = false
@@ -224,17 +204,21 @@ z_as_relative = false
 stream = ExtResource( 25 )
 volume_db = -20.8
 
+[node name="SelectionScene" parent="." instance=ExtResource( 29 )]
+visible = false
+
 [connection signal="defense_die" from="." to="." method="_on_Main_defense_die"]
 [connection signal="gen_star" from="." to="." method="_on_Main_gen_star"]
 [connection signal="mouse_entered" from="ColorRect" to="." method="_onMouseMove"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="show_selection" from="HUD" to="." method="_on_HUD_show_selection"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="gui_input" from="Background" to="." method="_onMouseMove"]
-[connection signal="gui_input" from="DefenseGroup/Something1" to="." method="_on_Something1_gui_input"]
 [connection signal="gui_input" from="DefenseGroup/Something0" to="." method="_on_Something0_gui_input"]
 [connection signal="mouse_entered" from="DefenseGroup/Something0" to="." method="_on_Something0_mouse_entered"]
+[connection signal="gui_input" from="DefenseGroup/Something1" to="." method="_on_Something1_gui_input"]
 [connection signal="gui_input" from="DefenseGroup/Something2" to="." method="_on_Something2_gui_input"]
 [connection signal="gui_input" from="DefenseGroup/Something3" to="." method="_on_Something3_gui_input"]
 [connection signal="gui_input" from="DefenseGroup/Something4" to="." method="_on_Something4_gui_input"]
@@ -242,3 +226,4 @@ volume_db = -20.8
 [connection signal="gui_input" from="DefenseGroup/Something6" to="." method="_on_Something6_gui_input"]
 [connection signal="area_entered" from="EndGameArea" to="." method="_on_EndGameArea_area_entered"]
 [connection signal="pressed" from="BtnRestart" to="." method="_on_BtnRestart_pressed"]
+[connection signal="selection_done" from="SelectionScene" to="." method="_on_SelectionScene_selection_done"]

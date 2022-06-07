@@ -145,7 +145,7 @@ margin_bottom = 638.0
 text = "https://dae-robotics.com/android/policy.html"
 
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
-[connection signal="pressed" from="VBoxContainer/Select" to="." method="_on_StartButton3_pressed"]
+[connection signal="pressed" from="VBoxContainer/Select" to="." method="on_Select_Button"]
 [connection signal="pressed" from="VBoxContainer/StartButton3" to="." method="_on_StartButton3_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton2" to="." method="_on_StartButton2_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

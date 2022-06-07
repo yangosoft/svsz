@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal start_game
+signal show_selection
 
 func show_message(text):
 	$MessageLabel.text = text
@@ -49,3 +50,19 @@ func _on_MessageTimer_timeout():
 
 
 
+func hide_me():
+	$LinkButton.hide()
+	$AudioStreamPlayer.play()
+	$VBoxContainer.hide()
+	$Version.hide()
+	$MessageLabel.hide()
+	
+func show_me():
+	$MessageLabel.show()
+	$LinkButton.show()
+	$VBoxContainer.show()
+	$Version.show()
+
+func on_Select_Button():
+	emit_signal("show_selection")
+	pass # Replace with function body.
