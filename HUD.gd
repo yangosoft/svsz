@@ -3,6 +3,8 @@ extends CanvasLayer
 signal start_game
 signal show_selection
 
+
+
 func show_message(text):
 	$MessageLabel.text = text
 	$MessageLabel.show()

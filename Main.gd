@@ -115,7 +115,7 @@ func new_game(difficulty):
 	get_tree().call_group("defender", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
 	score = 0
-	stars = 15
+	stars = 1500
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
@@ -388,6 +388,13 @@ func get_sprite_by_texture(texture):
 	return ret
 
 func _on_SelectionScene_selection_done(selection):
+	if selection.size() > 0:
+		$HUD/VBoxContainer/StartButton.show()
+		$HUD/VBoxContainer/StartButton2.show()
+		$HUD/VBoxContainer/StartButton3.show()
+		
+	$DefenseGroup.show()
+	
 	defense_array.clear()
 	print("Slection done!")
 	$HUD.show_me()
@@ -408,6 +415,7 @@ func _on_SelectionScene_selection_done(selection):
 
 
 func _on_HUD_show_selection():
+	$DefenseGroup.hide()
 	$SelectionScene.show()
 	$HUD.hide_me()
 	pass # Replace with function body.

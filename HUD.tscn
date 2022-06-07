@@ -103,18 +103,23 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="Select" type="Button" parent="VBoxContainer"]
+margin_top = 171.0
 margin_right = 577.0
-margin_bottom = 84.0
+margin_bottom = 255.0
 custom_colors/font_color_disabled = Color( 0.0313726, 0.996078, 0.113725, 1 )
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.92549, 0.309804, 0.309804, 1 )
+custom_colors/font_color_pressed = Color( 0.921569, 0.462745, 0.462745, 1 )
 custom_fonts/font = SubResource( 2 )
 shortcut = SubResource( 4 )
 text = "Select defenders"
 
 [node name="StartButton3" type="Button" parent="VBoxContainer"]
-margin_top = 114.0
+visible = false
+margin_top = 228.0
 margin_right = 577.0
-margin_bottom = 198.0
+margin_bottom = 312.0
 custom_colors/font_color_disabled = Color( 0.0313726, 0.996078, 0.113725, 1 )
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -122,14 +127,16 @@ shortcut = SubResource( 4 )
 text = "Easy"
 
 [node name="StartButton2" type="Button" parent="VBoxContainer"]
-margin_top = 228.0
+visible = false
+margin_top = 285.0
 margin_right = 577.0
-margin_bottom = 312.0
+margin_bottom = 369.0
 custom_fonts/font = SubResource( 2 )
 shortcut = SubResource( 4 )
 text = "Medium"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
+visible = false
 margin_top = 342.0
 margin_right = 577.0
 margin_bottom = 426.0

@@ -21,6 +21,7 @@ func on_Barrier_Sel(event):
 
 
 func _on_BtnReset_pressed():
+	$AudioStreamPlayer.play()
 	print("REST")
 	selection_array.clear()
 	selection_array_stars.clear()
@@ -47,6 +48,12 @@ func _on_BtnReset_pressed():
 	pass # Replace with function body.
 	
 func draw_selection():
+	var childs = $DefenseGroup.get_children()
+	for i in range(childs.size()):
+		var c = childs[i]
+		c.texture = null
+		c.get_child(0).text = ""
+	
 	for i in range(selection_array.size()):
 		var s = selection_array[i]
 		var star_value = selection_array_stars[i]
@@ -60,6 +67,7 @@ func select_defender(node, lbl_stars):
 		return
 	var res = node.texture
 	if selection_array.find(res) == -1:
+		$AudioStreamPlayer.play()
 		selection_array.push_back(res)
 		var val_stars = lbl_stars.text
 		selection_array_stars.push_back(val_stars)
@@ -105,6 +113,9 @@ func on_Ninja_Sel(event):
 
 
 func _on_Button_pressed():
+	if selection_array.size() <= 0:
+		return
 	emit_signal("selection_done",selection_array)
+	$AudioStreamPlayer.play()
 	self.hide()
 	pass # Replace with function body.
