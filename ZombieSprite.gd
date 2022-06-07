@@ -151,7 +151,7 @@ func _on_ZombieSprite_area_entered(area):
 
 
 func _on_ZombieSprite_area_exited(area):
-	print("Exiting " + str(area))
+	# print("Exiting " + str(area))
 	if is_attacking == false and area.is_in_group("bullet") == false and is_dying == false:
 		is_moving = true
 	if is_attacking == true and area.is_in_group("defender"):

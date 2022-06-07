@@ -11,17 +11,20 @@ export(PackedScene) var something_2
 export(PackedScene) var something_3
 export(PackedScene) var something_4
 export(PackedScene) var something_5
+export(PackedScene) var something_6
 
 
 
 export(PackedScene) var zombie_sprite
 
 export(PackedScene) var win_scene
+export(PackedScene) var selection_scene
 
 
 var defense_map = []
 
-
+var defense_array = Array()
+var defense_index_sel = -1
 
 
 var score
@@ -112,7 +115,7 @@ func new_game(difficulty):
 	get_tree().call_group("defender", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
 	score = 0
-	stars = 15
+	stars = 1500
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
@@ -264,7 +267,7 @@ func _onMouseMove(event):
 			
 		$SomethingMouseFollower.set_position(pos)
 		
-	if map_index < 60 and map_index >= 0:
+	if map_index < 60 and map_index >= 0 and defense_index_sel < defense_array.size():
 		if is_dragging and event is InputEventMouseButton  and event.button_index == BUTTON_LEFT  and event.pressed and defense_map[map_index] == false:
 			is_dragging = false
 			
@@ -272,20 +275,8 @@ func _onMouseMove(event):
 			pos[0] = pos[0] - int(int(pos[0]) % 100) + 50
 			pos[1] = pos[1] - int(int(pos[1]) % 100) + 50
 			
-			var s = something_0.instance()
-			if somethingType == "res://SomethingBarrier.gd":
-				s = something_1.instance()
-			elif somethingType == "res://SomethingGenerator.gd":
-				s = something_2.instance()
-			elif somethingType == "res://SomethingTNT.gd":
-				s = something_3.instance()
-			elif somethingType == "res://SomethingCatapult.gd":
-				print("will be a catapult!")
-				s = something_4.instance()
-			elif somethingType == "res://SomethingElectric.gd":
-				s = something_5.instance()
+			var s = defense_array[defense_index_sel].instance()
 			
-			s.set_script(load(somethingType))
 			
 			if (s.star_cost > stars):
 				return
@@ -302,38 +293,44 @@ func _onMouseMove(event):
 
 func _on_Something0_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something0.texture
-	somethingType = "res://SomethingCatapult.gd"
+	defense_index_sel = 0
 	_onSomethingClick(event)
+	
 
 func _on_Something1_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something1.texture
-	somethingType = "res://SomethingTNT.gd"
+	defense_index_sel = 1
 	_onSomethingClick(event)
 
 func _on_Something2_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something2.texture
 	somethingType = "res://SomethingGenerator.gd"
+	defense_index_sel = 2
 	_onSomethingClick(event)
 
 func _on_Something3_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something3.texture
 	somethingType = "res://SomethingElectric.gd"
+	defense_index_sel = 3
 	_onSomethingClick(event)
 
 func _on_Something4_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something4.texture
 	somethingType = "res://SomethingShooterBig.gd"
+	defense_index_sel = 4
 	_onSomethingClick(event)
 
 func _on_Something5_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something5.texture
 	somethingType = "res://SomethingBarrier.gd"
+	defense_index_sel = 5
 	_onSomethingClick(event)
 	pass # Replace with function body.
 	
 func _on_Something6_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something6.texture
 	somethingType = "res://SomethingShooter.gd"
+	defense_index_sel = 6
 	_onSomethingClick(event)
 	pass # Replace with function body.
 
@@ -357,4 +354,68 @@ func _on_Main_defense_die(index_in_map):
 
 func _on_BtnRestart_pressed():
 	game_over()
+	pass # Replace with function body.
+
+func get_sprite_by_texture(texture):
+	var ret = null
+	print(texture)
+	match(texture.resource_path):
+		"res://art/chars/p1_0.png":
+			print("BARRIER")
+			return "res://SomethingBarrier.tscn"
+		"res://art/chars/p2_0.png":
+			print("GEN")
+			return "res://SomethingGenerator.tscn"
+		"res://art/chars/p3_0.png":
+			print("TNT")
+			return "res://SomethingTNT.tscn"
+		"res://art/chars/ninja.png":
+			print("Ninja")
+			return "res://SomethingNinja.tscn"
+		"res://art/chars/p4_0.png":
+			print("Electric")
+			return "res://SomethingElectric.tscn"
+		"res://art/zombies/Player_Free/Run_Shoot/0042.png":
+			print("BIG")
+			return "res://SomethingShooterBig.tscn"
+		"res://art/zombies/Player_Free/Idle_Shoot/0074.png":
+			print("Shoot")
+			return "res://SomethingShooter.tscn"
+		"res://art/chars/catapult/catapult.png":
+			print("CATA")
+			return "res://SomethingCatapult.tscn"
+	
+	return ret
+
+func _on_SelectionScene_selection_done(selection):
+	if selection.size() > 0:
+		$HUD/VBoxContainer/StartButton.show()
+		$HUD/VBoxContainer/StartButton2.show()
+		$HUD/VBoxContainer/StartButton3.show()
+		
+	$DefenseGroup.show()
+	
+	defense_array.clear()
+	print("Slection done!")
+	$HUD.show_me()
+	$SelectionScene.hide()
+	var childs = $DefenseGroup.get_children()
+	for i in range(childs.size()):
+		if i >= selection.size():
+			break
+		childs[i].texture = selection[i]
+		var s = get_sprite_by_texture(selection[i])
+		if s == null:
+			continue
+		var sprite = load(s)
+		var tmp = sprite.instance()
+		childs[i].get_child(0).text = str(tmp.star_cost)
+		defense_array.push_back(sprite)
+	pass # Replace with function body.
+
+
+func _on_HUD_show_selection():
+	$DefenseGroup.hide()
+	$SelectionScene.show()
+	$HUD.hide_me()
 	pass # Replace with function body.
