@@ -14,9 +14,11 @@ export(PackedScene) var something_5
 
 
 
+
 export(PackedScene) var zombie_sprite
 
 export(PackedScene) var win_scene
+export(PackedScene) var selection_scene
 
 
 var defense_map = []

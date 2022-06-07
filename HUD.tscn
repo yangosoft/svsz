@@ -95,16 +95,26 @@ color = Color( 0, 0.203922, 1, 1 )
 stream = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 500.0
-margin_top = 300.0
-margin_right = 777.0
-margin_bottom = 560.0
+margin_left = 435.0
+margin_top = 151.0
+margin_right = 1012.0
+margin_bottom = 577.0
 custom_constants/separation = 30
 alignment = 1
 
-[node name="StartButton3" type="Button" parent="VBoxContainer"]
-margin_right = 277.0
+[node name="Select" type="Button" parent="VBoxContainer"]
+margin_right = 577.0
 margin_bottom = 84.0
+custom_colors/font_color_disabled = Color( 0.0313726, 0.996078, 0.113725, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+shortcut = SubResource( 4 )
+text = "Select defenders"
+
+[node name="StartButton3" type="Button" parent="VBoxContainer"]
+margin_top = 114.0
+margin_right = 577.0
+margin_bottom = 198.0
 custom_colors/font_color_disabled = Color( 0.0313726, 0.996078, 0.113725, 1 )
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -112,17 +122,17 @@ shortcut = SubResource( 4 )
 text = "Easy"
 
 [node name="StartButton2" type="Button" parent="VBoxContainer"]
-margin_top = 114.0
-margin_right = 277.0
-margin_bottom = 198.0
+margin_top = 228.0
+margin_right = 577.0
+margin_bottom = 312.0
 custom_fonts/font = SubResource( 2 )
 shortcut = SubResource( 4 )
 text = "Medium"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
-margin_top = 228.0
-margin_right = 277.0
-margin_bottom = 312.0
+margin_top = 342.0
+margin_right = 577.0
+margin_bottom = 426.0
 custom_fonts/font = SubResource( 2 )
 shortcut = SubResource( 4 )
 text = "Hard"
@@ -135,6 +145,7 @@ margin_bottom = 638.0
 text = "https://dae-robotics.com/android/policy.html"
 
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="pressed" from="VBoxContainer/Select" to="." method="_on_StartButton3_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton3" to="." method="_on_StartButton3_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton2" to="." method="_on_StartButton2_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
