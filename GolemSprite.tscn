@@ -24,6 +24,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "walk",
+"speed": 14.0
+}, {
 "frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "attack",
@@ -33,11 +38,6 @@ animations = [ {
 "loop": false,
 "name": "die",
 "speed": 25.03
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "walk",
-"speed": 14.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]

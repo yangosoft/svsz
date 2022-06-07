@@ -3,6 +3,8 @@ extends Node
 export(PackedScene) var mob_scene
 export(PackedScene) var zombie_scene
 export(PackedScene) var golem_scene
+export(PackedScene) var ghost_scene
+export(PackedScene) var gloop_scene
 export(PackedScene) var something_0
 export(PackedScene) var something_1
 export(PackedScene) var something_2
@@ -172,6 +174,13 @@ func _on_MobTimer_timeout():
 		if ( r < base_prob ):
 			continue
 		var z1 = zombie_sprite.instance()
+		if ( r  > base_prob + 0.15):
+			r = rand_range(0,1)
+			if (r < 0.5):
+				z1 = ghost_scene.instance()
+			else:
+				z1 = gloop_scene.instance()
+				
 		z1.movement_ms = z1.movement_ms - (difficulty*7)
 		
 		if (r > 0.9 - (self.difficulty / 1000 )) and  get_tree().get_nodes_in_group("golem").size() < (NUMBER_MAXIMUM_GOLEM + self.difficulty*2):

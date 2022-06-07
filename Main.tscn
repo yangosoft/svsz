@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://SomethingCatapult.tscn" type="PackedScene" id=24]
 [ext_resource path="res://sound/264447_4322723-hq.mp3" type="AudioStream" id=25]
 [ext_resource path="res://SomethingElectric.tscn" type="PackedScene" id=26]
+[ext_resource path="res://GhostSprite.tscn" type="PackedScene" id=27]
+[ext_resource path="res://GloopSprite.tscn" type="PackedScene" id=28]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -44,6 +46,8 @@ script = ExtResource( 1 )
 mob_scene = ExtResource( 2 )
 zombie_scene = ExtResource( 10 )
 golem_scene = ExtResource( 22 )
+ghost_scene = ExtResource( 27 )
+gloop_scene = ExtResource( 28 )
 something_0 = ExtResource( 9 )
 something_1 = ExtResource( 17 )
 something_2 = ExtResource( 19 )

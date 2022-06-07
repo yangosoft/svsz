@@ -1,0 +1,141 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://art/actors/monsters/ghost.png" type="Texture" id=1]
+[ext_resource path="res://GhostSprite.gd" type="Script" id=16]
+[ext_resource path="res://addons/kenney_particle_pack/magic_04.png" type="Texture" id=49]
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 100, 0, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 200, 0, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 300, 0, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 400, 0, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 100, 130, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 200, 130, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 300, 130, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 400, 130, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 100, 0, 100, 130 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 200, 0, 100, 130 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 14.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "attack",
+"speed": 14.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": false,
+"name": "die",
+"speed": 25.03
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 48.5, 63 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.23
+trail_divisor = 2
+emission_shape = 1
+emission_sphere_radius = 32.36
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 29.41
+orbit_velocity = -78.44
+orbit_velocity_random = 0.3
+angle_random = 0.17
+color = Color( 0.94902, 0.4, 0.211765, 1 )
+hue_variation_random = 0.31
+anim_speed = 47.69
+
+[node name="GolemSprite" type="Area2D"]
+script = ExtResource( 16 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -25 )
+frames = SubResource( 1 )
+animation = "die"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2.5, -21 )
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -29, -0.500002 )
+scale = Vector2( 4.9, 4.65 )
+
+[node name="BgColorRect" type="ColorRect" parent="."]
+margin_left = -25.0
+margin_top = -120.0
+margin_right = 25.0
+margin_bottom = -115.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -25.0
+margin_top = -120.0
+margin_right = 25.0
+margin_bottom = -115.0
+color = Color( 0, 0.0627451, 1, 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+scale = Vector2( 0.3, 0.3 )
+z_index = 5
+emitting = false
+amount = 1
+lifetime = 4.0
+explosiveness = 0.63
+randomness = 0.58
+visibility_rect = Rect2( 0, 0, 0, 787.761 )
+process_material = SubResource( 3 )
+texture = ExtResource( 49 )
+
+[connection signal="area_entered" from="." to="." method="_on_ZombieSprite_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_ZombieSprite_area_exited"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
