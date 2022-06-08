@@ -10,7 +10,7 @@ func _init():
 	armour = 3
 	strength = 10
 	life = 150 
-	attack_cadence_ms = 1000
+	attack_cadence_ms = 800
 	current_attack_cadence_ms = attack_cadence_ms
 	dope_candence_ms = 10000
 

@@ -8,9 +8,9 @@ func _init():
 	print("INIT!")
 	star_cost = 65
 	armour = 3
-	strength = 25
-	life = 170 
-	attack_cadence_ms = 800
+	strength = 35
+	life = 200 
+	attack_cadence_ms = 900
 	current_attack_cadence_ms = attack_cadence_ms
 	dope_candence_ms = 10000
 

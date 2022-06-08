@@ -7,6 +7,7 @@ func _init():
 	armour = 3
 	strength = 30
 	star_cost = 15
+	life = 20
 	dope_candence_ms = 999999999
 
 func _process(delta):
