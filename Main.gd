@@ -384,6 +384,12 @@ func get_sprite_by_texture(texture):
 		"res://art/chars/catapult/catapult.png":
 			print("CATA")
 			return "res://SomethingCatapult.tscn"
+		"res://art/chars/knight.png":
+			print("Knight")
+			return "res://SomethingKnight.tscn"
+		"res://art/chars/p5_0.png":
+			print("MULTI GEN")
+			return "res://SomethingGeneratorMulti.tscn"
 	
 	return ret
 

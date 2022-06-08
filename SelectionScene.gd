@@ -112,6 +112,11 @@ func on_Ninja_Sel(event):
 		select_defender($GridContainer/TextureRect8,$GridContainer/TextureRect8/Label)
 
 
+func on_Knight_Sel(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+		select_defender($GridContainer/TextureRect9,$GridContainer/TextureRect9/Label)
+
+
 func _on_Button_pressed():
 	if selection_array.size() <= 0:
 		return
@@ -119,3 +124,8 @@ func _on_Button_pressed():
 	$AudioStreamPlayer.play()
 	self.hide()
 	pass # Replace with function body.
+
+
+func on_MultiStar_Sel(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+		select_defender($GridContainer/TextureRect10,$GridContainer/TextureRect10/Label)
