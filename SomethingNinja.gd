@@ -6,6 +6,7 @@ extends "res://Something.gd"
 # var b = "text"
 func _init():
 	print("INIT!")
+	something_name = "Ninja"
 	star_cost = 50
 	armour = 3
 	strength = 10
@@ -13,6 +14,7 @@ func _init():
 	attack_cadence_ms = 800
 	current_attack_cadence_ms = attack_cadence_ms
 	dope_candence_ms = 10000
+	description = "[b]"+something_name+"[/b] is fast and strong. Will hit the enemies fast!\nIt costs " + str(star_cost) + " stars"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

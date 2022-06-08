@@ -9,8 +9,11 @@ var last_particle = 0
 
 
 func _init():
+	description = "[b]StarGen[/b] generates 5 stars every " + str(num_seconds_to_gen) + " seconds.\nUse them to add new Somethings."
+	something_name = "StarGen"
+	life = 20
 	armour = 3
-	strength = 30
+	strength = 0
 	star_cost = 5
 	dope_candence_ms = 999999999
 

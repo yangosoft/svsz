@@ -42,11 +42,15 @@ var difficulty = 0
 
 
 
+var Utils = null
 
+func _init():
+	Utils = load("res://Utils.gd").new()
 
 
 
 func _ready():
+	
 	randomize()
 	for i in range(60):
 		defense_map.append(false)
@@ -88,42 +92,7 @@ func _process(delta):
 	else:
 		$DefenseGroup/Something6.modulate.a = 1
 
-func get_sprite_by_texture(texture):
-	var ret = null
-	print(texture)
-	match(texture.resource_path):
-		"res://art/chars/p1_0.png":
-			print("BARRIER")
-			return "res://SomethingBarrier.tscn"
-		"res://art/chars/p2_0.png":
-			print("GEN")
-			return "res://SomethingGenerator.tscn"
-		"res://art/chars/p3_0.png":
-			print("TNT")
-			return "res://SomethingTNT.tscn"
-		"res://art/chars/ninja.png":
-			print("Ninja")
-			return "res://SomethingNinja.tscn"
-		"res://art/chars/p4_0.png":
-			print("Electric")
-			return "res://SomethingElectric.tscn"
-		"res://art/zombies/Player_Free/Run_Shoot/0042.png":
-			print("BIG")
-			return "res://SomethingShooterBig.tscn"
-		"res://art/zombies/Player_Free/Idle_Shoot/0074.png":
-			print("Shoot")
-			return "res://SomethingShooter.tscn"
-		"res://art/chars/catapult/catapult.png":
-			print("CATA")
-			return "res://SomethingCatapult.tscn"
-		"res://art/chars/knight.png":
-			print("Knight")
-			return "res://SomethingKnight.tscn"
-		"res://art/chars/p5_0.png":
-			print("MULTI GEN")
-			return "res://SomethingGeneratorMulti.tscn"
-	
-	return ret
+
 
 func _on_EndGameArea_area_entered(area):
 	if area.is_in_group("enemy"):
@@ -245,7 +214,7 @@ func _on_SelectionScene_selection_done(selection):
 		if i >= selection.size():
 			break
 		childs[i].texture = selection[i]
-		var s = get_sprite_by_texture(selection[i])
+		var s = Utils.get_sprite_by_texture(selection[i])
 		if s == null:
 			continue
 		var sprite = load(s)
