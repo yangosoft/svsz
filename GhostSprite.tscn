@@ -78,7 +78,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 48.5, 63 )
+extents = Vector2( 41.9286, 50.5714 )
 
 [sub_resource type="ParticlesMaterial" id=3]
 lifetime_randomness = 0.23
@@ -106,7 +106,8 @@ animation = "walk"
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.5, -21 )
+position = Vector2( -9.07142, -33.4286 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

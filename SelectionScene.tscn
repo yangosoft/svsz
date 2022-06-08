@@ -256,11 +256,14 @@ custom_fonts/font = SubResource( 1 )
 stream = ExtResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 651.0
+margin_left = 540.0
 margin_top = 510.0
-margin_right = 960.0
+margin_right = 849.0
 margin_bottom = 720.0
 custom_constants/separation = 14
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="BtnReset" type="Button" parent="VBoxContainer"]
 margin_right = 309.0
@@ -281,12 +284,12 @@ text = "OK"
 [node name="Stats" type="GridContainer" parent="."]
 margin_left = 813.0
 margin_top = 107.0
-margin_right = 971.0
+margin_right = 1256.0
 margin_bottom = 262.0
 theme = SubResource( 4 )
 custom_constants/vseparation = 25
 custom_constants/hseparation = 10
-columns = 2
+columns = 3
 __meta__ = {
 "_edit_group_": true
 }
@@ -299,7 +302,13 @@ align = 2
 
 [node name="lblName" type="Label" parent="Stats"]
 margin_left = 147.0
-margin_right = 158.0
+margin_right = 272.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 125, 20 )
+
+[node name="Label2" type="Label" parent="Stats"]
+margin_left = 282.0
+margin_right = 293.0
 margin_bottom = 20.0
 
 [node name="Label3" type="Label" parent="Stats"]
@@ -309,10 +318,20 @@ margin_bottom = 65.0
 text = "Life:"
 align = 2
 
-[node name="lblLife" type="Label" parent="Stats"]
+[node name="pBarLife" type="ProgressBar" parent="Stats"]
 margin_left = 147.0
 margin_top = 45.0
-margin_right = 158.0
+margin_right = 272.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 75, 20 )
+max_value = 500.0
+value = 50.0
+percent_visible = false
+
+[node name="lblLife" type="Label" parent="Stats"]
+margin_left = 282.0
+margin_top = 45.0
+margin_right = 293.0
 margin_bottom = 65.0
 text = "0"
 
@@ -323,10 +342,19 @@ margin_bottom = 110.0
 text = "Strength:"
 align = 2
 
-[node name="lblStrength" type="Label" parent="Stats"]
+[node name="pBarStrength" type="ProgressBar" parent="Stats"]
 margin_left = 147.0
 margin_top = 90.0
-margin_right = 158.0
+margin_right = 272.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 75, 20 )
+max_value = 500.0
+percent_visible = false
+
+[node name="lblStrength" type="Label" parent="Stats"]
+margin_left = 282.0
+margin_top = 90.0
+margin_right = 293.0
 margin_bottom = 110.0
 text = "0"
 
@@ -337,10 +365,19 @@ margin_bottom = 155.0
 text = "Attack cadence:"
 align = 2
 
-[node name="lblCadence" type="Label" parent="Stats"]
+[node name="pBarCadence" type="ProgressBar" parent="Stats"]
 margin_left = 147.0
 margin_top = 135.0
-margin_right = 158.0
+margin_right = 272.0
+margin_bottom = 155.0
+rect_min_size = Vector2( 75, 20 )
+max_value = 10000.0
+percent_visible = false
+
+[node name="lblCadence" type="Label" parent="Stats"]
+margin_left = 282.0
+margin_top = 135.0
+margin_right = 293.0
 margin_bottom = 155.0
 text = "0"
 
