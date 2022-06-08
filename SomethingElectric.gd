@@ -13,7 +13,7 @@ func _init():
 	star_cost = 125
 	armour = 3
 	strength = 10
-	attack_cadence_ms = 3000
+	attack_cadence_ms = 2000
 	current_attack_cadence_ms = attack_cadence_ms
 	dope_candence_ms = 10000
 
@@ -51,13 +51,10 @@ func shoot():
 		var alpha = 2*PI - atan(y/x)
 		
 		if self.position.x > e.position.x and self.position.y < e.position.y:
-			#b.speed = -b.speed
-			print("DETRAS ARRIBA")
 			alpha = PI- atan(y/x)
 		elif self.position.x < e.position.x and self.position.y < e.position.y:
 			alpha = 2*PI + atan(y/x)
 		elif self.position.x > e.position.x and self.position.y > e.position.y:
-			print("DETRAS ABAJO")
 			alpha = PI+ atan(y/x)
 		
 		print("alpha: " + str(alpha))

@@ -87,7 +87,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 49, 48 )
+extents = Vector2( 48.0294, 43.5294 )
 
 [node name="AnimatedSprite" type="Area2D"]
 scale = Vector2( 0.85, 0.85 )
@@ -107,6 +107,8 @@ animation = "idle"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.970594, 11.7647 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 
 [node name="BgColorRect" type="ColorRect" parent="."]

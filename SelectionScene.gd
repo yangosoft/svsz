@@ -15,6 +15,15 @@ func _ready():
 
 
 func on_Barrier_Sel(event):
+	$Stats/lblName.text = "Barrier"
+	$Stats/lblLife.text = "300"
+	$Stats/lblStrength.text = "0"
+	$Stats/lblCadence.text = "0"
+	$Stats/pBarLife.value = 300
+	$Stats/pBarStrength.value = 0
+	$Stats/pBarCadence.value = 0
+	
+	
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect1, $GridContainer/TextureRect1/Label)
 	pass # Replace with function body.
@@ -75,44 +84,101 @@ func select_defender(node, lbl_stars):
 		draw_selection()
 
 func on_Star_Sel(event):
+	$Stats/lblName.text = "StarGen"
+	$Stats/lblLife.text = "100"
+	$Stats/lblStrength.text = "0"
+	$Stats/lblCadence.text = "0"
+	$Stats/pBarLife.value = 100
+	$Stats/pBarStrength.value = 0
+	$Stats/pBarCadence.value = 0
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect3,$GridContainer/TextureRect3/Label)
 		
 
 func on_BigShoot_Sel(event):
+	$Stats/lblName.text = "ShooterBig"
+	$Stats/lblLife.text = "100"
+	$Stats/lblStrength.text = "100"
+	$Stats/lblCadence.text = "3000"
+	$Stats/pBarLife.value = 300
+	$Stats/pBarStrength.value = 100
+	$Stats/pBarCadence.value = 3000
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect5,$GridContainer/TextureRect5/Label)
 	pass # Replace with function body.
 
 
 func on_Catapult_Sel(event):
+	$Stats/lblName.text = "Catapult"
+	$Stats/lblLife.text = "50"
+	$Stats/lblStrength.text = "100"
+	$Stats/lblCadence.text = "3000"
+	$Stats/pBarLife.value = 50
+	$Stats/pBarStrength.value = 100
+	$Stats/pBarCadence.value = 3000
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect7,$GridContainer/TextureRect7/Label)
 	pass # Replace with function body.
 
 
 func on_TNT_Sel(event):
+	$Stats/lblName.text = "TNT"
+	$Stats/lblLife.text = "0"
+	$Stats/lblStrength.text = "400"
+	$Stats/lblCadence.text = "0"
+	$Stats/pBarLife.value = 0
+	$Stats/pBarStrength.value = 400
+	$Stats/pBarCadence.value = 0
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect2,$GridContainer/TextureRect2/Label)
 	pass # Replace with function body.
 
 
 func on_Electric_Sel(event):
+	$Stats/lblName.text = "Electric"
+	$Stats/lblLife.text = "100"
+	$Stats/lblStrength.text = "10"
+	$Stats/lblCadence.text = "2000"
+	$Stats/pBarLife.value = 100
+	$Stats/pBarStrength.value = 10
+	$Stats/pBarCadence.value = 2000
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect4,$GridContainer/TextureRect4/Label)
 
 
 func on_Something_Sel(event):
+	$Stats/lblName.text = "Shooter"
+	$Stats/lblLife.text = "100"
+	$Stats/lblStrength.text = "21"
+	$Stats/lblCadence.text = "3000"
+	$Stats/pBarLife.value = 100
+	$Stats/pBarStrength.value = 21
+	$Stats/pBarCadence.value = 3000
+	
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect6,$GridContainer/TextureRect6/Label)
 
 
 func on_Ninja_Sel(event):
+	$Stats/lblName.text = "Ninja"
+	$Stats/lblLife.text = "150"
+	$Stats/lblStrength.text = "10"
+	$Stats/lblCadence.text = "800"
+	$Stats/pBarLife.value = 150
+	$Stats/pBarStrength.value = 10
+	$Stats/pBarCadence.value = 800
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect8,$GridContainer/TextureRect8/Label)
 
 
 func on_Knight_Sel(event):
+	$Stats/lblName.text = "Knight"
+	$Stats/lblLife.text = "200"
+	$Stats/lblStrength.text = "35"
+	$Stats/lblCadence.text = "900"
+	$Stats/pBarLife.value = 200
+	$Stats/pBarStrength.value = 35
+	$Stats/pBarCadence.value = 900
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect9,$GridContainer/TextureRect9/Label)
 
@@ -127,5 +193,12 @@ func _on_Button_pressed():
 
 
 func on_MultiStar_Sel(event):
+	$Stats/lblName.text = "MultiStarGen"
+	$Stats/lblLife.text = "20"
+	$Stats/lblStrength.text = "0"
+	$Stats/lblCadence.text = "0"
+	$Stats/pBarLife.value = 20
+	$Stats/pBarStrength.value = 0
+	$Stats/pBarCadence.value = 0
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect10,$GridContainer/TextureRect10/Label)

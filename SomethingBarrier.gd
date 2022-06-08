@@ -9,6 +9,7 @@ extends "res://Something.gd"
 func _init():
 	armour = 3
 	strength = 200
+	life = 300
 	star_cost = 5
 	
 
