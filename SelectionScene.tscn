@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://art/chars/catapult/catapult.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://art/chars/ninja.png" type="Texture" id=10]
 [ext_resource path="res://SelectionScene.gd" type="Script" id=11]
 [ext_resource path="res://sound/264447_4322723-hq.mp3" type="AudioStream" id=12]
+[ext_resource path="res://art/chars/knight.png" type="Texture" id=13]
+[ext_resource path="res://art/chars/p5_0.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -36,10 +38,10 @@ texture = ExtResource( 9 )
 margin_left = 199.0
 margin_top = 100.0
 margin_right = 1047.0
-margin_bottom = 468.0
+margin_bottom = 497.0
 custom_constants/vseparation = 1
 custom_constants/hseparation = 1
-columns = 2
+columns = 3
 
 [node name="TextureRect1" type="TextureRect" parent="GridContainer"]
 margin_right = 100.0
@@ -65,9 +67,9 @@ custom_fonts/font = SubResource( 1 )
 text = "20"
 
 [node name="TextureRect3" type="TextureRect" parent="GridContainer"]
-margin_top = 101.0
-margin_right = 100.0
-margin_bottom = 201.0
+margin_left = 202.0
+margin_right = 302.0
+margin_bottom = 100.0
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect3"]
@@ -77,9 +79,8 @@ custom_fonts/font = SubResource( 1 )
 text = "5"
 
 [node name="TextureRect4" type="TextureRect" parent="GridContainer"]
-margin_left = 101.0
 margin_top = 101.0
-margin_right = 201.0
+margin_right = 100.0
 margin_bottom = 201.0
 texture = ExtResource( 6 )
 
@@ -90,9 +91,10 @@ custom_fonts/font = SubResource( 1 )
 text = "125"
 
 [node name="TextureRect5" type="TextureRect" parent="GridContainer"]
-margin_top = 202.0
-margin_right = 100.0
-margin_bottom = 302.0
+margin_left = 101.0
+margin_top = 101.0
+margin_right = 201.0
+margin_bottom = 201.0
 texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect5"]
@@ -103,10 +105,10 @@ text = "30
 "
 
 [node name="TextureRect6" type="TextureRect" parent="GridContainer"]
-margin_left = 101.0
-margin_top = 202.0
-margin_right = 201.0
-margin_bottom = 302.0
+margin_left = 202.0
+margin_top = 101.0
+margin_right = 302.0
+margin_bottom = 201.0
 texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect6"]
@@ -116,9 +118,9 @@ custom_fonts/font = SubResource( 1 )
 text = "15"
 
 [node name="TextureRect7" type="TextureRect" parent="GridContainer"]
-margin_top = 303.0
+margin_top = 202.0
 margin_right = 100.0
-margin_bottom = 403.0
+margin_bottom = 302.0
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect7"]
@@ -129,9 +131,9 @@ text = "75"
 
 [node name="TextureRect8" type="TextureRect" parent="GridContainer"]
 margin_left = 101.0
-margin_top = 303.0
+margin_top = 202.0
 margin_right = 201.0
-margin_bottom = 403.0
+margin_bottom = 302.0
 texture = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect8"]
@@ -139,6 +141,31 @@ margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 1 )
 text = "50"
+
+[node name="TextureRect9" type="TextureRect" parent="GridContainer"]
+margin_left = 202.0
+margin_top = 202.0
+margin_right = 302.0
+margin_bottom = 302.0
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect9"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "65"
+
+[node name="TextureRect10" type="TextureRect" parent="GridContainer"]
+margin_top = 303.0
+margin_right = 100.0
+margin_bottom = 403.0
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect10"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "15"
 
 [node name="DefenseGroup" type="Node2D" parent="."]
 z_index = 3
@@ -253,5 +280,8 @@ text = "OK"
 [connection signal="gui_input" from="GridContainer/TextureRect6" to="." method="on_Something_Sel"]
 [connection signal="gui_input" from="GridContainer/TextureRect7" to="." method="on_Catapult_Sel"]
 [connection signal="gui_input" from="GridContainer/TextureRect8" to="." method="on_Ninja_Sel"]
+[connection signal="gui_input" from="GridContainer/TextureRect9" to="." method="on_Ninja_Sel"]
+[connection signal="gui_input" from="GridContainer/TextureRect9" to="." method="on_Knight_Sel"]
+[connection signal="gui_input" from="GridContainer/TextureRect10" to="." method="on_MultiStar_Sel"]
 [connection signal="pressed" from="VBoxContainer/BtnReset" to="." method="_on_BtnReset_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
