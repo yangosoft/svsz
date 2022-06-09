@@ -32,6 +32,7 @@ func change_bg():
 		$Background.texture = load("res://art/bg/bg-4.png")
 
 func _on_StartTimer_timeout():
+	$MadnessTimer.wait_time = Global.madness_start
 	$MobTimer.start()
 	$ScoreTimer.start()
 	$MadnessTimer.start()
@@ -46,19 +47,14 @@ func _on_Something0_gui_input2(event):
 	print(str(event))
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
 		var s = something_0.instance()
-		
 		s.set_script(load("res://SomethingShooter.gd"))
 		s.position = Vector2(252,352)
 		add_child(s)
 	
 func prepare_last_barriers():
-	print("LÑAST BARREIRS!")
-	
-		
 	last_barrier_array.clear()
 	var p = load("res://SomethingPoliceCar.tscn")
 	for i in range(6):
-		
 		var s = p.instance()
 		s.position[0] = 150
 		s.position[1] = 150+(i*100)
@@ -66,14 +62,19 @@ func prepare_last_barriers():
 		add_child(s)
 	
 
-
-
-
 func _on_AddPolice_pressed():
 	prepare_last_barriers()
 	pass # Replace with function body.
 
 
 func _on_MadnessTimer_timeout():
-	$MobTimer.wait_time = 3
+	$AudioMadness.play()
+	if $MobTimer.wait_time != 3:
+		$MobTimer.wait_time = 3
+		$HUD/ColorRect.color = Color.red
+	else:
+		$HUD/ColorRect.color = Color.blue
+		if Global.enemy_creator_s - (Global.difficulty*2) > 1:
+			$MobTimer.wait_time = Global.enemy_creator_s - (Global.difficulty*2)
+		
 	pass # Replace with function body.

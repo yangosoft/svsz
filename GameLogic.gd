@@ -41,7 +41,7 @@ signal defense_die
 var NUMBER_MAXIMUM_ENEMIES = 14
 var NUMBER_MAXIMUM_GOLEM = 2
 var difficulty = 0
-var DEFAULT_ENEMY_CREATOR_S = 10
+
 
 
 var Utils = null
@@ -151,11 +151,11 @@ func prepare_last_barriers():
 
 func new_game(difficulty):
 	change_bg()
-	
-		
-		
+	Global.difficulty = difficulty
 	if(difficulty > 0):
-		$MobTimer.wait_time = DEFAULT_ENEMY_CREATOR_S - (difficulty*2)
+		if Global.enemy_creator_s - (difficulty*2) > 1:
+			$MobTimer.wait_time = Global.enemy_creator_s - (difficulty*2)
+		
 	win_score = 100 * (difficulty+1)
 	$WinScene.hide()
 	print(str(difficulty))
@@ -165,7 +165,7 @@ func new_game(difficulty):
 	get_tree().call_group("defender", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
 	score = 0
-	stars = 30 - (self.difficulty*5)
+	stars = Global.start_num_stars - (self.difficulty*5)
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(Global.score)

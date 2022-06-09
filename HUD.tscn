@@ -98,16 +98,24 @@ stream = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 435.0
-margin_top = 151.0
+margin_top = 85.0
 margin_right = 1012.0
-margin_bottom = 577.0
+margin_bottom = 511.0
 custom_constants/separation = 30
 alignment = 1
 
-[node name="Select" type="Button" parent="VBoxContainer"]
-margin_top = 171.0
+[node name="About" type="Button" parent="VBoxContainer"]
+margin_top = 114.0
 margin_right = 577.0
-margin_bottom = 255.0
+margin_bottom = 198.0
+custom_fonts/font = SubResource( 2 )
+shortcut = SubResource( 4 )
+text = "About"
+
+[node name="Select" type="Button" parent="VBoxContainer"]
+margin_top = 228.0
+margin_right = 577.0
+margin_bottom = 312.0
 custom_colors/font_color_disabled = Color( 0.0313726, 0.996078, 0.113725, 1 )
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
@@ -147,6 +155,7 @@ shortcut = SubResource( 4 )
 text = "Hard"
 
 [node name="LinkButton" type="LinkButton" parent="."]
+visible = false
 margin_left = 974.0
 margin_top = 697.0
 margin_right = 1263.0
@@ -154,6 +163,7 @@ margin_bottom = 711.0
 text = "https://dae-robotics.com/android/policy.html"
 
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="pressed" from="VBoxContainer/About" to="." method="_on_About_pressed"]
 [connection signal="pressed" from="VBoxContainer/Select" to="." method="on_Select_Button"]
 [connection signal="pressed" from="VBoxContainer/StartButton3" to="." method="_on_StartButton3_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton2" to="." method="_on_StartButton2_pressed"]
