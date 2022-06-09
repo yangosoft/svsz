@@ -185,7 +185,7 @@ texture = ExtResource( 13 )
 position = Vector2( 100, 100 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndGameArea"]
-position = Vector2( -39, 313 )
+position = Vector2( -61, 313 )
 shape = SubResource( 3 )
 
 [node name="BtnRestart" type="Button" parent="."]
