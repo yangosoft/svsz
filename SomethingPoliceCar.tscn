@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://SomethingPoliceCar.gd" type="Script" id=1]
 [ext_resource path="res://art/chars/police_2.png" type="Texture" id=2]
 [ext_resource path="res://art/chars/police_1.png" type="Texture" id=3]
+[ext_resource path="res://sound/mixkit-police-siren-us-1643.mp3" type="AudioStream" id=4]
 [ext_resource path="res://art/particles/part1.png" type="Texture" id=21]
 
 [sub_resource type="CanvasItemMaterial" id=3]
@@ -58,6 +59,10 @@ margin_top = -55.0
 margin_right = 24.0
 margin_bottom = -50.0
 color = Color( 0.101961, 0, 1, 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -23.636
 
 [connection signal="area_entered" from="." to="." method="_on_AnimatedSprite_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_AnimatedSprite_body_entered"]

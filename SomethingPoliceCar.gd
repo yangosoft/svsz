@@ -45,16 +45,18 @@ func _process(delta):
 	enemies.clear()
 	
 func _on_AnimatedSprite_body_entered(area):
-	print("Body entered: " + str(area))
 	if area.is_in_group("enemy"):
+		if is_moving == false:
+			$AudioStreamPlayer.play()
 		is_moving = true
 		enemy = area
 		enemies.push_back(area)
 	
 	
 func _on_AnimatedSprite_area_entered(area):
-	print("Area entered: " + str(area))
 	if area.is_in_group("enemy"):
+		if is_moving == false:
+			$AudioStreamPlayer.play()
 		is_moving = true
 		enemy = area
 		enemies.push_back(area)
