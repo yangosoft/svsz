@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Something.gd" type="Script" id=1]
+[ext_resource path="res://SomethingBarrier.gd" type="Script" id=1]
 [ext_resource path="res://art/chars/p1_0.png" type="Texture" id=2]
 [ext_resource path="res://art/particles/part1.png" type="Texture" id=21]
-[ext_resource path="res://Bullet.tscn" type="PackedScene" id=33]
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
@@ -30,7 +29,6 @@ extents = Vector2( 49, 48 )
 
 [node name="AnimatedSprite" type="Area2D"]
 script = ExtResource( 1 )
-bullet = ExtResource( 33 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 3 )

@@ -68,3 +68,7 @@ func show_me():
 func on_Select_Button():
 	emit_signal("show_selection")
 	pass # Replace with function body.
+
+
+func _on_About_pressed():
+	get_tree().change_scene("res://SceneAbout.tscn")

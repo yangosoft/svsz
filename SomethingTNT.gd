@@ -8,9 +8,11 @@ extends "res://Something.gd"
 var timestamp = 0
 var has_played = false
 func _init():
+	something_name = "TNT"
 	armour = 3
 	strength = 400
 	star_cost = 20
+	description = "[b]"+something_name+"[/b] as soon is placed it explodes and kills a long range of enemies."
 	
 
 # Called when the node enters the scene tree for the first time.

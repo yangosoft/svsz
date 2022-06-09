@@ -23,6 +23,8 @@ export(PackedScene) var selection_scene
 
 var defense_map = []
 
+var last_barrier_array = Array()
+
 var defense_array = Array()
 var defense_index_sel = -1
 
@@ -42,11 +44,15 @@ var difficulty = 0
 
 
 
+var Utils = null
 
+func _init():
+	Utils = load("res://Utils.gd").new()
 
 
 
 func _ready():
+	
 	randomize()
 	for i in range(60):
 		defense_map.append(false)
@@ -88,42 +94,7 @@ func _process(delta):
 	else:
 		$DefenseGroup/Something6.modulate.a = 1
 
-func get_sprite_by_texture(texture):
-	var ret = null
-	print(texture)
-	match(texture.resource_path):
-		"res://art/chars/p1_0.png":
-			print("BARRIER")
-			return "res://SomethingBarrier.tscn"
-		"res://art/chars/p2_0.png":
-			print("GEN")
-			return "res://SomethingGenerator.tscn"
-		"res://art/chars/p3_0.png":
-			print("TNT")
-			return "res://SomethingTNT.tscn"
-		"res://art/chars/ninja.png":
-			print("Ninja")
-			return "res://SomethingNinja.tscn"
-		"res://art/chars/p4_0.png":
-			print("Electric")
-			return "res://SomethingElectric.tscn"
-		"res://art/zombies/Player_Free/Run_Shoot/0042.png":
-			print("BIG")
-			return "res://SomethingShooterBig.tscn"
-		"res://art/zombies/Player_Free/Idle_Shoot/0074.png":
-			print("Shoot")
-			return "res://SomethingShooter.tscn"
-		"res://art/chars/catapult/catapult.png":
-			print("CATA")
-			return "res://SomethingCatapult.tscn"
-		"res://art/chars/knight.png":
-			print("Knight")
-			return "res://SomethingKnight.tscn"
-		"res://art/chars/p5_0.png":
-			print("MULTI GEN")
-			return "res://SomethingGeneratorMulti.tscn"
-	
-	return ret
+
 
 func _on_EndGameArea_area_entered(area):
 	if area.is_in_group("enemy"):
@@ -147,11 +118,15 @@ func _on_BtnRestart_pressed():
 	pass # Replace with function body.
 
 func game_over():
+	$MadnessTimer.stop()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
 	$Music.stop()
 	$DeathSound.play()
+	get_tree().call_group("enemy", "queue_free")
+	get_tree().call_group("defender", "queue_free")
+	get_tree().call_group("bullet", "queue_free")
 	
 func win_game():
 	get_tree().call_group("enemy", "queue_free")
@@ -159,13 +134,28 @@ func win_game():
 	get_tree().call_group("bullet", "queue_free")
 	$WinScene.show()
 	$ScoreTimer.stop()
+	$MadnessTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_win()
 	$Music.stop()
 
+func change_bg():
+	pass
+	
+func prepare_last_barriers():
+	for b in last_barrier_array:
+		b.call_deferred("queue_free")
+		
+	last_barrier_array.clear()
+	pass
+
 func new_game(difficulty):
+	change_bg()
+	Global.difficulty = difficulty
 	if(difficulty > 0):
-		$MobTimer.wait_time = 10 - (difficulty*2)
+		if Global.enemy_creator_s - (difficulty*2) > 1:
+			$MobTimer.wait_time = Global.enemy_creator_s - (difficulty*2)
+		
 	win_score = 100 * (difficulty+1)
 	$WinScene.hide()
 	print(str(difficulty))
@@ -175,16 +165,17 @@ func new_game(difficulty):
 	get_tree().call_group("defender", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
 	score = 0
-	stars = 30 - (self.difficulty*5)
+	stars = Global.start_num_stars - (self.difficulty*5)
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
-	$HUD.update_score(score)
+	$HUD.update_score(Global.score)
 	$HUD/lblStars.text = str(stars)
 	$HUD.show_message("Get Ready")
 	#$Music.play()
 	for i in range(60):
 		defense_map[i]=false
-
+	prepare_last_barriers()
+	
 func _on_Something0_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something0.texture
 	defense_index_sel = 0
@@ -245,7 +236,7 @@ func _on_SelectionScene_selection_done(selection):
 		if i >= selection.size():
 			break
 		childs[i].texture = selection[i]
-		var s = get_sprite_by_texture(selection[i])
+		var s = Utils.get_sprite_by_texture(selection[i])
 		if s == null:
 			continue
 		var sprite = load(s)
@@ -321,7 +312,7 @@ func on_ScoreTimer_timeout():
 		win_game()
 		return
 	score += 1
-	$HUD.update_score(score)
+	$HUD.update_score(Global.score)
 	var s = Vector2( (score * 703) / win_score , 32 )
 	$HUD/ColorRect.set_size( s )
 	

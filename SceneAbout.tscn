@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/bg/bg-about.png" type="Texture" id=1]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://SceneAbout.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="SceneAbout" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 92.0
+margin_top = 193.0
+margin_right = 1222.0
+margin_bottom = 649.0
+rect_min_size = Vector2( 1130, 456 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Very simple game I've done to learn Godot and Godot Script following my son criteria, hope that explains why are police cars, zombies, ninjas, ghosts...
+
+There might be some bugs that eventually will be fixed.
+
+[b]Version: 1.23[/b]
+
+
+[b]List of resources[/b]
+
+`art/House In a Forest Loop.ogg` Copyright &copy; 2012 [HorrorPen](https://opengameart.org/users/horrorpen), [CC-BY 3.0: Attribution](http://creativecommons.org/licenses/by/3.0/). Source: https://opengameart.org/content/loop-house-in-a-forest
+
+Images are from \"Abstract Platformer\". Created in 2016 by kenney.nl, [CC0 1.0 Universal](http://creativecommons.org/publicdomain/zero/1.0/). Source: https://www.kenney.nl/assets/abstract-platformer
+
+Font is \"Xolonium\". Copyright &copy; 2011-2016 Severin Meyer <sev.ch@web.de>, with Reserved Font Name Xolonium, SIL open font license version 1.1. Details are in `fonts/LICENSE.txt`.
+
+
+* https://opengameart.org/content/lasers-and-beams
+* https://pitigamedev.itch.io/side-scroller-character-2d
+* https://opengameart.org/content/golem-animations
+* https://opengameart.org/content/mummies
+* https://opengameart.org/content/tileable-grass-textures-set-1
+* https://opengameart.org/content/catapult
+* https://opengameart.org/content/electric-buzz
+* https://opengameart.org/content/lightning
+* https://opengameart.org/content/opp2017-sprites-characters-objects-effects
+* https://free-vectors.net/backgrounds/martian-background-vector
+* https://free-vectors.net/backgrounds/nature-landscape-vector
+* https://free-vectors.net/backgrounds/forest-background-vector
+* https://opengameart.org/content/2d-car-pack-0
+* https://mixkit.co/free-sound-effects/siren/
+* https://pixabay.com/es/illustrations/naturaleza-%C3%A1rbol-%C3%A1rboles-paisaje-4721716/
+* https://pixabay.com/es/vectors/la-carretera-lago-monta%C3%B1as-cielo-5899921/
+
+
+Policy
+
+[url]https://dae-robotics.com/android/policy.html[/url]
+Get the code [url]https://github.com/yangosoft/svsz[/url]"
+text = "Very simple game I've done to learn Godot and Godot Script following my son criteria, hope that explains why are police cars, zombies, ninjas, ghosts...
+
+There might be some bugs that eventually will be fixed.
+
+Version: 1.24
+
+
+List of resources
+
+`art/House In a Forest Loop.ogg` Copyright &copy; 2012 [HorrorPen](https://opengameart.org/users/horrorpen), [CC-BY 3.0: Attribution](http://creativecommons.org/licenses/by/3.0/). Source: https://opengameart.org/content/loop-house-in-a-forest
+
+Images are from \"Abstract Platformer\". Created in 2016 by kenney.nl, [CC0 1.0 Universal](http://creativecommons.org/publicdomain/zero/1.0/). Source: https://www.kenney.nl/assets/abstract-platformer
+
+Font is \"Xolonium\". Copyright &copy; 2011-2016 Severin Meyer <sev.ch@web.de>, with Reserved Font Name Xolonium, SIL open font license version 1.1. Details are in `fonts/LICENSE.txt`.
+
+
+* https://opengameart.org/content/lasers-and-beams
+* https://pitigamedev.itch.io/side-scroller-character-2d
+* https://opengameart.org/content/golem-animations
+* https://opengameart.org/content/mummies
+* https://opengameart.org/content/tileable-grass-textures-set-1
+* https://opengameart.org/content/catapult
+* https://opengameart.org/content/electric-buzz
+* https://opengameart.org/content/lightning
+* https://opengameart.org/content/opp2017-sprites-characters-objects-effects
+* https://free-vectors.net/backgrounds/martian-background-vector
+* https://free-vectors.net/backgrounds/nature-landscape-vector
+* https://free-vectors.net/backgrounds/forest-background-vector
+* https://opengameart.org/content/2d-car-pack-0
+* https://mixkit.co/free-sound-effects/siren/
+* https://pixabay.com/es/illustrations/naturaleza-%C3%A1rbol-%C3%A1rboles-paisaje-4721716/
+* https://pixabay.com/es/vectors/la-carretera-lago-monta%C3%B1as-cielo-5899921/
+
+
+Policy
+
+https://dae-robotics.com/android/policy.html
+Get the code https://github.com/yangosoft/svsz"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 532.0
+margin_top = 665.0
+margin_right = 635.0
+margin_bottom = 710.0
+custom_fonts/font = SubResource( 1 )
+text = "Close"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

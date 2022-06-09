@@ -7,10 +7,12 @@ extends "res://Something.gd"
 
 
 func _init():
+	something_name = "Barrier"
+	description = "[b]Barrier[/b] can stop the enemies. It's strong but cannot attack. Use it to create a barrier."
 	armour = 3
 	strength = 200
 	life = 300
-	star_cost = 5
+	star_cost = 10
 	
 
 # Called when the node enters the scene tree for the first time.

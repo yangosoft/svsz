@@ -21,7 +21,7 @@ var movement_ms = 50
 
 
 var last_movement_ms = 0
-
+var score_points = 50
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# old_lineal_velocity = self.linear_velocity
@@ -82,6 +82,7 @@ func get_hit(strengh):
 	$ColorRect.set_size(size)
 	
 	if life <= 0:
+		Global.score = Global.score + score_points 
 		is_dying = true
 		is_moving = false
 		is_attacking = false

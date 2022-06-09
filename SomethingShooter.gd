@@ -7,10 +7,12 @@ extends "res://Something.gd"
 
 
 func _init():
+	something_name = "Shooter"
 	star_cost = 15
 	armour = 3
 	strength = 21
 	star_cost = 15
+	description = "[b]"+something_name+"[/b] shoots his gun to kill the enemy in front of him.\nIt costs " + str(star_cost) + " stars"
 
 
 

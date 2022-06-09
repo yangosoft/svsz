@@ -7,12 +7,14 @@ extends "res://SomethingShooter.gd"
 
 
 func _init():
+	something_name = "BigShooter"
 	star_cost = 30
 	armour = 3
 	strength = 100
 	attack_cadence_ms = 3000
 	current_attack_cadence_ms = attack_cadence_ms
 	dope_candence_ms = 10000
+	description = "[b]"+something_name+"[/b] with his powerful gun attacks the enemy in front of him. Slower than [b]Shooter[/b] but powerful!\nIt costs " + str(star_cost) + " stars"
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sound/253886_3169537-lq.mp3" type="AudioStream" id=3]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
@@ -67,7 +68,7 @@ wait_time = 10.0
 [node name="ScoreTimer" type="Timer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
@@ -185,7 +186,7 @@ texture = ExtResource( 13 )
 position = Vector2( 100, 100 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndGameArea"]
-position = Vector2( -39, 313 )
+position = Vector2( -61, 313 )
 shape = SubResource( 3 )
 
 [node name="BtnRestart" type="Button" parent="."]
@@ -207,6 +208,18 @@ volume_db = -20.8
 [node name="SelectionScene" parent="." instance=ExtResource( 29 )]
 visible = false
 
+[node name="AddPolice" type="Button" parent="."]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+
+[node name="MadnessTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="AudioMadness" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -17.964
+
 [connection signal="defense_die" from="." to="." method="_on_Main_defense_die"]
 [connection signal="gen_star" from="." to="." method="_on_Main_gen_star"]
 [connection signal="mouse_entered" from="ColorRect" to="." method="_onMouseMove"]
@@ -227,3 +240,5 @@ visible = false
 [connection signal="area_entered" from="EndGameArea" to="." method="_on_EndGameArea_area_entered"]
 [connection signal="pressed" from="BtnRestart" to="." method="_on_BtnRestart_pressed"]
 [connection signal="selection_done" from="SelectionScene" to="." method="_on_SelectionScene_selection_done"]
+[connection signal="pressed" from="AddPolice" to="." method="_on_AddPolice_pressed"]
+[connection signal="timeout" from="MadnessTimer" to="." method="_on_MadnessTimer_timeout"]

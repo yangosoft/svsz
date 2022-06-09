@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://art/chars/catapult/catapult.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://sound/264447_4322723-hq.mp3" type="AudioStream" id=12]
 [ext_resource path="res://art/chars/knight.png" type="Texture" id=13]
 [ext_resource path="res://art/chars/p5_0.png" type="Texture" id=14]
+[ext_resource path="res://art/chars/frog.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -29,6 +30,12 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=4]
 default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -172,6 +179,19 @@ margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 1 )
 text = "15"
+
+[node name="TextureRect11" type="TextureRect" parent="GridContainer"]
+margin_left = 101.0
+margin_top = 303.0
+margin_right = 201.0
+margin_bottom = 403.0
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="GridContainer/TextureRect11"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "65"
 
 [node name="DefenseGroup" type="Node2D" parent="."]
 z_index = 3
@@ -381,6 +401,18 @@ margin_right = 293.0
 margin_bottom = 155.0
 text = "0"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 814.0
+margin_top = 273.0
+margin_right = 1096.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 282, 223 )
+custom_fonts/bold_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "This is a generic description of a [b]Something[/b]"
+text = "This is a generic description of a Something"
+
 [connection signal="gui_input" from="GridContainer/TextureRect1" to="." method="on_Barrier_Sel"]
 [connection signal="gui_input" from="GridContainer/TextureRect2" to="." method="on_TNT_Sel"]
 [connection signal="gui_input" from="GridContainer/TextureRect3" to="." method="on_Star_Sel"]
@@ -389,8 +421,8 @@ text = "0"
 [connection signal="gui_input" from="GridContainer/TextureRect6" to="." method="on_Something_Sel"]
 [connection signal="gui_input" from="GridContainer/TextureRect7" to="." method="on_Catapult_Sel"]
 [connection signal="gui_input" from="GridContainer/TextureRect8" to="." method="on_Ninja_Sel"]
-[connection signal="gui_input" from="GridContainer/TextureRect9" to="." method="on_Ninja_Sel"]
 [connection signal="gui_input" from="GridContainer/TextureRect9" to="." method="on_Knight_Sel"]
 [connection signal="gui_input" from="GridContainer/TextureRect10" to="." method="on_MultiStar_Sel"]
+[connection signal="gui_input" from="GridContainer/TextureRect11" to="." method="on_Frog_Sel"]
 [connection signal="pressed" from="VBoxContainer/BtnReset" to="." method="_on_BtnReset_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]

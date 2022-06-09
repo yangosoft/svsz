@@ -12,6 +12,8 @@ export var life = 100
 
 export var armour = 5
 export var strength = 10
+export var something_name = "Something"
+export var description = "Something is a generic defender"
 
 export var attack_cadence_ms = 1100
 var current_attack_cadence_ms = attack_cadence_ms

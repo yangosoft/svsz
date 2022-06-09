@@ -3,16 +3,21 @@ extends "res://SomethingGenerator.gd"
 
 
 func _init():
+	something_name = "MultiStarGen"
 	num_seconds_to_gen = 30
 	armour = 3
-	strength = 30
+	strength = 0
 	star_cost = 15
 	life = 20
 	dope_candence_ms = 999999999
+	description = "[b]"+something_name+"[/b] generates 15 stars every " + str(num_seconds_to_gen) + " seconds.\nUse them to add new Somethings."
 
 func _process(delta):
 	var now = OS.get_unix_time()
 	if now - last_gen > num_seconds_to_gen:
+		emit_signal("gen_star")
+		get_parent().emit_signal("gen_star")
+		
 		emit_signal("gen_star")
 		get_parent().emit_signal("gen_star")
 		
