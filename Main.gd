@@ -34,6 +34,7 @@ func change_bg():
 func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
+	$MadnessTimer.start()
 
 
 func _on_AnimatedSprite_something_hit():
@@ -70,4 +71,9 @@ func prepare_last_barriers():
 
 func _on_AddPolice_pressed():
 	prepare_last_barriers()
+	pass # Replace with function body.
+
+
+func _on_MadnessTimer_timeout():
+	$MobTimer.wait_time = 3
 	pass # Replace with function body.

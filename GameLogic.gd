@@ -41,7 +41,7 @@ signal defense_die
 var NUMBER_MAXIMUM_ENEMIES = 14
 var NUMBER_MAXIMUM_GOLEM = 2
 var difficulty = 0
-
+var DEFAULT_ENEMY_CREATOR_S = 10
 
 
 var Utils = null
@@ -118,6 +118,7 @@ func _on_BtnRestart_pressed():
 	pass # Replace with function body.
 
 func game_over():
+	$MadnessTimer.stop()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
@@ -133,6 +134,7 @@ func win_game():
 	get_tree().call_group("bullet", "queue_free")
 	$WinScene.show()
 	$ScoreTimer.stop()
+	$MadnessTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_win()
 	$Music.stop()
@@ -153,7 +155,7 @@ func new_game(difficulty):
 		
 		
 	if(difficulty > 0):
-		$MobTimer.wait_time = 10 - (difficulty*2)
+		$MobTimer.wait_time = DEFAULT_ENEMY_CREATOR_S - (difficulty*2)
 	win_score = 100 * (difficulty+1)
 	$WinScene.hide()
 	print(str(difficulty))
