@@ -20,7 +20,16 @@ func _on_MobTimer_timeout():
 func _on_ScoreTimer_timeout():
 	on_ScoreTimer_timeout()
 	
-	
+func change_bg():
+	var r = rand_range(0,1)
+	if r  <= 0.25:
+		$Background.texture = load("res://art/bg/bg-1.png")	
+	elif r > 0.25 and r<0.5:
+		$Background.texture = load("res://art/bg/bg-2.png")
+	elif r >= 0.25 and r<0.75:
+		$Background.texture = load("res://art/bg/bg-3.png")
+	else:
+		$Background.texture = load("res://art/bg/bg-4.png")
 
 func _on_StartTimer_timeout():
 	$MobTimer.start()

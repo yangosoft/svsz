@@ -13,6 +13,11 @@ Art:
 * https://opengameart.org/content/catapult
 * https://opengameart.org/content/electric-buzz
 * https://opengameart.org/content/lightning
+* https://opengameart.org/content/opp2017-sprites-characters-objects-effects
+* https://free-vectors.net/backgrounds/martian-background-vector
+* https://free-vectors.net/backgrounds/nature-landscape-vector
+* https://free-vectors.net/backgrounds/forest-background-vector
+* https://opengameart.org/content/2d-car-pack-0
 
 
 ![image](screenshots/s5.png)

@@ -9,6 +9,7 @@ func _init():
 	self.life = 150
 	self.strength = 4
 	self.movement_ms = 60
+	self.score_points = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

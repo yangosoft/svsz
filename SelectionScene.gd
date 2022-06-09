@@ -1,7 +1,6 @@
 extends Control
 
-var selection_array = Array()
-var selection_array_stars = Array()
+
 signal selection_done
 
 var Utils = null
@@ -49,8 +48,8 @@ func on_Barrier_Sel(event):
 func _on_BtnReset_pressed():
 	$AudioStreamPlayer.play()
 	print("REST")
-	selection_array.clear()
-	selection_array_stars.clear()
+	Global.selection_array.clear()
+	Global.selection_array_stars.clear()
 	$DefenseGroup/Something0.texture = null
 	$DefenseGroup/Something0/Label.text = ""
 	$DefenseGroup/Something1.texture = null
@@ -80,23 +79,23 @@ func draw_selection():
 		c.texture = null
 		c.get_child(0).text = ""
 	
-	for i in range(selection_array.size()):
-		var s = selection_array[i]
-		var star_value = selection_array_stars[i]
+	for i in range(Global.selection_array.size()):
+		var s = Global.selection_array[i]
+		var star_value = Global.selection_array_stars[i]
 		get_node("DefenseGroup/Something"+str(i)).texture = s
 		get_node("DefenseGroup/Something"+str(i)+"/Label").text = star_value
 		
 	pass
 
 func select_defender(node, lbl_stars):
-	if selection_array.size() == 7:
+	if Global.selection_array.size() == 7:
 		return
 	var res = node.texture
-	if selection_array.find(res) == -1:
+	if Global.selection_array.find(res) == -1:
 		$AudioStreamPlayer.play()
-		selection_array.push_back(res)
+		Global.selection_array.push_back(res)
 		var val_stars = lbl_stars.text
-		selection_array_stars.push_back(val_stars)
+		Global.selection_array_stars.push_back(val_stars)
 		node.modulate.a = 0.5
 		draw_selection()
 
@@ -153,9 +152,9 @@ func on_Knight_Sel(event):
 
 
 func _on_Button_pressed():
-	if selection_array.size() <= 0:
+	if Global.selection_array.size() <= 0:
 		return
-	emit_signal("selection_done",selection_array)
+	emit_signal("selection_done",Global.selection_array)
 	$AudioStreamPlayer.play()
 	self.hide()
 	pass # Replace with function body.

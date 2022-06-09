@@ -121,6 +121,9 @@ func game_over():
 	$HUD.show_game_over()
 	$Music.stop()
 	$DeathSound.play()
+	get_tree().call_group("enemy", "queue_free")
+	get_tree().call_group("defender", "queue_free")
+	get_tree().call_group("bullet", "queue_free")
 	
 func win_game():
 	get_tree().call_group("enemy", "queue_free")
@@ -132,7 +135,13 @@ func win_game():
 	$HUD.show_game_win()
 	$Music.stop()
 
+func change_bg():
+	pass
+
 func new_game(difficulty):
+	change_bg()
+		
+		
 	if(difficulty > 0):
 		$MobTimer.wait_time = 10 - (difficulty*2)
 	win_score = 100 * (difficulty+1)
@@ -147,7 +156,7 @@ func new_game(difficulty):
 	stars = 30 - (self.difficulty*5)
 	# $Player.start($StartPosition.position)
 	$StartTimer.start()
-	$HUD.update_score(score)
+	$HUD.update_score(Global.score)
 	$HUD/lblStars.text = str(stars)
 	$HUD.show_message("Get Ready")
 	#$Music.play()
@@ -290,7 +299,7 @@ func on_ScoreTimer_timeout():
 		win_game()
 		return
 	score += 1
-	$HUD.update_score(score)
+	$HUD.update_score(Global.score)
 	var s = Vector2( (score * 703) / win_score , 32 )
 	$HUD/ColorRect.set_size( s )
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ZombieSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TestAreas.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://SomethingKnight.tscn" type="PackedScene" id=9]
 [ext_resource path="res://SomethingGeneratorMulti.tscn" type="PackedScene" id=10]
 [ext_resource path="res://SomethingFrog.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SomethingPoliceCar.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
@@ -46,4 +47,7 @@ position = Vector2( 969, 656 )
 position = Vector2( 447, 286 )
 
 [node name="AnimatedSprite6" parent="." instance=ExtResource( 11 )]
-position = Vector2( 721, 251 )
+position = Vector2( 822, 466 )
+
+[node name="AnimatedSprite7" parent="." instance=ExtResource( 12 )]
+position = Vector2( 663, 264 )

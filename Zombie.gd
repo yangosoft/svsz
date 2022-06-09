@@ -16,6 +16,7 @@ var last_attack = 0
 var old_lineal_velocity = 0
 var was_hit = false
 var total_during_hit = 0
+var score_points = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
