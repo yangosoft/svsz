@@ -18,6 +18,8 @@ func _init():
 func _ready():
 	$BgColorRect.hide()
 	$ColorRect.hide()
+	print("Police added!")
+	add_to_group("defender")
 	pass # Replace with function body.
 
 

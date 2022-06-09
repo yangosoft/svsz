@@ -23,6 +23,8 @@ export(PackedScene) var selection_scene
 
 var defense_map = []
 
+var last_barrier_array = Array()
+
 var defense_array = Array()
 var defense_index_sel = -1
 
@@ -137,9 +139,17 @@ func win_game():
 
 func change_bg():
 	pass
+	
+func prepare_last_barriers():
+	for b in last_barrier_array:
+		b.call_deferred("queue_free")
+		
+	last_barrier_array.clear()
+	pass
 
 func new_game(difficulty):
 	change_bg()
+	
 		
 		
 	if(difficulty > 0):
@@ -162,7 +172,8 @@ func new_game(difficulty):
 	#$Music.play()
 	for i in range(60):
 		defense_map[i]=false
-
+	prepare_last_barriers()
+	
 func _on_Something0_gui_input(event):
 	$SomethingMouseFollower.texture = $DefenseGroup/Something0.texture
 	defense_index_sel = 0

@@ -207,6 +207,11 @@ volume_db = -20.8
 [node name="SelectionScene" parent="." instance=ExtResource( 29 )]
 visible = false
 
+[node name="AddPolice" type="Button" parent="."]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+
 [connection signal="defense_die" from="." to="." method="_on_Main_defense_die"]
 [connection signal="gen_star" from="." to="." method="_on_Main_gen_star"]
 [connection signal="mouse_entered" from="ColorRect" to="." method="_onMouseMove"]
@@ -227,3 +232,4 @@ visible = false
 [connection signal="area_entered" from="EndGameArea" to="." method="_on_EndGameArea_area_entered"]
 [connection signal="pressed" from="BtnRestart" to="." method="_on_BtnRestart_pressed"]
 [connection signal="selection_done" from="SelectionScene" to="." method="_on_SelectionScene_selection_done"]
+[connection signal="pressed" from="AddPolice" to="." method="_on_AddPolice_pressed"]

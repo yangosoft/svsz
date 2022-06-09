@@ -50,6 +50,24 @@ func _on_Something0_gui_input2(event):
 		s.position = Vector2(252,352)
 		add_child(s)
 	
+func prepare_last_barriers():
+	print("LÑAST BARREIRS!")
+	
+		
+	last_barrier_array.clear()
+	var p = load("res://SomethingPoliceCar.tscn")
+	for i in range(6):
+		
+		var s = p.instance()
+		s.position[0] = 150
+		s.position[1] = 150+(i*100)
+		last_barrier_array.push_back(s)
+		add_child(s)
+	
 
 
 
+
+func _on_AddPolice_pressed():
+	prepare_last_barriers()
+	pass # Replace with function body.
