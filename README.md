@@ -40,3 +40,4 @@ Font is "Xolonium". Copyright &copy; 2011-2016 Severin Meyer <sev.ch@web.de>, wi
 * https://mixkit.co/free-sound-effects/siren/
 * https://pixabay.com/es/illustrations/naturaleza-%C3%A1rbol-%C3%A1rboles-paisaje-4721716/
 * https://pixabay.com/es/vectors/la-carretera-lago-monta%C3%B1as-cielo-5899921/
+* https://opengameart.org/content/wgstudio-fire-animation-loop
