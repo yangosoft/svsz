@@ -63,7 +63,8 @@ func prepare_last_barriers():
 	
 
 func _on_AddPolice_pressed():
-	prepare_last_barriers()
+	win_game()
+	# prepare_last_barriers()
 	pass # Replace with function body.
 
 

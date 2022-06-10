@@ -156,7 +156,7 @@ func new_game(difficulty):
 		if Global.enemy_creator_s - (difficulty*2) > 1:
 			$MobTimer.wait_time = Global.enemy_creator_s - (difficulty*2)
 		
-	win_score = 100 * (difficulty+1)
+	win_score = Global.game_duration_s * (difficulty+1)
 	$WinScene.hide()
 	print(str(difficulty))
 	self.difficulty = difficulty
@@ -247,6 +247,7 @@ func _on_SelectionScene_selection_done(selection):
 
 
 func _on_HUD_show_selection():
+	$WinScene.hide()
 	$DefenseGroup.hide()
 	$SelectionScene.show()
 	$HUD.hide_me()

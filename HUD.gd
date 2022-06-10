@@ -72,3 +72,8 @@ func on_Select_Button():
 
 func _on_About_pressed():
 	get_tree().change_scene("res://SceneAbout.tscn")
+
+
+func _on_Options_pressed():
+	get_tree().change_scene("res://SceneOptions.tscn")
+	pass # Replace with function body.
