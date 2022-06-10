@@ -52,6 +52,9 @@ func _on_Something0_gui_input2(event):
 		add_child(s)
 	
 func prepare_last_barriers():
+	$BtnKillThemAll.show()
+	$Particles2D.one_shot = true
+	$Particles2D.emitting = false
 	last_barrier_array.clear()
 	var p = load("res://SomethingPoliceCar.tscn")
 	for i in range(6):
@@ -63,7 +66,8 @@ func prepare_last_barriers():
 	
 
 func _on_AddPolice_pressed():
-	prepare_last_barriers()
+	win_game()
+	# prepare_last_barriers()
 	pass # Replace with function body.
 
 
@@ -77,4 +81,13 @@ func _on_MadnessTimer_timeout():
 		if Global.enemy_creator_s - (Global.difficulty*2) > 1:
 			$MobTimer.wait_time = Global.enemy_creator_s - (Global.difficulty*2)
 		
+	pass # Replace with function body.
+
+
+func _on_BtnKillThemAll_pressed():
+	$Particles2D.emitting = true
+	$BtnKillThemAll.hide()
+	get_tree().call_group("enemy", "queue_free")
+	get_tree().call_group("defender", "queue_free")
+	get_tree().call_group("bullet", "queue_free")
 	pass # Replace with function body.
