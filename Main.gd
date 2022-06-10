@@ -88,6 +88,4 @@ func _on_BtnKillThemAll_pressed():
 	$Particles2D.emitting = true
 	$BtnKillThemAll.hide()
 	get_tree().call_group("enemy", "queue_free")
-	get_tree().call_group("defender", "queue_free")
-	get_tree().call_group("bullet", "queue_free")
 	pass # Replace with function body.
