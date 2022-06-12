@@ -89,3 +89,11 @@ func _on_BtnKillThemAll_pressed():
 	$BtnKillThemAll.hide()
 	get_tree().call_group("enemy", "queue_free")
 	pass # Replace with function body.
+
+
+func _on_BtnKillThemAll2_pressed():
+	$particleIce.emitting = true
+	$AudioStreamPlayer.play()
+	$BtnKillThemAll2.hide()
+	get_tree().call_group("enemy", "queue_free")
+	pass # Replace with function body.

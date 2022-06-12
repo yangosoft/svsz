@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
@@ -10,9 +10,11 @@
 [ext_resource path="res://art/bg/bg-1.png" type="Texture" id=8]
 [ext_resource path="res://Something.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Zombie.tscn" type="PackedScene" id=10]
-[ext_resource path="res://art/FireLoop1/PNG Frames/20x20/13 frames/fire1_ 02.png" type="Texture" id=11]
+[ext_resource path="res://art/FireLoop1/fire.png" type="Texture" id=11]
 [ext_resource path="res://addons/kenney_particle_pack/fire_01.png" type="Texture" id=12]
 [ext_resource path="res://art/chars/p0_0_idle_0.png" type="Texture" id=13]
+[ext_resource path="res://art/FireLoop1/ice.png" type="Texture" id=14]
+[ext_resource path="res://sound/iceaudio.mp3" type="AudioStream" id=15]
 [ext_resource path="res://SomethingBarrier.tscn" type="PackedScene" id=17]
 [ext_resource path="res://SomethingGenerator.tscn" type="PackedScene" id=19]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=20]
@@ -50,6 +52,18 @@ radial_accel = 47.31
 scale = 4.0
 hue_variation = 0.26
 hue_variation_random = 0.1
+
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.27
+emission_shape = 2
+emission_box_extents = Vector3( 1000, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 130, 0 )
+initial_velocity = 55.02
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -236,11 +250,13 @@ stream = ExtResource( 3 )
 volume_db = -17.964
 
 [node name="BtnKillThemAll" type="Button" parent="."]
-margin_left = 140.0
-margin_top = 690.0
-margin_right = 172.0
-margin_bottom = 716.0
+margin_left = 105.0
+margin_top = 665.0
+margin_right = 205.0
+margin_bottom = 765.0
+rect_scale = Vector2( 0.5, 0.5 )
 icon = ExtResource( 11 )
+expand_icon = true
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 600, 300 )
@@ -252,6 +268,30 @@ one_shot = true
 explosiveness = 0.55
 process_material = SubResource( 5 )
 texture = ExtResource( 12 )
+
+[node name="particleIce" type="Particles2D" parent="."]
+position = Vector2( 600, 50 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 6
+emitting = false
+amount = 35
+lifetime = 10.0
+one_shot = true
+process_material = SubResource( 6 )
+texture = ExtResource( 14 )
+
+[node name="BtnKillThemAll2" type="Button" parent="."]
+margin_left = 158.0
+margin_top = 665.0
+margin_right = 268.0
+margin_bottom = 788.0
+rect_scale = Vector2( 0.4, 0.4 )
+icon = ExtResource( 14 )
+align = 0
+expand_icon = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
 
 [connection signal="defense_die" from="." to="." method="_on_Main_defense_die"]
 [connection signal="gen_star" from="." to="." method="_on_Main_gen_star"]
@@ -276,3 +316,4 @@ texture = ExtResource( 12 )
 [connection signal="pressed" from="AddPolice" to="." method="_on_AddPolice_pressed"]
 [connection signal="timeout" from="MadnessTimer" to="." method="_on_MadnessTimer_timeout"]
 [connection signal="pressed" from="BtnKillThemAll" to="." method="_on_BtnKillThemAll_pressed"]
+[connection signal="pressed" from="BtnKillThemAll2" to="." method="_on_BtnKillThemAll2_pressed"]
