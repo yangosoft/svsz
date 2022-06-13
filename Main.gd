@@ -2,7 +2,8 @@ extends "res://GameLogic.gd"
 
 
 
-
+var effectDurationMs = 10*1000
+var effectTrigger = 0
 
 
 
@@ -71,6 +72,12 @@ func _on_AddPolice_pressed():
 	pass # Replace with function body.
 
 
+func process_effects():
+	var now = OS.get_ticks_msec()
+	if (now - effectTrigger) < effectDurationMs:
+		get_tree().call_group("enemy", "queue_free")
+	pass
+
 func _on_MadnessTimer_timeout():
 	$AudioMadness.play()
 	if $MobTimer.wait_time != 3:
@@ -85,7 +92,20 @@ func _on_MadnessTimer_timeout():
 
 
 func _on_BtnKillThemAll_pressed():
+	effectTrigger = OS.get_ticks_msec()
 	$Particles2D.emitting = true
+	$AudioStreamPlayer.stream = load("res://sound/fire_sound_effect.mp3")
+	$AudioStreamPlayer.play()
 	$BtnKillThemAll.hide()
+	get_tree().call_group("enemy", "queue_free")
+	pass # Replace with function body.
+
+
+func _on_BtnKillThemAll2_pressed():
+	effectTrigger = OS.get_ticks_msec()
+	$particleIce.emitting = true
+	$AudioStreamPlayer.stream = load("res://sound/iceaudio.mp3")
+	$AudioStreamPlayer.play()
+	$BtnKillThemAll2.hide()
 	get_tree().call_group("enemy", "queue_free")
 	pass # Replace with function body.
