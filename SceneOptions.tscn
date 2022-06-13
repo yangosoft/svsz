@@ -104,8 +104,24 @@ margin_bottom = 92.0
 rect_min_size = Vector2( 100, 20 )
 text = "100"
 
+[node name="Label5" type="Label" parent="GridContainer"]
+margin_top = 99.0
+margin_right = 134.0
+margin_bottom = 113.0
+text = "Probability boss"
+valign = 1
+
+[node name="txtBossProb" type="TextEdit" parent="GridContainer"]
+margin_left = 144.0
+margin_top = 96.0
+margin_right = 244.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 100, 20 )
+text = "0.1"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="text_changed" from="GridContainer/txtStars" to="." method="_on_txtStars_text_changed"]
 [connection signal="text_changed" from="GridContainer/txtMobTimer" to="." method="_on_txtMobTimer_text_changed"]
 [connection signal="text_changed" from="GridContainer/txtMadness" to="." method="_on_txtMadness_text_changed"]
 [connection signal="text_changed" from="GridContainer/txtGameDuration" to="." method="_on_txtGameDuration_text_changed"]
+[connection signal="text_changed" from="GridContainer/txtBossProb" to="." method="_on_txtBossProb_text_changed"]

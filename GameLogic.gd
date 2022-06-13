@@ -364,3 +364,10 @@ func add_enemy():
 		# z1.linear_velocity = velocity.rotated(direction)
 		z1.set_line_number(i)
 		add_child(z1)
+		
+	var r = rand_range(0,1)
+	if r < 0.1 and get_tree().get_nodes_in_group("boss").size() == 0:
+		var boss = load("res://BossDragon.tscn").instance()
+		boss.position[0] = 1167
+		add_child(boss)
+		

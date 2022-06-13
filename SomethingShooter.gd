@@ -40,7 +40,7 @@ func _process(delta):
 		$TextureRect.show()
 	
 	var enemies = get_tree().get_nodes_in_group("line_"+str(line_position)) 
-	
+	print("line_"+str(line_position) + " -> Enemies.size() " + str(enemies.size()))
 	if enemies.size() > 0:
 		var my_pos = position
 		
@@ -52,4 +52,6 @@ func _process(delta):
 					shoot()
 					break
 		last_attack = now
+		
+	
 

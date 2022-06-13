@@ -12,6 +12,7 @@ func _ready():
 	$GridContainer/txtMobTimer.text = str(Global.enemy_creator_s)
 	$GridContainer/txtMadness.text = str(Global.madness_start)
 	$GridContainer/txtGameDuration.text = str(Global.game_duration_s)
+	$GridContainer/txtBossProb.text = str(Global.prob_boss)
 	
 	pass # Replace with function body.
 
@@ -41,4 +42,10 @@ func _on_txtMadness_text_changed():
 func _on_txtGameDuration_text_changed():
 	if (int($GridContainer/txtGameDuration.text) > 30):
 		Global.game_duration_s = int($GridContainer/txtGameDuration.text)
+	pass # Replace with function body.
+
+
+func _on_txtBossProb_text_changed():
+	if (float($GridContainer/txtBossProb.text) > 0.1):
+		Global.prob_boss = float($GridContainer/txtBossProb.text)
 	pass # Replace with function body.

@@ -67,6 +67,8 @@ func attack(_zombie):
 	$AnimatedSprite.play("attack")
 	if null == enemy:
 		return
+	if enemy.get_line_number() != self.line_position:
+		return
 	print("Attacking!")
 	enemy.get_hit(strength)
 	if enemy.is_dying:
