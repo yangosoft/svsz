@@ -11,5 +11,5 @@ dest_files=[ "res://.import/mixkit-police-siren-us-1643.mp3-a0bbb8e03a33adf6bfb4
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
