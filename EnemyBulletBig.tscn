@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://EnemyBulletBig.gd" type="Script" id=1]
+[ext_resource path="res://art/particles/laserYellow01.png" type="Texture" id=2]
+[ext_resource path="res://addons/kenney_particle_pack/spark_02.png" type="Texture" id=3]
+[ext_resource path="res://sound/boom3.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 70.5, 68.5 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+gravity = Vector3( 0, 2, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.968627, 1, 0, 1 )
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+rotation = 4.71239
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2.5, 4.5 )
+shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+scale = Vector2( 0.3, 0.3 )
+amount = 4
+lifetime = 0.01
+preprocess = 88.07
+speed_scale = 13.92
+explosiveness = 0.53
+randomness = 0.58
+fixed_fps = 10
+process_material = SubResource( 2 )
+texture = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -21.904
+
+[connection signal="area_entered" from="." to="." method="_on_Node2D_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

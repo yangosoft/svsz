@@ -12,6 +12,8 @@ var DEFAULT_ENEMY_CREATOR_S = 10
 
 var DEFAULT_GAME_DURATION_S = 100
 
+var DEFAULT_PROB_BOSS = 0.1
+
 
 
 
@@ -19,5 +21,6 @@ var start_num_stars = DEFAULT_START_NUM_STARS
 var madness_start = DEFAULT_MADNESS_START_S
 var enemy_creator_s = DEFAULT_ENEMY_CREATOR_S
 var game_duration_s = DEFAULT_GAME_DURATION_S
+var prob_boss = DEFAULT_PROB_BOSS
 
 var difficulty = 0

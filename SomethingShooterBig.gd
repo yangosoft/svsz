@@ -15,6 +15,7 @@ func _init():
 	current_attack_cadence_ms = attack_cadence_ms
 	dope_candence_ms = 10000
 	description = "[b]"+something_name+"[/b] with his powerful gun attacks the enemy in front of him. Slower than [b]Shooter[/b] but powerful!\nIt costs " + str(star_cost) + " stars"
+	last_attack = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,7 +34,7 @@ func shoot():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var now = OS.get_ticks_msec()
-	if ( now - last_attack ) < current_attack_cadence_ms:
+	if ( now - last_attack ) <= current_attack_cadence_ms:
 		return
 	
 	if OS.get_ticks_msec() - last_dope_ms > 5000:
