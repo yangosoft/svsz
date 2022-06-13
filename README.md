@@ -42,3 +42,5 @@ Font is "Xolonium". Copyright &copy; 2011-2016 Severin Meyer <sev.ch@web.de>, wi
 * https://pixabay.com/es/vectors/la-carretera-lago-monta%C3%B1as-cielo-5899921/
 * https://opengameart.org/content/wgstudio-fire-animation-loop
 * https://opengameart.org/content/synthesized-fire-sound-effect
+* https://opengameart.org/content/red-dragon
+* https://opengameart.org/content/dragon-animated-sprite

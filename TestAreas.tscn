@@ -1,29 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://ZombieSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TestAreas.gd" type="Script" id=2]
-[ext_resource path="res://GolemSprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Something.tscn" type="PackedScene" id=4]
 [ext_resource path="res://SomethingElectric.tscn" type="PackedScene" id=5]
-[ext_resource path="res://SomethingNinja.tscn" type="PackedScene" id=6]
-[ext_resource path="res://GhostSprite.tscn" type="PackedScene" id=7]
-[ext_resource path="res://GloopSprite.tscn" type="PackedScene" id=8]
 [ext_resource path="res://SomethingKnight.tscn" type="PackedScene" id=9]
-[ext_resource path="res://SomethingGeneratorMulti.tscn" type="PackedScene" id=10]
-[ext_resource path="res://SomethingFrog.tscn" type="PackedScene" id=11]
-[ext_resource path="res://SomethingPoliceCar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://BossDragon.tscn" type="PackedScene" id=13]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
-
-[node name="Z1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 975, 457 )
-
-[node name="Z2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1062, 558 )
-
-[node name="GolemSprite" parent="." instance=ExtResource( 3 )]
-position = Vector2( 890, 270 )
 
 [node name="AnimatedSprite2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 241, 206 )
@@ -31,23 +15,8 @@ position = Vector2( 241, 206 )
 [node name="AnimatedSprite3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 415, 463 )
 
-[node name="AnimatedSprite" parent="." instance=ExtResource( 6 )]
-position = Vector2( 974, 553 )
-
-[node name="GolemSprite2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1041, 248 )
-
-[node name="GolemSprite3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1087, 671 )
-
 [node name="AnimatedSprite4" parent="." instance=ExtResource( 9 )]
 position = Vector2( 969, 656 )
 
-[node name="AnimatedSprite5" parent="." instance=ExtResource( 10 )]
-position = Vector2( 447, 286 )
-
-[node name="AnimatedSprite6" parent="." instance=ExtResource( 11 )]
-position = Vector2( 822, 466 )
-
-[node name="AnimatedSprite7" parent="." instance=ExtResource( 12 )]
-position = Vector2( 663, 264 )
+[node name="BossDragon" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1167, 86 )
