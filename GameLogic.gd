@@ -57,8 +57,11 @@ func _ready():
 	for i in range(60):
 		defense_map.append(false)
 
+func process_effects():
+	pass
 
 func _process(delta):
+	process_effects()
 	if int($DefenseGroup/Something0/Label.text) > stars:
 		$DefenseGroup/Something0.modulate.a = 0.3
 	else:

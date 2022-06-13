@@ -252,9 +252,8 @@ volume_db = -17.964
 [node name="BtnKillThemAll" type="Button" parent="."]
 margin_left = 105.0
 margin_top = 665.0
-margin_right = 205.0
-margin_bottom = 765.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_right = 150.0
+margin_bottom = 710.0
 icon = ExtResource( 11 )
 expand_icon = true
 
@@ -283,15 +282,14 @@ texture = ExtResource( 14 )
 [node name="BtnKillThemAll2" type="Button" parent="."]
 margin_left = 158.0
 margin_top = 665.0
-margin_right = 268.0
-margin_bottom = 788.0
-rect_scale = Vector2( 0.4, 0.4 )
+margin_right = 203.0
+margin_bottom = 710.0
 icon = ExtResource( 14 )
-align = 0
 expand_icon = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+volume_db = -2.836
 
 [connection signal="defense_die" from="." to="." method="_on_Main_defense_die"]
 [connection signal="gen_star" from="." to="." method="_on_Main_gen_star"]
