@@ -79,12 +79,14 @@ func process_effects():
 	pass
 
 func _on_MadnessTimer_timeout():
-	$AudioMadness.play()
+	
 	if $MobTimer.wait_time != 3:
 		$MobTimer.wait_time = 3
 		$HUD/ColorRect.color = Color.red
+		$AudioMadness.play()
 	else:
 		$HUD/ColorRect.color = Color.blue
+		$AudioMadness.stop()
 		if Global.enemy_creator_s - (Global.difficulty*2) > 1:
 			$MobTimer.wait_time = Global.enemy_creator_s - (Global.difficulty*2)
 		
