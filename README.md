@@ -2,7 +2,11 @@
 
 Plant vs Zombies inspired game to learn [Godot](https://godotengine.org/)
 
+Very simple game I've done to learn Godot and Godot Script following my son criteria, hope that explains why are police cars, zombies, ninjas, ghosts...
 
+There might be some bugs that eventually will be fixed.
+
+Version: 2.00
 
 
 
