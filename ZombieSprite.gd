@@ -1,11 +1,11 @@
 extends Area2D
 
 
-export var life = 60
+@export var life = 60
 
-export var armour = 5
-export var strength = 3
-export var line_number = 0
+@export var armour = 5
+@export var strength = 3
+@export var line_number = 0
 
 var is_attacking = false
 var is_dying = false
@@ -25,13 +25,13 @@ var score_points = 50
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# old_lineal_velocity = self.linear_velocity
-	$AnimatedSprite.play("walk")
+	$AnimatedSprite2D.play("walk")
 	is_moving = true
 	add_to_group("enemy")
-	var r = rand_range(0,1)
+	var r = randf_range(0,1)
 	if r < 0.1:
 		print("Emitting")
-		$Particles2D.emitting = true
+		$GPUParticles2D.emitting = true
 		life = 150
 
 
@@ -39,7 +39,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_attacking:
-		var now = OS.get_unix_time()
+		var now = Time.get_unix_time_from_system()
 		if ( now - last_attack ) < attack_cadence_seconds:
 			return
 		if is_instance_valid(target):
@@ -48,12 +48,12 @@ func _process(delta):
 		else:
 			is_attacking = false
 			if is_dying == false:
-				$AnimatedSprite.play("walk")
+				$AnimatedSprite2D.play("walk")
 	elif is_dying == false:
 		pass
 		# self.linear_velocity = old_lineal_velocity
 	if is_moving == true:
-		var now = OS.get_ticks_msec()
+		var now = Time.get_ticks_msec()
 		if now - last_movement_ms > movement_ms:
 			var pos = self.position
 			pos[0] = pos[0] - 1
@@ -87,15 +87,15 @@ func get_hit(strengh):
 		is_moving = false
 		is_attacking = false
 		print("Time to die")
-		$AnimatedSprite.stop()
-		$AnimatedSprite.play("die") 
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("die") 
 		
 func set_target(something_):
 	print("ZombieSprite is Setting target " + str(something_))
 	if target != something_:
 		target = something_
-		$AnimatedSprite.stop()
-		$AnimatedSprite.play("attack")
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("attack")
 		is_attacking = true
 
 func _on_AnimatedSprite_animation_finished():
@@ -157,7 +157,7 @@ func _on_ZombieSprite_area_exited(area):
 		is_moving = true
 	if is_attacking == true and area.is_in_group("defender"):
 		is_attacking = false
-		$AnimatedSprite.play("walk")
+		$AnimatedSprite2D.play("walk")
 		is_moving = true
 		
 	pass # Replace with function body.

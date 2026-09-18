@@ -22,7 +22,7 @@ func _ready():
 	
 func attack(_zombie):
 	print("ATTACK!!!!")
-	$AnimatedSprite.play("attack")
+	$AnimatedSprite2D.play("attack")
 	$AudioStreamPlayer.play()
 	if null == enemy:
 		return

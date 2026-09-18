@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/mixkit-police-siren-us-1643.mp3-a0bbb8e03a33adf6bfb4ab2704bc18db.mp3str"
+uid="uid://r5pdnr0cvikw"
+path="res://.godot/imported/mixkit-police-siren-us-1643.mp3-a0bbb8e03a33adf6bfb4ab2704bc18db.mp3str"
 
 [deps]
 
 source_file="res://sound/mixkit-police-siren-us-1643.mp3"
-dest_files=[ "res://.import/mixkit-police-siren-us-1643.mp3-a0bbb8e03a33adf6bfb4ab2704bc18db.mp3str" ]
+dest_files=["res://.godot/imported/mixkit-police-siren-us-1643.mp3-a0bbb8e03a33adf6bfb4ab2704bc18db.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

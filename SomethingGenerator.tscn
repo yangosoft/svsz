@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://art/chars/p2_0.png" type="Texture" id=1]
+[ext_resource path="res://art/chars/p2_0.png" type="Texture2D" id=1]
 [ext_resource path="res://SomethingGenerator.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -24,7 +24,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 49, 48 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticleProcessMaterial" id=3]
 emission_shape = 5
 emission_ring_radius = 100.03
 emission_ring_inner_radius = 0.0
@@ -40,10 +40,10 @@ linear_accel = 65.0
 radial_accel = 65.0
 tangential_accel = 5.88
 
-[node name="AnimatedSprite" type="Area2D"]
+[node name="AnimatedSprite2D" type="Area2D"]
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource( 1 )
 animation = "die"
 
@@ -51,27 +51,27 @@ animation = "die"
 shape = SubResource( 2 )
 
 [node name="BgColorRect" type="ColorRect" parent="."]
-margin_left = -26.0
-margin_top = -55.0
-margin_right = 24.0
-margin_bottom = -50.0
+offset_left = -26.0
+offset_top = -55.0
+offset_right = 24.0
+offset_bottom = -50.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -26.0
-margin_top = -55.0
-margin_right = 24.0
-margin_bottom = -50.0
+offset_left = -26.0
+offset_top = -55.0
+offset_right = 24.0
+offset_bottom = -50.0
 color = Color( 0.101961, 0, 1, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
-margin_left = -50.0
-margin_top = -81.0
-margin_right = 50.0
-margin_bottom = 19.0
-rect_scale = Vector2( 0.4, 0.4 )
+offset_left = -50.0
+offset_top = -81.0
+offset_right = 50.0
+offset_bottom = 19.0
+scale = Vector2( 0.4, 0.4 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 scale = Vector2( 0.4, 0.4 )
 amount = 5
 lifetime = 1.5
@@ -80,4 +80,4 @@ process_material = SubResource( 3 )
 texture = ExtResource( 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_AnimatedSprite_body_entered"]
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

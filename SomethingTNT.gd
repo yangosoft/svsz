@@ -17,7 +17,7 @@ func _init():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timestamp = OS.get_ticks_msec()
+	timestamp = Time.get_ticks_msec()
 	print("TNT!")
 	armour = 3
 	strength = 400
@@ -32,10 +32,10 @@ func shoot():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var now = OS.get_ticks_msec()
+	var now = Time.get_ticks_msec()
 	if now - timestamp > 200:
-		$Particles2D.emitting = true
-		$AnimatedSprite.hide()
+		$GPUParticles2D.emitting = true
+		$AnimatedSprite2D.hide()
 		if has_played == false:
 			$AudioStreamPlayer.play()	
 			has_played = true

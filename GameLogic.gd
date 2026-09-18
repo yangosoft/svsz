@@ -1,24 +1,24 @@
 extends Node
 
-export(PackedScene) var mob_scene
-export(PackedScene) var zombie_scene
-export(PackedScene) var golem_scene
-export(PackedScene) var ghost_scene
-export(PackedScene) var gloop_scene
-export(PackedScene) var something_0
-export(PackedScene) var something_1
-export(PackedScene) var something_2
-export(PackedScene) var something_3
-export(PackedScene) var something_4
-export(PackedScene) var something_5
-export(PackedScene) var something_6
+@export var mob_scene: PackedScene
+@export var zombie_scene: PackedScene
+@export var golem_scene: PackedScene
+@export var ghost_scene: PackedScene
+@export var gloop_scene: PackedScene
+@export var something_0: PackedScene
+@export var something_1: PackedScene
+@export var something_2: PackedScene
+@export var something_3: PackedScene
+@export var something_4: PackedScene
+@export var something_5: PackedScene
+@export var something_6: PackedScene
 
 
 
-export(PackedScene) var zombie_sprite
+@export var zombie_sprite: PackedScene
 
-export(PackedScene) var win_scene
-export(PackedScene) var selection_scene
+@export var win_scene: PackedScene
+@export var selection_scene: PackedScene
 
 
 var defense_map = []
@@ -243,7 +243,7 @@ func _on_SelectionScene_selection_done(selection):
 		if s == null:
 			continue
 		var sprite = load(s)
-		var tmp = sprite.instance()
+		var tmp = sprite.instantiate()
 		childs[i].get_child(0).text = str(tmp.star_cost)
 		defense_array.push_back(sprite)
 	pass # Replace with function body.
@@ -257,7 +257,7 @@ func _on_HUD_show_selection():
 	pass # Replace with function body.
 	
 func _onSomethingClick(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		print("ok")
 		$AudioSomething.play()
 		is_dragging = true
@@ -288,14 +288,14 @@ func _onMouseMove(event):
 		$SomethingMouseFollower.set_position(pos)
 		
 	if map_index < 60 and map_index >= 0 and defense_index_sel < defense_array.size():
-		if is_dragging and event is InputEventMouseButton  and event.button_index == BUTTON_LEFT  and event.pressed and defense_map[map_index] == false:
+		if is_dragging and event is InputEventMouseButton  and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed and defense_map[map_index] == false:
 			is_dragging = false
 			
 			$SomethingMouseFollower.hide()
 			pos[0] = pos[0] - int(int(pos[0]) % 100) + 50
 			pos[1] = pos[1] - int(int(pos[1]) % 100) + 50
 			
-			var s = defense_array[defense_index_sel].instance()
+			var s = defense_array[defense_index_sel].instantiate()
 			
 			
 			if (s.star_cost > stars):
@@ -326,7 +326,7 @@ func add_enemy():
 	
 	for i in range(1,7):
 		break
-		var zombie = golem_scene.instance()
+		var zombie = golem_scene.instantiate()
 		var mob_spawn_location = get_node("ZombiePath_0/PathFollow2D")
 		var velocity = Vector2(30, 0.0)
 		zombie.rotation = 0
@@ -341,23 +341,23 @@ func add_enemy():
 	for i in range(1,7):
 		if get_tree().get_nodes_in_group("enemy").size() > NUMBER_MAXIMUM_ENEMIES + (self.difficulty * 10):
 			continue
-		var r = rand_range(0,1)
+		var r = randf_range(0,1)
 		var base_prob = 0.6
 		base_prob = base_prob - (self.difficulty / 10)
 		if ( r < base_prob ):
 			continue
-		var z1 = zombie_sprite.instance()
+		var z1 = zombie_sprite.instantiate()
 		if ( r  > base_prob + 0.15):
-			r = rand_range(0,1)
+			r = randf_range(0,1)
 			if (r < 0.5):
-				z1 = ghost_scene.instance()
+				z1 = ghost_scene.instantiate()
 			else:
-				z1 = gloop_scene.instance()
+				z1 = gloop_scene.instantiate()
 				
 		z1.movement_ms = z1.movement_ms - (difficulty*7)
 		
 		if (r > 0.9 - (self.difficulty / 1000 )) and  get_tree().get_nodes_in_group("golem").size() < (NUMBER_MAXIMUM_GOLEM + self.difficulty*2):
-			z1 = golem_scene.instance()
+			z1 = golem_scene.instantiate()
 			z1.movement_ms = z1.movement_ms - (difficulty*15)
 		z1.rotation = 0
 		z1.position = Vector2(1200 , (i*100)+50)
@@ -365,9 +365,9 @@ func add_enemy():
 		z1.set_line_number(i)
 		add_child(z1)
 		
-	var r = rand_range(0,1)
+	var r = randf_range(0,1)
 	if r < 0.1 and get_tree().get_nodes_in_group("boss").size() == 0:
-		var boss = load("res://BossDragon.tscn").instance()
+		var boss = load("res://BossDragon.tscn").instantiate()
 		boss.position[0] = 1167
 		add_child(boss)
 		

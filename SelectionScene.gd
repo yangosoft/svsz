@@ -14,7 +14,7 @@ func _init():
 func _ready():
 	var c = $GridContainer.get_children()
 	for e in c:
-		var s = load(Utils.get_sprite_by_texture(e.texture)).instance()
+		var s = load(Utils.get_sprite_by_texture(e.texture)).instantiate()
 		mapTextureSprite[e.texture] = s
 		
 	
@@ -34,13 +34,13 @@ func set_stats_by_texture(texture):
 	$Stats/pBarLife.value = sprite.life
 	$Stats/pBarStrength.value = sprite.strength
 	$Stats/pBarCadence.value = sprite.attack_cadence_ms
-	$RichTextLabel.bbcode_text = sprite.description
+	$RichTextLabel.text = sprite.description
 
 func on_Barrier_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect1.texture)
 	
 	
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect1, $GridContainer/TextureRect1/Label)
 	pass # Replace with function body.
 
@@ -101,53 +101,53 @@ func select_defender(node, lbl_stars):
 
 func on_Star_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect3.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect3,$GridContainer/TextureRect3/Label)
 		
 
 func on_BigShoot_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect5.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect5,$GridContainer/TextureRect5/Label)
 	pass # Replace with function body.
 
 
 func on_Catapult_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect7.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect7,$GridContainer/TextureRect7/Label)
 	pass # Replace with function body.
 
 
 func on_TNT_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect2.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect2,$GridContainer/TextureRect2/Label)
 	pass # Replace with function body.
 
 
 func on_Electric_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect4.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect4,$GridContainer/TextureRect4/Label)
 
 
 func on_Something_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect6.texture)
 	
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect6,$GridContainer/TextureRect6/Label)
 
 
 func on_Ninja_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect8.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect8,$GridContainer/TextureRect8/Label)
 
 
 func on_Knight_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect9.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect9,$GridContainer/TextureRect9/Label)
 
 
@@ -162,11 +162,11 @@ func _on_Button_pressed():
 
 func on_MultiStar_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect10.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect10,$GridContainer/TextureRect10/Label)
 
 
 func on_Frog_Sel(event):
 	set_stats_by_texture($GridContainer/TextureRect11.texture)
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		select_defender($GridContainer/TextureRect11,$GridContainer/TextureRect11/Label)

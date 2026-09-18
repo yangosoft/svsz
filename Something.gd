@@ -1,48 +1,48 @@
 extends Area2D
-export(PackedScene) var something
-export (PackedScene) var bullet
+@export var something: PackedScene
+@export var bullet: PackedScene
 
 signal something_hit
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-export var id = 0
-export var life = 100
+@export var id = 0
+@export var life = 100
 
-export var armour = 5
-export var strength = 10
-export var something_name = "Something"
-export var description = "Something is a generic defender"
+@export var armour = 5
+@export var strength = 10
+@export var something_name = "Something"
+@export var description = "Something is a generic defender"
 
-export var attack_cadence_ms = 1100
+@export var attack_cadence_ms = 1100
 var current_attack_cadence_ms = attack_cadence_ms
 var star_cost = 10
-export var is_dopped = false
-export var is_attacking = false
+@export var is_dopped = false
+@export var is_attacking = false
 var is_dying = false
 
 var enemy = null
 var last_attack = 0
 
-export var line_position = -1
-export var index_in_map = -1
+@export var line_position = -1
+@export var index_in_map = -1
 
-export var dope_candence_ms = 5000
+@export var dope_candence_ms = 5000
 
 var last_dope_ms = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_attack_cadence_ms = attack_cadence_ms
-	$AnimatedSprite.play("idle")
+	$AnimatedSprite2D.play("idle")
 	add_to_group("defender")
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var now = OS.get_ticks_msec()
+	var now = Time.get_ticks_msec()
 	if ( now - last_attack ) < current_attack_cadence_ms:
 		return
 	
@@ -52,9 +52,9 @@ func _process(delta):
 		
 	if is_attacking and is_instance_valid(enemy) == false:
 		is_attacking = false
-		$AnimatedSprite.play("idle")
+		$AnimatedSprite2D.play("idle")
 
-	if OS.get_ticks_msec() - last_dope_ms > dope_candence_ms:
+	if Time.get_ticks_msec() - last_dope_ms > dope_candence_ms:
 		current_attack_cadence_ms = attack_cadence_ms
 		if is_instance_valid($TextureRect):
 			$TextureRect.show()
@@ -64,7 +64,7 @@ func die():
 	pass
 	
 func attack(_zombie):
-	$AnimatedSprite.play("attack")
+	$AnimatedSprite2D.play("attack")
 	if null == enemy:
 		return
 	if enemy.get_line_number() != self.line_position:
@@ -102,8 +102,8 @@ func get_hit(strength_):
 	if self.life <= 0 and is_dying == false:
 		is_dying = true
 		is_attacking = false
-		$AnimatedSprite.stop()
-		$AnimatedSprite.play("die") 
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("die") 
 		print("Dying!!!")
 		
 
@@ -129,8 +129,8 @@ func _on_AnimatedSprite_area_exited(area):
 
 
 func _on_TextureRect_gui_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
 		current_attack_cadence_ms = 500
-		last_dope_ms = OS.get_ticks_msec()
+		last_dope_ms = Time.get_ticks_msec()
 		$TextureRect.hide()
 	pass # Replace with function body.
