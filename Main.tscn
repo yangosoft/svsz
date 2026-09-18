@@ -7,17 +7,17 @@
 [ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=5]
 [ext_resource path="res://art/gameover.wav" type="AudioStream" id=6]
 [ext_resource path="res://ZombieSprite.tscn" type="PackedScene" id=7]
-[ext_resource path="res://art/bg/bg-1.png" type="Texture" id=8]
+[ext_resource path="res://art/bg/bg-1.png" type="Texture2D" id=8]
 [ext_resource path="res://Something.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Zombie.tscn" type="PackedScene" id=10]
-[ext_resource path="res://art/FireLoop1/fire.png" type="Texture" id=11]
-[ext_resource path="res://addons/kenney_particle_pack/fire_01.png" type="Texture" id=12]
-[ext_resource path="res://art/chars/p0_0_idle_0.png" type="Texture" id=13]
-[ext_resource path="res://art/FireLoop1/ice.png" type="Texture" id=14]
+[ext_resource path="res://art/FireLoop1/fire.png" type="Texture2D" id=11]
+[ext_resource path="res://addons/kenney_particle_pack/fire_01.png" type="Texture2D" id=12]
+[ext_resource path="res://art/chars/p0_0_idle_0.png" type="Texture2D" id=13]
+[ext_resource path="res://art/FireLoop1/ice.png" type="Texture2D" id=14]
 [ext_resource path="res://sound/iceaudio.mp3" type="AudioStream" id=15]
 [ext_resource path="res://SomethingBarrier.tscn" type="PackedScene" id=17]
 [ext_resource path="res://SomethingGenerator.tscn" type="PackedScene" id=19]
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="FontFile" id=20]
 [ext_resource path="res://SomethingTNT.tscn" type="PackedScene" id=21]
 [ext_resource path="res://GolemSprite.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Win.tscn" type="PackedScene" id=23]
@@ -30,17 +30,17 @@
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1367, 257, 0, 0, 0, 0, -61, 257 )
+"points": PackedVector2Array( 0, 0, 0, 0, 1367, 257, 0, 0, 0, 0, -61, 257 )
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 20
 font_data = ExtResource( 20 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 111, 305 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticleProcessMaterial" id=5]
 lifetime_randomness = 0.27
 emission_shape = 1
 emission_sphere_radius = 27.15
@@ -53,7 +53,7 @@ scale = 4.0
 hue_variation = 0.26
 hue_variation_random = 0.1
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticleProcessMaterial" id=6]
 lifetime_randomness = 0.27
 emission_shape = 2
 emission_box_extents = Vector3( 1000, 1, 1 )
@@ -84,8 +84,8 @@ selection_scene = ExtResource( 29 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 80.0
-margin_bottom = 48.0
+offset_right = 80.0
+offset_bottom = 48.0
 color = Color( 0.92549, 0.858824, 0.858824, 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -117,8 +117,8 @@ position = Vector2( 1367, 257 )
 rotation = 3.14159
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 1360.0
-margin_bottom = 768.0
+offset_right = 1360.0
+offset_bottom = 768.0
 texture = ExtResource( 8 )
 stretch_mode = 3
 __meta__ = {
@@ -132,82 +132,82 @@ __meta__ = {
 }
 
 [node name="Something0" type="TextureRect" parent="DefenseGroup"]
-margin_right = 100.0
-margin_bottom = 100.0
+offset_right = 100.0
+offset_bottom = 100.0
 mouse_default_cursor_shape = 6
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="DefenseGroup/Something0"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 4 )
 
 [node name="Something1" type="TextureRect" parent="DefenseGroup"]
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 202.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 202.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something1"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 4 )
 
 [node name="Something2" type="TextureRect" parent="DefenseGroup"]
-margin_top = 202.0
-margin_right = 100.0
-margin_bottom = 302.0
+offset_top = 202.0
+offset_right = 100.0
+offset_bottom = 302.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something2"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 4 )
 
 [node name="Something3" type="TextureRect" parent="DefenseGroup"]
-margin_top = 302.0
-margin_right = 100.0
-margin_bottom = 402.0
+offset_top = 302.0
+offset_right = 100.0
+offset_bottom = 402.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something3"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 4 )
 
 [node name="Something4" type="TextureRect" parent="DefenseGroup"]
-margin_top = 402.0
-margin_right = 100.0
-margin_bottom = 502.0
+offset_top = 402.0
+offset_right = 100.0
+offset_bottom = 502.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something4"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 4 )
 text = "
 "
 
 [node name="Something5" type="TextureRect" parent="DefenseGroup"]
-margin_top = 502.0
-margin_right = 100.0
-margin_bottom = 602.0
+offset_top = 502.0
+offset_right = 100.0
+offset_bottom = 602.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something5"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 4 )
 
 [node name="Something6" type="TextureRect" parent="DefenseGroup"]
-margin_top = 602.0
-margin_right = 100.0
-margin_bottom = 702.0
+offset_top = 602.0
+offset_right = 100.0
+offset_bottom = 702.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something6"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 4 )
 
 [node name="SomethingMouseFollower" type="TextureRect" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
 texture = ExtResource( 13 )
 
@@ -219,10 +219,10 @@ position = Vector2( -61, 313 )
 shape = SubResource( 3 )
 
 [node name="BtnRestart" type="Button" parent="."]
-margin_left = 1109.0
-margin_top = 64.0
-margin_right = 1198.0
-margin_bottom = 99.0
+offset_left = 1109.0
+offset_top = 64.0
+offset_right = 1198.0
+offset_bottom = 99.0
 text = "Restart"
 
 [node name="WinScene" parent="." instance=ExtResource( 23 )]
@@ -239,8 +239,8 @@ visible = false
 
 [node name="AddPolice" type="Button" parent="."]
 visible = false
-margin_right = 12.0
-margin_bottom = 20.0
+offset_right = 12.0
+offset_bottom = 20.0
 
 [node name="MadnessTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -250,14 +250,14 @@ stream = ExtResource( 3 )
 volume_db = -17.964
 
 [node name="BtnKillThemAll" type="Button" parent="."]
-margin_left = 105.0
-margin_top = 665.0
-margin_right = 150.0
-margin_bottom = 710.0
+offset_left = 105.0
+offset_top = 665.0
+offset_right = 150.0
+offset_bottom = 710.0
 icon = ExtResource( 11 )
 expand_icon = true
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2( 600, 300 )
 z_index = 6
 emitting = false
@@ -268,7 +268,7 @@ explosiveness = 0.55
 process_material = SubResource( 5 )
 texture = ExtResource( 12 )
 
-[node name="particleIce" type="Particles2D" parent="."]
+[node name="particleIce" type="GPUParticles2D" parent="."]
 position = Vector2( 600, 50 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 6
@@ -280,10 +280,10 @@ process_material = SubResource( 6 )
 texture = ExtResource( 14 )
 
 [node name="BtnKillThemAll2" type="Button" parent="."]
-margin_left = 158.0
-margin_top = 665.0
-margin_right = 203.0
-margin_bottom = 710.0
+offset_left = 158.0
+offset_top = 665.0
+offset_right = 203.0
+offset_bottom = 710.0
 icon = ExtResource( 14 )
 expand_icon = true
 

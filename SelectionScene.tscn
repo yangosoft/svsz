@@ -1,40 +1,40 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://art/chars/catapult/catapult.png" type="Texture" id=2]
-[ext_resource path="res://art/chars/p2_0.png" type="Texture" id=3]
-[ext_resource path="res://art/chars/p1_0.png" type="Texture" id=4]
-[ext_resource path="res://art/zombies/Player_Free/Idle_Shoot/0074.png" type="Texture" id=5]
-[ext_resource path="res://art/chars/p4_0.png" type="Texture" id=6]
-[ext_resource path="res://art/zombies/Player_Free/Run_Shoot/0042.png" type="Texture" id=7]
-[ext_resource path="res://art/chars/p3_0.png" type="Texture" id=8]
-[ext_resource path="res://art/bg/bg-selection.png" type="Texture" id=9]
-[ext_resource path="res://art/chars/ninja.png" type="Texture" id=10]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="FontFile" id=1]
+[ext_resource path="res://art/chars/catapult/catapult.png" type="Texture2D" id=2]
+[ext_resource path="res://art/chars/p2_0.png" type="Texture2D" id=3]
+[ext_resource path="res://art/chars/p1_0.png" type="Texture2D" id=4]
+[ext_resource path="res://art/zombies/Player_Free/Idle_Shoot/0074.png" type="Texture2D" id=5]
+[ext_resource path="res://art/chars/p4_0.png" type="Texture2D" id=6]
+[ext_resource path="res://art/zombies/Player_Free/Run_Shoot/0042.png" type="Texture2D" id=7]
+[ext_resource path="res://art/chars/p3_0.png" type="Texture2D" id=8]
+[ext_resource path="res://art/bg/bg-selection.png" type="Texture2D" id=9]
+[ext_resource path="res://art/chars/ninja.png" type="Texture2D" id=10]
 [ext_resource path="res://SelectionScene.gd" type="Script" id=11]
 [ext_resource path="res://sound/264447_4322723-hq.mp3" type="AudioStream" id=12]
-[ext_resource path="res://art/chars/knight.png" type="Texture" id=13]
-[ext_resource path="res://art/chars/p5_0.png" type="Texture" id=14]
-[ext_resource path="res://art/chars/frog.png" type="Texture" id=15]
+[ext_resource path="res://art/chars/knight.png" type="Texture2D" id=13]
+[ext_resource path="res://art/chars/p5_0.png" type="Texture2D" id=14]
+[ext_resource path="res://art/chars/frog.png" type="Texture2D" id=15]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 70
 outline_color = Color( 1, 0.160784, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=4]
 default_font = SubResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="FontFile" id=5]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="FontFile" id=6]
 font_data = ExtResource( 1 )
 
 [node name="Control" type="Control"]
@@ -43,154 +43,154 @@ anchor_bottom = 1.0
 script = ExtResource( 11 )
 
 [node name="BG" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 9 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 199.0
-margin_top = 100.0
-margin_right = 1047.0
-margin_bottom = 497.0
-custom_constants/vseparation = 1
-custom_constants/hseparation = 1
+offset_left = 199.0
+offset_top = 100.0
+offset_right = 1047.0
+offset_bottom = 497.0
+theme_override_constants/v_separation = 1
+theme_override_constants/h_separation = 1
 columns = 3
 
 [node name="TextureRect1" type="TextureRect" parent="GridContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
+offset_right = 100.0
+offset_bottom = 100.0
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect1"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "10"
 
 [node name="TextureRect2" type="TextureRect" parent="GridContainer"]
-margin_left = 101.0
-margin_right = 201.0
-margin_bottom = 100.0
+offset_left = 101.0
+offset_right = 201.0
+offset_bottom = 100.0
 texture = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect2"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "20"
 
 [node name="TextureRect3" type="TextureRect" parent="GridContainer"]
-margin_left = 202.0
-margin_right = 302.0
-margin_bottom = 100.0
+offset_left = 202.0
+offset_right = 302.0
+offset_bottom = 100.0
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect3"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "5"
 
 [node name="TextureRect4" type="TextureRect" parent="GridContainer"]
-margin_top = 101.0
-margin_right = 100.0
-margin_bottom = 201.0
+offset_top = 101.0
+offset_right = 100.0
+offset_bottom = 201.0
 texture = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect4"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "125"
 
 [node name="TextureRect5" type="TextureRect" parent="GridContainer"]
-margin_left = 101.0
-margin_top = 101.0
-margin_right = 201.0
-margin_bottom = 201.0
+offset_left = 101.0
+offset_top = 101.0
+offset_right = 201.0
+offset_bottom = 201.0
 texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect5"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "30
 "
 
 [node name="TextureRect6" type="TextureRect" parent="GridContainer"]
-margin_left = 202.0
-margin_top = 101.0
-margin_right = 302.0
-margin_bottom = 201.0
+offset_left = 202.0
+offset_top = 101.0
+offset_right = 302.0
+offset_bottom = 201.0
 texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect6"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "15"
 
 [node name="TextureRect7" type="TextureRect" parent="GridContainer"]
-margin_top = 202.0
-margin_right = 100.0
-margin_bottom = 302.0
+offset_top = 202.0
+offset_right = 100.0
+offset_bottom = 302.0
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect7"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "75"
 
 [node name="TextureRect8" type="TextureRect" parent="GridContainer"]
-margin_left = 101.0
-margin_top = 202.0
-margin_right = 201.0
-margin_bottom = 302.0
+offset_left = 101.0
+offset_top = 202.0
+offset_right = 201.0
+offset_bottom = 302.0
 texture = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect8"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "50"
 
 [node name="TextureRect9" type="TextureRect" parent="GridContainer"]
-margin_left = 202.0
-margin_top = 202.0
-margin_right = 302.0
-margin_bottom = 302.0
+offset_left = 202.0
+offset_top = 202.0
+offset_right = 302.0
+offset_bottom = 302.0
 texture = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect9"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "65"
 
 [node name="TextureRect10" type="TextureRect" parent="GridContainer"]
-margin_top = 303.0
-margin_right = 100.0
-margin_bottom = 403.0
+offset_top = 303.0
+offset_right = 100.0
+offset_bottom = 403.0
 texture = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect10"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "15"
 
 [node name="TextureRect11" type="TextureRect" parent="GridContainer"]
-margin_left = 101.0
-margin_top = 303.0
-margin_right = 201.0
-margin_bottom = 403.0
+offset_left = 101.0
+offset_top = 303.0
+offset_right = 201.0
+offset_bottom = 403.0
 texture = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="GridContainer/TextureRect11"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "65"
 
 [node name="DefenseGroup" type="Node2D" parent="."]
@@ -200,217 +200,217 @@ __meta__ = {
 }
 
 [node name="Something1" type="TextureRect" parent="DefenseGroup"]
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 202.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 202.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something1"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 
 [node name="Something0" type="TextureRect" parent="DefenseGroup"]
-margin_right = 100.0
-margin_bottom = 100.0
+offset_right = 100.0
+offset_bottom = 100.0
 mouse_default_cursor_shape = 6
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="DefenseGroup/Something0"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 
 [node name="Something2" type="TextureRect" parent="DefenseGroup"]
-margin_top = 202.0
-margin_right = 100.0
-margin_bottom = 302.0
+offset_top = 202.0
+offset_right = 100.0
+offset_bottom = 302.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something2"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 
 [node name="Something3" type="TextureRect" parent="DefenseGroup"]
-margin_top = 302.0
-margin_right = 100.0
-margin_bottom = 402.0
+offset_top = 302.0
+offset_right = 100.0
+offset_bottom = 402.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something3"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 
 [node name="Something4" type="TextureRect" parent="DefenseGroup"]
-margin_top = 402.0
-margin_right = 100.0
-margin_bottom = 502.0
+offset_top = 402.0
+offset_right = 100.0
+offset_bottom = 502.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something4"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 text = "
 "
 
 [node name="Something5" type="TextureRect" parent="DefenseGroup"]
-margin_top = 502.0
-margin_right = 100.0
-margin_bottom = 602.0
+offset_top = 502.0
+offset_right = 100.0
+offset_bottom = 602.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something5"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 
 [node name="Something6" type="TextureRect" parent="DefenseGroup"]
-margin_top = 602.0
-margin_right = 100.0
-margin_bottom = 702.0
+offset_top = 602.0
+offset_right = 100.0
+offset_bottom = 702.0
 
 [node name="Label" type="Label" parent="DefenseGroup/Something6"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 540.0
-margin_top = 510.0
-margin_right = 849.0
-margin_bottom = 720.0
-custom_constants/separation = 14
+offset_left = 540.0
+offset_top = 510.0
+offset_right = 849.0
+offset_bottom = 720.0
+theme_override_constants/separation = 14
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="BtnReset" type="Button" parent="VBoxContainer"]
-margin_right = 309.0
-margin_bottom = 91.0
-rect_pivot_offset = Vector2( 366, -79 )
-custom_colors/font_color = Color( 0.952941, 0.270588, 0.00392157, 1 )
-custom_fonts/font = SubResource( 2 )
+offset_right = 309.0
+offset_bottom = 91.0
+pivot_offset = Vector2( 366, -79 )
+theme_override_colors/font_color = Color( 0.952941, 0.270588, 0.00392157, 1 )
+theme_override_fonts/font = SubResource( 2 )
 text = "RESET"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-margin_top = 105.0
-margin_right = 309.0
-margin_bottom = 196.0
-rect_pivot_offset = Vector2( 366, -79 )
-custom_fonts/font = SubResource( 2 )
+offset_top = 105.0
+offset_right = 309.0
+offset_bottom = 196.0
+pivot_offset = Vector2( 366, -79 )
+theme_override_fonts/font = SubResource( 2 )
 text = "OK"
 
 [node name="Stats" type="GridContainer" parent="."]
-margin_left = 813.0
-margin_top = 107.0
-margin_right = 1256.0
-margin_bottom = 262.0
+offset_left = 813.0
+offset_top = 107.0
+offset_right = 1256.0
+offset_bottom = 262.0
 theme = SubResource( 4 )
-custom_constants/vseparation = 25
-custom_constants/hseparation = 10
+theme_override_constants/v_separation = 25
+theme_override_constants/h_separation = 10
 columns = 3
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Label" type="Label" parent="Stats"]
-margin_right = 137.0
-margin_bottom = 20.0
+offset_right = 137.0
+offset_bottom = 20.0
 text = "Name:"
 align = 2
 
 [node name="lblName" type="Label" parent="Stats"]
-margin_left = 147.0
-margin_right = 272.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 125, 20 )
+offset_left = 147.0
+offset_right = 272.0
+offset_bottom = 20.0
+custom_minimum_size = Vector2( 125, 20 )
 
 [node name="Label2" type="Label" parent="Stats"]
-margin_left = 282.0
-margin_right = 293.0
-margin_bottom = 20.0
+offset_left = 282.0
+offset_right = 293.0
+offset_bottom = 20.0
 
 [node name="Label3" type="Label" parent="Stats"]
-margin_top = 45.0
-margin_right = 137.0
-margin_bottom = 65.0
+offset_top = 45.0
+offset_right = 137.0
+offset_bottom = 65.0
 text = "Life:"
 align = 2
 
 [node name="pBarLife" type="ProgressBar" parent="Stats"]
-margin_left = 147.0
-margin_top = 45.0
-margin_right = 272.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 75, 20 )
+offset_left = 147.0
+offset_top = 45.0
+offset_right = 272.0
+offset_bottom = 65.0
+custom_minimum_size = Vector2( 75, 20 )
 max_value = 500.0
 value = 50.0
 percent_visible = false
 
 [node name="lblLife" type="Label" parent="Stats"]
-margin_left = 282.0
-margin_top = 45.0
-margin_right = 293.0
-margin_bottom = 65.0
+offset_left = 282.0
+offset_top = 45.0
+offset_right = 293.0
+offset_bottom = 65.0
 text = "0"
 
 [node name="Label4" type="Label" parent="Stats"]
-margin_top = 90.0
-margin_right = 137.0
-margin_bottom = 110.0
+offset_top = 90.0
+offset_right = 137.0
+offset_bottom = 110.0
 text = "Strength:"
 align = 2
 
 [node name="pBarStrength" type="ProgressBar" parent="Stats"]
-margin_left = 147.0
-margin_top = 90.0
-margin_right = 272.0
-margin_bottom = 110.0
-rect_min_size = Vector2( 75, 20 )
+offset_left = 147.0
+offset_top = 90.0
+offset_right = 272.0
+offset_bottom = 110.0
+custom_minimum_size = Vector2( 75, 20 )
 max_value = 500.0
 percent_visible = false
 
 [node name="lblStrength" type="Label" parent="Stats"]
-margin_left = 282.0
-margin_top = 90.0
-margin_right = 293.0
-margin_bottom = 110.0
+offset_left = 282.0
+offset_top = 90.0
+offset_right = 293.0
+offset_bottom = 110.0
 text = "0"
 
 [node name="Label5" type="Label" parent="Stats"]
-margin_top = 135.0
-margin_right = 137.0
-margin_bottom = 155.0
+offset_top = 135.0
+offset_right = 137.0
+offset_bottom = 155.0
 text = "Attack cadence:"
 align = 2
 
 [node name="pBarCadence" type="ProgressBar" parent="Stats"]
-margin_left = 147.0
-margin_top = 135.0
-margin_right = 272.0
-margin_bottom = 155.0
-rect_min_size = Vector2( 75, 20 )
+offset_left = 147.0
+offset_top = 135.0
+offset_right = 272.0
+offset_bottom = 155.0
+custom_minimum_size = Vector2( 75, 20 )
 max_value = 10000.0
 percent_visible = false
 
 [node name="lblCadence" type="Label" parent="Stats"]
-margin_left = 282.0
-margin_top = 135.0
-margin_right = 293.0
-margin_bottom = 155.0
+offset_left = 282.0
+offset_top = 135.0
+offset_right = 293.0
+offset_bottom = 155.0
 text = "0"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 814.0
-margin_top = 273.0
-margin_right = 1096.0
-margin_bottom = 496.0
-rect_min_size = Vector2( 282, 223 )
-custom_fonts/bold_font = SubResource( 5 )
-custom_fonts/normal_font = SubResource( 6 )
+offset_left = 814.0
+offset_top = 273.0
+offset_right = 1096.0
+offset_bottom = 496.0
+custom_minimum_size = Vector2( 282, 223 )
+theme_override_fonts/bold_font = SubResource( 5 )
+theme_override_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
-bbcode_text = "This is a generic description of a [b]Something[/b]"
+text = "This is a generic description of a [b]Something[/b]"
 text = "This is a generic description of a Something"
 
 [connection signal="gui_input" from="GridContainer/TextureRect1" to="." method="on_Barrier_Sel"]

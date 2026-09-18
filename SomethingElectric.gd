@@ -30,7 +30,7 @@ func _ready():
 func shoot():
 	print("shoot()")
 	
-	var b = bullet.instance()
+	var b = bullet.instantiate()
 	b.speed = 60
 	
 	
@@ -75,11 +75,11 @@ func shoot():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var now = OS.get_ticks_msec()
+	var now = Time.get_ticks_msec()
 	if ( now - last_attack ) < current_attack_cadence_ms:
 		return
 	
-	if OS.get_ticks_msec() - last_dope_ms > 5000:
+	if Time.get_ticks_msec() - last_dope_ms > 5000:
 		current_attack_cadence_ms = attack_cadence_ms
 		$TextureRect.show()
 	

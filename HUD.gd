@@ -13,18 +13,18 @@ func show_message(text):
 
 func show_game_over():
 	show_message("Game Over")
-	yield($MessageTimer, "timeout")
+	await $MessageTimer.timeout
 	$MessageLabel.text = "You lost!"
 	$MessageLabel.show()
-	yield(get_tree().create_timer(1), "timeout")
+	await get_tree().create_timer(1).timeout
 	$VBoxContainer.show()
 	
 func show_game_win():
 	show_message("Game Over")
-	yield($MessageTimer, "timeout")
+	await $MessageTimer.timeout
 	$MessageLabel.text = "You win!"
 	$MessageLabel.show()
-	yield(get_tree().create_timer(1), "timeout")
+	await get_tree().create_timer(1).timeout
 	$VBoxContainer.show()
 
 
@@ -71,9 +71,9 @@ func on_Select_Button():
 
 
 func _on_About_pressed():
-	get_tree().change_scene("res://SceneAbout.tscn")
+	get_tree().change_scene_to_file("res://SceneAbout.tscn")
 
 
 func _on_Options_pressed():
-	get_tree().change_scene("res://SceneOptions.tscn")
+	get_tree().change_scene_to_file("res://SceneOptions.tscn")
 	pass # Replace with function body.

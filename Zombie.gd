@@ -1,10 +1,10 @@
 extends RigidBody2D
 
-export var life = 100
+@export var life = 100
 
-export var armour = 5
-export var strength = 5
-export var line_number = 0
+@export var armour = 5
+@export var strength = 5
+@export var line_number = 0
 
 var is_attacking = false
 var is_dying = false
@@ -21,11 +21,11 @@ var score_points = 50
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	old_lineal_velocity = self.linear_velocity
-	$AnimatedSprite.play("walk")
-	var r = rand_range(0,1)
+	$AnimatedSprite2D.play("walk")
+	var r = randf_range(0,1)
 	if r > 0:
 		print("Emitting")
-		$Particles2D.emitting = true
+		$GPUParticles2D.emitting = true
 		life = 200
 
 
@@ -33,7 +33,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_attacking:
-		var now = OS.get_unix_time()
+		var now = Time.get_unix_time_from_system()
 		if ( now - last_attack ) < attack_cadence_seconds:
 			return
 		if is_instance_valid(target):
@@ -42,7 +42,7 @@ func _process(delta):
 		else:
 			is_attacking = false
 			if is_dying == false:
-				$AnimatedSprite.play("walk")
+				$AnimatedSprite2D.play("walk")
 	elif is_dying == false:
 		self.linear_velocity = old_lineal_velocity
 		
@@ -70,15 +70,15 @@ func get_hit(strengh):
 	if life <= 0:
 		is_dying = true
 		print("Time to die")
-		$AnimatedSprite.stop()
-		$AnimatedSprite.play("die") 
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("die") 
 		
 func set_target(something_):
 	print("Zombie is Setting target " + str(something_))
 	if target != something_:
 		target = something_
-		$AnimatedSprite.stop()
-		$AnimatedSprite.play("attack")
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("attack")
 		is_attacking = true
 
 func _on_AnimatedSprite_animation_finished():

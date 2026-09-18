@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/246420_1676145-lq.mp3-7742bd4399af6feb494446c07809f001.mp3str"
+uid="uid://dcbwflg8gxxlt"
+path="res://.godot/imported/246420_1676145-lq.mp3-7742bd4399af6feb494446c07809f001.mp3str"
 
 [deps]
 
 source_file="res://sound/246420_1676145-lq.mp3"
-dest_files=[ "res://.import/246420_1676145-lq.mp3-7742bd4399af6feb494446c07809f001.mp3str" ]
+dest_files=["res://.godot/imported/246420_1676145-lq.mp3-7742bd4399af6feb494446c07809f001.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

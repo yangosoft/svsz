@@ -21,7 +21,7 @@ func _ready():
 	pass # Replace with function body.
 	
 func attack(_zombie):
-	$AnimatedSprite.play("attack")
+	$AnimatedSprite2D.play("attack")
 	$AudioStreamPlayer.play()
 	if null == enemy:
 		return

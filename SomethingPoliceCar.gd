@@ -24,7 +24,7 @@ func _ready():
 
 
 func _process(delta):
-	var now = OS.get_ticks_msec()
+	var now = Time.get_ticks_msec()
 	
 	if is_attacking and is_instance_valid(enemy) and enemy.is_queued_for_deletion() == false and enemy.is_dying == false:
 		attack(null)

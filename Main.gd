@@ -22,7 +22,7 @@ func _on_ScoreTimer_timeout():
 	on_ScoreTimer_timeout()
 	
 func change_bg():
-	var r = rand_range(0,1)
+	var r = randf_range(0,1)
 	if r  <= 0.25:
 		$Background.texture = load("res://art/bg/bg-1.png")	
 	elif r > 0.25 and r<0.5:
@@ -46,20 +46,20 @@ func _on_AnimatedSprite_something_hit():
 
 func _on_Something0_gui_input2(event):
 	print(str(event))
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT  and event.pressed:
-		var s = something_0.instance()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT  and event.pressed:
+		var s = something_0.instantiate()
 		s.set_script(load("res://SomethingShooter.gd"))
 		s.position = Vector2(252,352)
 		add_child(s)
 	
 func prepare_last_barriers():
 	$BtnKillThemAll.show()
-	$Particles2D.one_shot = true
-	$Particles2D.emitting = false
+	$GPUParticles2D.one_shot = true
+	$GPUParticles2D.emitting = false
 	last_barrier_array.clear()
 	var p = load("res://SomethingPoliceCar.tscn")
 	for i in range(6):
-		var s = p.instance()
+		var s = p.instantiate()
 		s.position[0] = 150
 		s.position[1] = 150+(i*100)
 		last_barrier_array.push_back(s)
@@ -73,7 +73,7 @@ func _on_AddPolice_pressed():
 
 
 func process_effects():
-	var now = OS.get_ticks_msec()
+	var now = Time.get_ticks_msec()
 	if (now - effectTrigger) < effectDurationMs:
 		get_tree().call_group("enemy", "queue_free")
 	pass
@@ -82,9 +82,9 @@ func _on_MadnessTimer_timeout():
 	$AudioMadness.play()
 	if $MobTimer.wait_time != 3:
 		$MobTimer.wait_time = 3
-		$HUD/ColorRect.color = Color.red
+		$HUD/ColorRect.color = Color.RED
 	else:
-		$HUD/ColorRect.color = Color.blue
+		$HUD/ColorRect.color = Color.BLUE
 		if Global.enemy_creator_s - (Global.difficulty*2) > 1:
 			$MobTimer.wait_time = Global.enemy_creator_s - (Global.difficulty*2)
 		
@@ -92,8 +92,8 @@ func _on_MadnessTimer_timeout():
 
 
 func _on_BtnKillThemAll_pressed():
-	effectTrigger = OS.get_ticks_msec()
-	$Particles2D.emitting = true
+	effectTrigger = Time.get_ticks_msec()
+	$GPUParticles2D.emitting = true
 	$AudioStreamPlayer.stream = load("res://sound/fire_sound_effect.mp3")
 	$AudioStreamPlayer.play()
 	$BtnKillThemAll.hide()
@@ -102,7 +102,7 @@ func _on_BtnKillThemAll_pressed():
 
 
 func _on_BtnKillThemAll2_pressed():
-	effectTrigger = OS.get_ticks_msec()
+	effectTrigger = Time.get_ticks_msec()
 	$particleIce.emitting = true
 	$AudioStreamPlayer.stream = load("res://sound/iceaudio.mp3")
 	$AudioStreamPlayer.play()

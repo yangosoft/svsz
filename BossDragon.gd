@@ -28,7 +28,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_attacking:
-		var now = OS.get_unix_time()
+		var now = Time.get_unix_time_from_system()
 		
 		if ( now - last_attack ) >= attack_cadence_seconds:
 			print(str(now) + " vs cad " + str(attack_cadence_seconds) + " vs last " + str(last_attack))
@@ -43,7 +43,7 @@ func _process(delta):
 		# self.linear_velocity = old_lineal_velocity
 	var pos = self.position
 	if is_moving == true:
-		var now = OS.get_ticks_msec()
+		var now = Time.get_ticks_msec()
 		if now - last_movement_ms > movement_ms:
 			if go_down:
 				pos[1] = pos[1] - 7
@@ -80,6 +80,6 @@ func _process(delta):
 	
 func shoot():
 	print("SHOOT!!!!!")
-	var b = bullet.instance()
+	var b = bullet.instantiate()
 	#b.add_to_group("bullet")
 	add_child(b)
